@@ -5,21 +5,21 @@ class Permutation
 {
 public:
 	// Constructors
-	Permutation(size_t maximum):maximum{maximum};
-	Permutation(size_t maximum, size_t e1, size_t e2):maximum{maximum};
+	Permutation(size_t maximum);
+	Permutation(size_t maximum, size_t e1, size_t e2);
 	Permutation(std::initializer_list<size_t> list);
-	Permutation(size_t maximum, std::initializer_list<size_t> list):maximum{maximum};
-	Permutation(Permutation & other);
+	Permutation(size_t maximum, std::initializer_list<size_t> list);
+	Permutation(const Permutation & other);
 	Permutation(Permutation && other) noexcept;
 	~Permutation() noexcept;
 	
 	// Assignment
-	Permutation& operator= (operator &other);
-	Permutation& operator= (operator &&other) noexcept;
+	Permutation& operator=(const Permutation &other);
+	Permutation& operator=(Permutation &&other) noexcept;
 	
 	// Arithmetic
 	Permutation operator* (const Permutation &other) const;
-	void operator*= (const Permutation &other);
+	void operator*= (const Permutation &other) noexcept;
 	Permutation inverse() const;
 	void invert() noexcept;
 	Permutation operator/ (const Permutation &other) const;
