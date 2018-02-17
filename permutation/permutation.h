@@ -5,10 +5,10 @@ class Permutation
 {
 public:
 	// Constructors
-	Permutation(size_t max):max{max};
-	Permutation(size_t max, size_t e1, size_t e2):max{max};
+	Permutation(size_t maximum):maximum{maximum};
+	Permutation(size_t maximum, size_t e1, size_t e2):maximum{maximum};
 	Permutation(std::initializer_list<size_t> list);
-	Permutation(size_t max, std::initializer_list<size_t> list):max{max};
+	Permutation(size_t maximum, std::initializer_list<size_t> list):maximum{maximum};
 	Permutation(Permutation & other);
 	Permutation(Permutation && other) noexcept;
 	~Permutation() noexcept;
@@ -38,6 +38,6 @@ public:
 	size_t operator[](const size_t point) const noexcept;
 	
 private:
-	size_t max;
+	size_t maximum;
 	size_t *permutation;
 };
