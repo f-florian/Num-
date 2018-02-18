@@ -14,12 +14,12 @@ public:
 	~Permutation() noexcept;
 	
 	// Assignment
-	Permutation& operator=(const Permutation &other);
+	Permutation& operator=(const Permutation &other)=delete;
 	Permutation& operator=(Permutation &&other) noexcept;
 	
 	// Arithmetic
 	Permutation operator* (const Permutation &other) const;
-	void operator*= (const Permutation &other) noexcept;
+	void operator*= (const Permutation &other);
 	Permutation inverse() const;
 	void invert() noexcept;
 	Permutation operator/ (const Permutation &other) const;
@@ -35,7 +35,7 @@ public:
 
 	// Other
 	std::string print() const noexcept;
-	size_t operator[](const size_t point) const noexcept;
+	size_t operator[](const size_t point) const;
 	
 private:
 	size_t maximum;
