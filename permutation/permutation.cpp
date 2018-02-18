@@ -73,9 +73,10 @@ void Permutation::operator*= (const Permutation &other)
 			throw(bad_alloc());
 		permutation=tmp;
 	}
+	maximum=other.maximum;
 	bool ok[maximum];
 	memset(ok,0,sizeof(bool));
-	for(size_t i=0;i<other.maximum;i++){
+	for(size_t i=0;i<maximum;i++){
 		if(ok[i])
 			continue;
 		size_t k=permutation[i];
@@ -91,7 +92,7 @@ void Permutation::operator*= (const Permutation &other)
 		}
 		permutation[l]=k;
 	}
-
+  // todo: undefined sometimes
 }
 Permutation Permutation::inverse() const
 {
@@ -137,4 +138,44 @@ size_t Permutation::operator[](const size_t point) const
 	if(point>maximum)
 		throw(range_error("Requested element out of range"));
 	return permutation[point];
+}
+void Permutation::swap(const size_t x1, const size_t x2)
+{
+	m=min(x1,x2);
+	M=x1-m+x2;                  //max(x1,x2)
+	if(M<maximum){
+		size_t tmp=permutation[x1];
+		permutation[x1]=permutation[x2];
+		permutation[x2]=tmp;
+		return;
+	}
+	size_t *tmp=static_cast<size_t*>(realloc(M));
+	if(tmp==NULL)
+		throw(bad_alloc());
+	permutation=tmp;
+	// TODO: fill, or change operator[]
+	if (m<maximum) {
+		permutation[M]=m;
+	} else {
+		permutation[M]=permutation[m];
+	}
+	permutation[m]=M;
+	maximum=M;
+}
+void Permutation::swapExisting(const size_t x1, const size_t x2) noexcept
+{
+	if(x1>maximum||x2>maximum)
+		return;
+	size_t tmp=permutation[x1];
+	permutation[x1]=permutation[x2];
+	permutation[x2]=tmp;
+}             
+void Permutation::swap(Permutation &&other) noexcept
+{
+	size_t *tmpp=permutation;
+	size_t tmp=maximum;
+	permutation=other.permutation;
+	maximum=oter.maximum;
+	other.permutation=tmpp;
+	other.maximum=tmp;
 }

@@ -36,7 +36,9 @@ public:
 	// Other
 	std::string print() const noexcept;
 	size_t operator[](const size_t point) const;
-	
+	void swap(const size_t x1, const size_t x2);
+	void swapExisting(const size_t x1, const size_t x2) noexcept
+	void swap(Permutation &&other) noexcept;
 private:
 	size_t maximum;
 	size_t *permutation;
