@@ -16,20 +16,36 @@
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#include <map>
 
 namespace numpp{
-    class vectorStorage
+    class VectorStorage
     {
     public:
         // Constructors
-        virtual vectorStorage();
-        virtual ~vectorStorage() noexcept;
-        virtual double operator[](size_t position) const noexcept;
+        virtual VectorStorage();
+        virtual ~VectorStorage() noexcept;
+        virtual double operator[](const size_t position) const noexcept;
     };
-    class vectorStorageLinear : public vectorStorage
+    class VectorStorageLinear : public VectorStorage
     {
+    public:
+        VectorStorageLinear(const size_t size);
+        VectorStorageLinear(const size_t size, const double fill);
+        ~VectorStorageLinear();
+        double operator[](const size_t position) const noexcept;
+    private:
+        double* data_m;
+        size_t size_m;
     };
-    class vectorStorageSparse : public vectorStorage
+    class VectorStorageSparse : public VectorStorage
     {
+    public:
+        VectorStorageSparse(const size_t idx, const double value);
+        ~VectorStorageSparse();
+        double operator[](const size_t position) const noexcept;
+    private:
+        double *data_m;
+        std::map<size_t, size_t> idx;
     };
 }
