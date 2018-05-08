@@ -22,6 +22,11 @@
 #include <new>
 
 namespace numpp{
+    VectorStorageLinear::VectorStorageLinear()
+    {
+        data_m=nullptr;
+        size_m=0;
+    }
     VectorStorageLinear::VectorStorageLinear(const size_t size)
     {
         size_m=size;
@@ -54,6 +59,10 @@ namespace numpp{
     }
 
     
+    VectorStorageSparse::VectorStorageSparse()
+    {
+        data_m=nullptr;
+    }
     VectorStorageSparse::VectorStorageSparse(const size_t idx, const double value)
     {
         data_m=(double *)malloc(sizeof(double));

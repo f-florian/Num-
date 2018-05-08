@@ -30,6 +30,7 @@ namespace numpp{
     class VectorStorageLinear : public VectorStorage
     {
     public:
+        VectorStorageLinear();
         VectorStorageLinear(const size_t size);
         VectorStorageLinear(const size_t size, const double fill);
         ~VectorStorageLinear();
@@ -41,6 +42,7 @@ namespace numpp{
     class VectorStorageSparse : public VectorStorage
     {
     public:
+        VectorStorageSparse();
         VectorStorageSparse(const size_t idx, const double value);
         ~VectorStorageSparse();
         double operator[](const size_t position) const noexcept;
