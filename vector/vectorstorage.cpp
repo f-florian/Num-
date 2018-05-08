@@ -57,31 +57,47 @@ namespace numpp{
     {
         return data[position];
     }
-
-    
-    VectorStorageSparse::VectorStorageSparse()
+    void VectorStorageLinear::operator[](const size_t position, const double val)
     {
-        data_m=nullptr;
+        if(position>size_m)
+            throw(std::range_error("index exceeds vector size"));
+        data_m[position]=val;
     }
-    VectorStorageSparse::VectorStorageSparse(const size_t idx, const double value)
+    size_t VectorStorageLinear::size() const noexcept
     {
-        data_m=(double *)malloc(sizeof(double));
-        if (data_m==NULL)
-            throw(std::bad_alloc("malloc failed"));
-        data_m[0]=value;
-        idx.emplace(1,position);
+        return size_m;
+    }
+    
+
+    VectorStorageSparse::VectorStorageSparse(){}
+    VectorStorageSparse::VectorStorageSparse(const size_t position, const double value)
+    {
+        data_m[position]=value;
+        size_m=position;
     }
     VectorStorageSparse::~VectorStorageSparse()
     {
-        free(data_m);
-        idx.clear();
+        data_m.clear();
     }
     double VectorStorageSparse::operator[](const size_t position) const noexcept
     {
         try {
-            return data_m[idx.at(position)];
+            return data_m.at(position);
         } catch ([[maybe_unused]] const std::out_of_range &e) {
             return 0;
         }
+    }
+    void VectorStorageSparse::operator[](const size_t position, const double val)
+    {
+        if(val==0)
+            data_m.erase(position);
+        else if(position>size_m)
+            throw(std::range_error("index exceeds vector size"));
+        else
+            data_m[position]=val;
+    }
+    size_t VectorStorageSparse::size() const noexcept
+    {
+        return size_m;
     }
 }

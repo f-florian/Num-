@@ -19,13 +19,21 @@
 #include <map>
 
 namespace numpp{
+    enum class StorageType
+    {
+        dense,
+        sparse
+    }
     class VectorStorage
     {
     public:
         // Constructors
         virtual VectorStorage();
+        virtual VectorStorage(const VectorStorage &other);
         virtual ~VectorStorage() noexcept;
         virtual double operator[](const size_t position) const noexcept;
+        virtual void operator[](const size_t position, const double val);
+        virtual size_t size() const noexcept;
     };
     class VectorStorageLinear : public VectorStorage
     {
@@ -33,8 +41,13 @@ namespace numpp{
         VectorStorageLinear();
         VectorStorageLinear(const size_t size);
         VectorStorageLinear(const size_t size, const double fill);
+        VectorStorageLinear(const VectorStorage &other);
+        VectorStorageLinear(const VectorStorageLinear &other);
+        VectorStorageLinear(VectorStorageLinear &&other);
         ~VectorStorageLinear();
         double operator[](const size_t position) const noexcept;
+        void operator[](const size_t position, const double val);
+        size_t size() const noexcept;
     private:
         double* data_m;
         size_t size_m;
@@ -44,10 +57,13 @@ namespace numpp{
     public:
         VectorStorageSparse();
         VectorStorageSparse(const size_t idx, const double value);
+        VectorStorageSparse(const VectorStorage &other);
         ~VectorStorageSparse();
         double operator[](const size_t position) const noexcept;
+        void operator[](const size_t position, const double val);
+        size_t size() const noexcept;
     private:
-        double *data_m;
-        std::map<size_t, size_t> idx;
+        std::map<size_t, double> *data_m;
+        size_t size_m;
     };
 }
