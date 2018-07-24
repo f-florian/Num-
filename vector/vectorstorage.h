@@ -6,27 +6,40 @@
  * it under the terms of the GNU General Public License as published by
  * the Free Software Foundation, either version 3 of the License, or
  * (at your option) any later version.
-
+ *
  * Num++ is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
  * GNU General Public License for more details.
-
+ *
  * You should have received a copy of the GNU General Public License
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
 #include <map>
+#include <iterator>
+#include "utility/utility.h"
 
 namespace numpp{
-    enum class StorageType
-    {
-        dense,
-        sparse
-    }
     class VectorStorage
     {
     public:
+        class Iterator
+        {
+            virtual Iterator();
+            virtual bool operator==(const Iterator &other) const noexcept;
+            virtual bool operator!=(const Iterator &other) const noexcept;
+            virtual bool operator<=(const Iterator &other) const noexcept;
+            virtual bool operator>=(const Iterator &other) const noexcept;
+            virtual bool operator<(const Iterator &other) const noexcept;
+            virtual bool operator>(const Iterator &other) const noexcept;
+            virtual Iterator operator++();
+            virtual Iterator operator--();
+            virtual Iterator operator+(const size_t offset) const;
+            virtual void operator+=(const size_t offset);
+            virtual Iterator operator-(const size_t offset) const;
+            virtual void operator-=(const size_t offset);
+        };
         // Constructors
         virtual VectorStorage();
         virtual VectorStorage(const VectorStorage &other);
@@ -34,10 +47,25 @@ namespace numpp{
         virtual double operator[](const size_t position) const noexcept;
         virtual void operator[](const size_t position, const double val);
         virtual size_t size() const noexcept;
+        virtual StorageType storageType() const noexcept;
+        virtual Iterator begin() const noexcept;
+        virtual Iterator end() const noexcept;
     };
     class VectorStorageLinear : public VectorStorage
     {
     public:
+        class Iterator
+            : public std::iterator<std::random_access_iterator_tag,double,size_t>,
+              public VectorStorage::Iterator
+        {
+            Iterator();
+            bool operator==(const Iterator &other) const noexcept;
+            bool operator!=(const Iterator &other) const noexcept;
+            bool operator<=(const Iterator &other) const noexcept;
+            bool operator>=(const Iterator &other) const noexcept;
+            bool operator<(const Iterator &other) const noexcept;
+            bool operator>(const Iterator &other) const noexcept;
+        };
         VectorStorageLinear();
         VectorStorageLinear(const size_t size);
         VectorStorageLinear(const size_t size, const double fill);
@@ -48,6 +76,9 @@ namespace numpp{
         double operator[](const size_t position) const noexcept;
         void operator[](const size_t position, const double val);
         size_t size() const noexcept;
+        StorageType storageType() const noexcept; 
+        Iterator begin() const noexcept;
+        Iterator end() const noexcept;
     private:
         double* data_m;
         size_t size_m;
@@ -62,6 +93,7 @@ namespace numpp{
         double operator[](const size_t position) const noexcept;
         void operator[](const size_t position, const double val);
         size_t size() const noexcept;
+        StorageType storageType() const noexcept; 
     private:
         std::map<size_t, double> *data_m;
         size_t size_m;
