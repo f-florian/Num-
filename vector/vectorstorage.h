@@ -25,20 +25,45 @@ namespace numpp{
     {
     public:
         class Iterator
+            : public std::iterator<std::random_access_iterator_tag,double,std::pair<bool,size_t>>
         {
-            virtual Iterator();
-            virtual bool operator==(const Iterator &other) const noexcept;
-            virtual bool operator!=(const Iterator &other) const noexcept;
-            virtual bool operator<=(const Iterator &other) const noexcept;
-            virtual bool operator>=(const Iterator &other) const noexcept;
-            virtual bool operator<(const Iterator &other) const noexcept;
-            virtual bool operator>(const Iterator &other) const noexcept;
-            virtual Iterator operator++();
-            virtual Iterator operator--();
-            virtual Iterator operator+(const size_t offset) const;
-            virtual void operator+=(const size_t offset);
-            virtual Iterator operator-(const size_t offset) const;
-            virtual void operator-=(const size_t offset);
+        public:
+            Iterator(VectorStorage * container, size_t position);
+
+            // generic iterator
+            Iterator(const Iterator it);
+            Iterator(const Iterator &it);
+            Iterator(Iterator &&it);
+            Iterator& operator=(const Iterator &it);
+            Iterator& operator=(Iterator &&it);
+            void operator++();
+
+            // input/output
+            bool operator==(const Iterator &other) const noexcept;
+            bool operator!=(const Iterator &other) const noexcept;
+            double& operator*() const;
+
+            // forward
+            Iterator();
+
+            // bidirectional
+            void operator--();
+
+            // random
+            bool operator<=(const Iterator &other) const noexcept;
+            bool operator>=(const Iterator &other) const noexcept;
+            bool operator<(const Iterator &other) const noexcept;
+            bool operator>(const Iterator &other) const noexcept;
+            Iterator operator+(const size_t offset) const;
+            Iterator operator-(const size_t offset) const;
+            std::pair<bool,size_t> operator-(const Iterator other) const noexcept;
+            void operator+=(const size_t offset);
+            void operator-=(const size_t offset);
+            double& operator[](bool negative, size_t offset) const;
+            double& operator[](pair<bool, size_t> offset) const;
+        private:
+            VectorStorage *data;
+            size_t position_m;
         };
         // Constructors
         virtual VectorStorage();
@@ -54,18 +79,6 @@ namespace numpp{
     class VectorStorageLinear : public VectorStorage
     {
     public:
-        class Iterator
-            : public std::iterator<std::random_access_iterator_tag,double,size_t>,
-              public VectorStorage::Iterator
-        {
-            Iterator();
-            bool operator==(const Iterator &other) const noexcept;
-            bool operator!=(const Iterator &other) const noexcept;
-            bool operator<=(const Iterator &other) const noexcept;
-            bool operator>=(const Iterator &other) const noexcept;
-            bool operator<(const Iterator &other) const noexcept;
-            bool operator>(const Iterator &other) const noexcept;
-        };
         VectorStorageLinear();
         VectorStorageLinear(const size_t size);
         VectorStorageLinear(const size_t size, const double fill);

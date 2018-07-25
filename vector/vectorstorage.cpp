@@ -22,6 +22,144 @@
 #include <new>
 
 namespace Numpp{
+
+    VectorStorage::Iterator::Iterator(VectorStorage *container, size_t position)
+    {
+        data=container;
+        position_m=position;
+    }
+    VectorStorage::Iterator::Iterator(const Iterator it)
+    {
+        data=it.data;
+        position_m=it.position_m;
+    }
+    VectorStorage::Iterator::Iterator(const Iterator &it)
+    {
+        data=it.data;
+        position_m=it.position_m;
+    }
+    VectorStorage::Iterator::Iterator(Iterator &&it)
+    {
+        data=it.data;
+        position_m=it.position_m;
+        it.data=std::nullptr;
+    }
+    Iterator& VectorStorage::Iterator::operator=(const Iterator &it);
+    Iterator& VectorStorage::Iterator::operator=(Iterator &&it);
+    void VectorStorage::Iterator::operator++()
+    {
+        if(data->size()>=position_m)
+            throw(std::range_error("Trying to advance iterator beyond the container size"));
+        position_m++;
+    }
+
+    bool VectorStorage::Iterator::operator==(const Iterator &other) const noexcept
+    {
+        if(data!=other.data)
+            return false;
+        else
+            return (position_m==other.position_m);
+    }
+    bool VectorStorage::Iterator::operator!=(const Iterator &other) const noexcept
+    {
+        if(data!=other.data)
+            return true;
+        else
+            return (position_m!=other.position_m);
+    }
+
+    double& VectorStorage::Iterator::operator*() const
+    {
+        if(position_m < data->size())
+            return (*data)[position_m];
+        throw(std::range_error("Dereferencing past the end iterator"));
+    }
+    VectorStorage::Iterator::Iterator(){}
+
+    VectorStorage::Iterator::// bidirectional
+    void VectorStorage::Iterator::operator--()
+    {
+        if(data->size()==0)
+            throw(std::range_error("Trying to move iterator to a negative position"));
+        position_m--;
+    }
+
+    bool VectorStorage::Iterator::operator<=(const Iterator &other) const noexcept
+    {
+        if(data!=other.data)
+            return false;
+        else
+            return (position_m<=other.position_m);
+    }
+    bool VectorStorage::Iterator::operator>=(const Iterator &other) const noexcept
+    {
+        if(data!=other.data)
+            return false;
+        else
+            return (position_m>=other.position_m);
+    }
+    bool VectorStorage::Iterator::operator<(const Iterator &other) const noexcept
+    {
+        if(data!=other.data)
+            return false;
+        else
+            return (position_m < other.position_m);
+    }
+    bool VectorStorage::Iterator::operator>(const Iterator &other) const noexcept
+    {
+        if(data!=other.data)
+            return false;
+        else
+            return (position_m > other.position_m);
+    }
+    Iterator VectorStorage::Iterator::operator+(const size_t offset) const
+    {
+        Iterator tmp(this);
+        tmp+=offeset;
+        return tmp;
+    }
+    Iterator VectorStorage::Iterator::operator-(const size_t offset) const
+    {
+        Iterator tmp(this);
+        tmp-=offeset;
+        return tmp;
+    }
+    std::pair<bool,size_t> VectorStorage::Iterator::operator-(const Iterator other) const
+    {
+        if(data != other.data)
+            throw(std::runtime_error("subtracting iterators relative to different containers"));
+        return position_m>other.position_m ? {true,position_m-other.position_m} : {false,other.position_m-position_m};
+    }
+    void VectorStorage::Iterator::operator+=(const size_t offset)
+    {
+        if(position_m + offset > data->size())
+            throw(std::range_error("Trying to advance iterator beyond the container size"));
+        position_m+=offset;
+    }
+    void VectorStorage::Iterator::operator-=(const size_t offset);
+    {
+        if(position_m < offset)
+            throw(std::range_error("Trying to move iterator to a negative position"));
+        position_m-=offset;
+    }
+    double& VectorStorage::Iterator::operator[](bool positive, size_t offset) const
+    {
+        if(positive){
+            if(position_m + offset >= data->size())
+                throw(std::range_error("Trying to dereference iterator beyond the container size"));
+            else
+                return (*data)[position_m+offset];
+        } else {
+            if(position_m < offset)
+                throw(std::range_error("Trying to dereference iterator to a negative position"));
+            else
+                return (*data)[position_m-offset];
+        }
+    }
+    double& VectorStorage::Iterator::operator[](pair<bool, size_t> offset) const
+    {
+        return operator[](offset.first,offset.second);
+    }
     
     VectorStorageLinear::VectorStorageLinear()
     {
