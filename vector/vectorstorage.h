@@ -107,6 +107,8 @@ namespace numpp{
         void operator[](const size_t position, const double val);
         size_t size() const noexcept;
         StorageType storageType() const noexcept; 
+        Iterator begin() const noexcept;
+        Iterator end() const noexcept;
     private:
         std::map<size_t, double> *data_m;
         size_t size_m;

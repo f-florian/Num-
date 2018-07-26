@@ -169,29 +169,39 @@ namespace Numpp{
     VectorStorageLinear::VectorStorageLinear(const size_t size)
     {
         size_m=size;
-        data_m=(double *) malloc(size*sizeof(double));
+        data_m=(double *) calloc(size*sizeof(double));
         if (data_m==NULL)
-            throw(std::bad_alloc("malloc failed"));
+            throw(std::bad_alloc("calloc failed"));
     }
     VectorStorageLinear::VectorStorageLinear(const size_t size, const double fill)
     {
         size_m=size;
-        if (fill) {
-            data_m=(double *) malloc(size*sizeof(double));
-            if (data_m==NULL)
-                throw(std::bad_alloc("malloc failed"));
-            for (size_t i = 0; i < size; ++i)
-                data_m[i]=fill;
-        } else {
-            data_m=(double *) calloc(size*sizeof(double));
-            if (data_m==NULL)
-                throw(std::bad_alloc("calloc failed"));
-        }
+        data_m=(double *) malloc(size*sizeof(double));
+        if (data_m==NULL)
+            throw(std::bad_alloc("malloc failed"));
+        for (size_t i = 0; i < size; ++i)
+            data_m[i]=fill;
+    }
+    VectorStorageLinear::VectorStorageLinear(const VectorStorage &other);
+    VectorStorageLinear::VectorStorageLinear(const VectorStorageLinear &other)
+    {
+        size_m=other.size_m;
+        data_m=(double *) malloc(size*sizeof(double));
+        if (data_m==NULL)
+            throw(std::bad_alloc("malloc failed"));
+        memcpy(data_m, other.data_m, size_m * sizeof(double));
+    }
+    VectorStorageLinear::VectorStorageLinear(VectorStorageLinear &&other)
+    {
+        size_m=other.size_m;
+        data_m=other.data_m;
+        other.data_m=NULL;
     }
     VectorStorageLinear::~VectorStorageLinear()
     {
         free(data_m);
     }
+
     double VectorStorageLinear::operator[](const size_t position) const noexcept
     {
         return data[position];
@@ -206,14 +216,28 @@ namespace Numpp{
     {
         return size_m;
     }
+    StorageType VectorStorageLinear::storageType() const noexcept
+    {
+        return StorageType::dense;
+    }
+    VectorStorage::Iterator VectorStorageLinear::begin() const noexcept
+    {
+        VectorStorage::Iterator tmp(this,0);
+        return tmp;
+    }
+    VectorStorage::Iterator VectorStorageLinear::end() const noexcept
+    {
+        VectorStorage::Iterator tmp(this,size_m);
+        return tmp;
+    }
     
-
     VectorStorageSparse::VectorStorageSparse(){}
     VectorStorageSparse::VectorStorageSparse(const size_t position, const double value)
     {
         data_m[position]=value;
         size_m=position;
     }
+    VectorStorageSparse(const VectorStorage &other);
     VectorStorageSparse::~VectorStorageSparse()
     {
         data_m.clear();
@@ -239,16 +263,18 @@ namespace Numpp{
     {
         return size_m;
     }
-
-    VectorStorageLinear::Iterator VectorStorageLinear::begin() const noexcept
+    StorageType VectorStorageSparse::storageType() const noexcept
     {
-        return VectorStorageLinear::Iterator(0);
+        return StorageType::sparse;
     }
-    VectorStorageLinear::Iterator VectorStorageLinear::end() const noexcept
+    VectorStorage::Iterator VectorStorageSparse::begin() const noexcept
     {
-        return VectorStorageLinear::Iterator(size_m);
+        VectorStorage::Iterator tmp(this,0);
+        return tmp;
     }
-    VectorStorageSparse::Iterator VectorStorageSparse::begin() const noexcept;
-    VectorStorageSparse::Iterator VectorStorageSparse::end() const noexcept;
-
+    VectorStorage::Iterator VectorStorageSparse::end() const noexcept;
+    {
+        VectorStorage::Iterator tmp(this,size_m);
+        return tmp;
+    }
 }
