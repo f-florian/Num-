@@ -57,7 +57,19 @@ namespace Numpp{
         for(auto &x:values)
             (*storage)[x.first,x.second];
     }
-    Vector::Vector(const Vector &other);
+    Vector::Vector(const Vector &other)
+    {
+        switch(other.storage->storageType()) {
+        case StorageType::dense:
+            storage=new VectorStorageLinear(*static_cast<VectorStorageLinear*>(other.storage));
+            break;
+        case StorageType::sparse:
+            storage=new VectorStorageSparse(*static_cast<VectorStorageSparse*>(other.storage));
+            break;
+        default:
+            throw(EnumError("Storage type of argument \"other\" not recognized"), EnumUtils::enumToNumeric(type));
+        }
+    }
     Vector::Vector(Vector &&other)
     {
         storage=other.storage;
@@ -75,7 +87,19 @@ namespace Numpp{
     }
 	
     // Arithmetic
-    Vector Vector::operator+(const Vector &other) const;
+    Vector Vector::operator+(const Vector &other) const
+    {
+        VectorStorage* tmpst;
+        if(size()!=other.size())
+            throw(std::range_error("Attempt of summing vectors of different sizes"));
+        if((storage->storageType==StorageType::dense) || (other.storage->storageType==StorageType::dense)) {
+            tmpst=new VectorStorageLinear(size());
+            for(size_t idx = 0; idx < size(); ++idx)
+                (*tmpst)[idx,(*storage[idx] + (*other.storage)[idx])];
+        } else {
+            tmpst=new VectorStorageSparse()
+        }
+    }
     void Vector::operator+=(const Vector &other);
     Vector Vector::operator-(const Vector &other) const;
     void Vector::operator=(const Vector &other);

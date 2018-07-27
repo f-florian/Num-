@@ -44,8 +44,17 @@ namespace Numpp{
         position_m=it.position_m;
         it.data=std::nullptr;
     }
-    Iterator& VectorStorage::Iterator::operator=(const Iterator &it);
-    Iterator& VectorStorage::Iterator::operator=(Iterator &&it);
+    Iterator& VectorStorage::Iterator::operator=(const Iterator &it)
+    {
+        Iterator tmp(it);
+        return &tmp;
+    }
+    Iterator& VectorStorage::Iterator::operator=(Iterator &&it)
+    {
+        Iterator tmp(it);
+        return &tmp;
+    }
+
     void VectorStorage::Iterator::operator++()
     {
         if(data->size()>=position_m)
