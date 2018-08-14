@@ -14,7 +14,7 @@ Differential::Differential(unsigned short npoints_p, Type type)
     dw=new double[npoints*npoints];
     // populate nodes and quadrature weights based on chosen type 
     switch (type) {
-    case Type::Gauss: {
+    case Mesh::Type::Gauss: {
         gsl_integration_fixed_workspace *iws=gsl_integration_fixed_alloc(gsl_integration_fixed_legendre, npoints, 0,1,0,0);
         // steal data from gsl struct
         nodesx=iws->x;
@@ -23,7 +23,7 @@ Differential::Differential(unsigned short npoints_p, Type type)
         iws->weights=NULL;
         gsl_integration_fixed_free(iws);
     } break;
-    case Type::ClenshawCurtis: {
+    case Mesh::Type::Chebyshev: {
         nodesx=new double[npoints];
         for (int i = 0; i < npoints; ++i)
             nodesx[i]=(cos(pi*i/(npoints-1))+1)/2;
