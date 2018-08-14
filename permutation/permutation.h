@@ -1,5 +1,5 @@
 /***************************************************************************
- * Copyright (C) 2017 Francesco Florian
+ * Copyright (C) 2018 Francesco Florian
  * This file is part of Num++.
  *
  * Num++ is free software: you can redistribute it and/or modify
