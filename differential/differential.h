@@ -42,9 +42,13 @@ public:
   double nodes(unsigned short index, double start=0, double end=1);                                                   //!< get index-th node in the mesh for the interval [start, end]
   double quadratureWeights(unsigned short index, double start=0, double end=1);                                       //!< get index-th quadrature weight, properly scaled for nodes in [start, end] 
   double differentiationWeights(unsigned short index, unsigned short point, double start=0, double end=1);            //!< get index-th weight for approximating derivative in point-th point, properly scaled for nodes in [start, end]
+  double evalPolynomial(size_t idx, double point, double start=0, double end=1);                                      //!< evaluato at point the idx-th lagrange polynomial for given nodes in [start,end]
   double* StealNodes();
   double* StealQuadratureWeights();
   double* StealDifferentiationWeights();
+  const double* getNodes();
+  const double* getQuadratureWeights();
+  const double* getDifferentiationWeights();
 private:
   double *nodesx;
   double *qw;

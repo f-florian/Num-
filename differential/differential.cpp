@@ -165,6 +165,19 @@ double Differential::differentiationWeights(unsigned short polynomial, unsigned 
     // scaling:
     return dw[polynomial*npoints+point]/(end-start);
 }
+double Differential::evalPolynomial(size_t idx, double point, double start, double end)
+{
+    if (point==nodes(idx,start,end))
+        return 1;
+    double s=0;
+    for (size_t i = 0; i < npoints; ++i){
+        if (point==nodes(i,start,end))
+            return 0;
+        s+=w[i]/(point-nodes(i,start,end));
+    }
+    return w[idx]/(point-nodes(idx,start,end))/s;
+}
+
 double* Differential::StealNodes()
 {
     auto tmp=nodesx;
@@ -183,4 +196,15 @@ double*  Differential::StealDifferentiationWeights()
     dw=nullptr;
     return tmp;
 }
-
+const double* Differential::getNodes()
+{
+    return nodesx;
+}
+const double* Differential::getQuadratureWeights()
+{
+    return qw;
+}
+const double* Differential::getDifferentiationWeights()
+{
+    return dw;
+}
