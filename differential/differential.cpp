@@ -100,6 +100,44 @@ Differential::Differential(unsigned short npoints_p, Type type)
     	fprintf(stderr,"libdifferential (debug): dw[%d]=%lf\n",i, dw[i]);
 #endif
 }
+
+Differential(const Differential &other){
+  npoints=other.npoints;
+  nodesx=new double[npoints];
+  qw=new double[npoints];
+  dw=new double[npoints*npoints];
+  memcpy(nodesx, other.nodesx, npoints*sizeof(double));
+  memcpy(qw, other.qw, npoints*sizeof(double));
+  memcpy(dw, other.dw, npoints*npoints*sizeof(double));
+}
+Differential(Differential &&other) noexcept{
+  npoints=other.npoints;
+  nodesx=other.nodesx;
+  qw=other.qw;
+  dw=other.dw;
+}
+Differential& operator=(const Differential &other){
+  Differential tmp(other);
+  return tmp;
+}
+Differential& operator=(Differential &&other) noexcept{
+  Differential tmp(other);
+  return tmp;
+}
+
+~Differential(){
+  delete qw;
+  delete dw;
+  delete nodesx;
+}
+
+bool operator==(const Differential &other) const noxecept{
+  return ((npoints==other.npoints) && (nodesx==other.nodesx) && (qw==other.qw) && (dw==other.dw));
+}
+bool operator!=(const Differential &other) const noxecept{
+  return ((npoints!=other.npoints) || (nodesx!=other.nodesx) || (qw!=other.qw) || (dw!=other.dw));
+}
+
 double Differential::nodes(unsigned short index, double start, double end)
 {
     if(index>=npoints)
@@ -145,3 +183,4 @@ double*  Differential::StealDifferentiationWeights()
     dw=nullptr;
     return tmp;
 }
+

@@ -30,6 +30,15 @@ class Differential
 {
 public:
   Differential(unsigned short npoints, Mesh::Type type);									//!< initialize data for a given order
+  Differential(const Differential &other);                                                                                            //!< Copy constructor
+  Differential(Differential &&other) noexcept;                                                                                        //!< Move constructor
+  Differential& operator=(const Differential &other);                                                                                 //!< Copy operator
+  Differential& operator=(Differential &&other) noexcept;                                                                             //!< Move operator
+  ~Differential();                                                                                                          //!< Destructor
+
+  bool operator==(const Differential &other) const noecept;                                                                 //!< Equality comparison
+  bool operator!=(const Differential &other) const noecept;                                                                 //!< Inequality comparison
+
   double nodes(unsigned short index, double start=0, double end=1);                                                   //!< get index-th node in the mesh for the interval [start, end]
   double quadratureWeights(unsigned short index, double start=0, double end=1);                                       //!< get index-th quadrature weight, properly scaled for nodes in [start, end] 
   double differentiationWeights(unsigned short index, unsigned short point, double start=0, double end=1);            //!< get index-th weight for approximating derivative in point-th point, properly scaled for nodes in [start, end]
