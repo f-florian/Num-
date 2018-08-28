@@ -1,4 +1,4 @@
-set(sources vector.cpp vectorstorage.cpp)
+set(sources vector.cpp)
 set(linklibs " ")
 set(properties " ")
 

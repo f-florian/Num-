@@ -30,7 +30,7 @@ namespace Numpp{
             : public std::iterator<std::random_access_iterator_tag,double,std::pair<bool,size_t>>
         {
         public:
-            Iterator(VectorStorage * container, size_t position);
+            Iterator(Vector * container, size_t position);
 
             // generic iterator
             Iterator(const Iterator &it);
@@ -68,6 +68,7 @@ namespace Numpp{
         };
 
         // Arithmetic
+        virtual ~Vector();
         virtual Vector* operator+(const Vector* other) const;
         virtual void operator+=(const Vector* other);
         virtual Vector* operator-(const Vector* other) const;
