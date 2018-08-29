@@ -111,8 +111,8 @@ namespace Numpp{
         virtual StorageType storageType() const noexcept=0;
 
         // Copying
-        virtual Vector* allocSameType(size_t size)=0;
-        virtual Vector* allocCopy()=0;
+        virtual Vector* allocSameType(size_t size) const=0;
+        virtual Vector* allocCopy() const=0;
     };
 
     class VectorStorageLinear : public Vector
@@ -132,8 +132,8 @@ namespace Numpp{
         std::string print() const noexcept;
         size_t size() const noexcept;
         StorageType storageType() const noexcept;
-        Vector* allocSameType(size_t size);
-        Vector* allocCopy();
+        Vector* allocSameType(size_t size) const;
+        Vector* allocCopy() const;
     private:
         double* data_m;
         size_t size_m;
@@ -166,8 +166,8 @@ namespace Numpp{
         std::string print() const noexcept;
         size_t size() const noexcept;
         StorageType storageType() const noexcept;
-        Vector* allocSameType(size_t size);
-        Vector* allocCopy();
+        Vector* allocSameType(size_t size) const;
+        Vector* allocCopy() const;
     private:
         std::map<size_t, double> *data_m;
         size_t size_m;
