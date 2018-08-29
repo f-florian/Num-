@@ -30,13 +30,14 @@ namespace Numpp{
             : public std::iterator<std::random_access_iterator_tag,double,std::pair<bool,size_t>>
         {
         public:
-            Iterator(Vector * container, size_t position);
+            typedef std::pair<bool,size_t> diff_t;
+            Iterator(Vector * container, size_t position) noexcept;
 
             // generic iterator
-            Iterator(const Iterator &it);
-            Iterator(Iterator &&it);
-            Iterator& operator=(const Iterator &it);
-            Iterator& operator=(Iterator &&it);
+            Iterator(const Iterator &it) noexcept;
+            Iterator(Iterator &&it) noexcept;
+            Iterator& operator=(const Iterator &it) noexcept;
+            Iterator& operator=(Iterator &&it) noexcept;
             void operator++();
 
             // input/output
@@ -45,7 +46,7 @@ namespace Numpp{
             double& operator*() const;
 
             // forward
-            Iterator();
+            Iterator() noexcept;
 
             // bidirectional
             void operator--();
@@ -55,16 +56,20 @@ namespace Numpp{
             bool operator>=(const Iterator &other) const noexcept;
             bool operator<(const Iterator &other) const noexcept;
             bool operator>(const Iterator &other) const noexcept;
+            Iterator operator+(const diff_t offset) const;
             Iterator operator+(const size_t offset) const;
+            Iterator operator-(const diff_t offset) const;
             Iterator operator-(const size_t offset) const;
-            std::pair<bool,size_t> operator-(const Iterator other) const noexcept;
+            diff_t operator-(const Iterator other) const;
+            void operator+=(const diff_t offset);
             void operator+=(const size_t offset);
+            void operator-=(const diff_t offset);
             void operator-=(const size_t offset);
-            // double& operator[](bool negative, size_t offset) const;
-            double& operator[](std::pair<bool, size_t> offset) const;
+            double& operator[](const diff_t offset) const;
         private:
+            size_t size() const;
             Vector *data;
-            size_t position_m;
+            size_t position;
         };
 
         // Arithmetic
