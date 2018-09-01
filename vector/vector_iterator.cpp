@@ -62,6 +62,12 @@ namespace Numpp {
             throw(std::range_error("Trying to advance iterator beyond the container size"));
         position++;
     }
+    void Vector::Iterator::operator++([[maybe_unused]] int)
+    {
+        if(size()>=position)
+            throw(std::range_error("Trying to advance iterator beyond the container size"));
+        position++;
+    }
 
     bool Vector::Iterator::operator==(const Vector::Iterator &other) const noexcept
     {
@@ -78,13 +84,19 @@ namespace Numpp {
             return (position!=other.position);
     }
 
-    double& Vector::Iterator::operator*() const
+    double Vector::Iterator::operator*() const
     {
         if(position < size())
             return (*data)[position];
         throw(std::range_error("Dereferencing past the end iterator"));
     }
     void Vector::Iterator::operator--()
+    {
+        if(position==0)
+            throw(std::range_error("Trying to move iterator to a negative position"));
+        position--;
+    }
+    void Vector::Iterator::operator--([[maybe_unused]] int)
     {
         if(position==0)
             throw(std::range_error("Trying to move iterator to a negative position"));
@@ -173,7 +185,7 @@ namespace Numpp {
             throw(std::range_error("Vector::Iterator::operator-= Trying to move iterator to a negative position"));
         position-=offset;
     }
-    double& Vector::Iterator::operator[](const diff_t offset) const
+    double Vector::Iterator::operator[](const diff_t offset) const
     {
         if(offset.first){
             if(position + offset.second >= size())

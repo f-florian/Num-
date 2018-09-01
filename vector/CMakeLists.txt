@@ -1,4 +1,4 @@
-set(sources vector_iterator.cpp vector.cpp)
+set(sources vector_iterator.cpp vector.cpp vectorstorage.cpp)
 set(linklibs " ")
 set(properties " ")
 

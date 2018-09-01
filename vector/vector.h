@@ -39,17 +39,19 @@ namespace Numpp{
             Iterator& operator=(const Iterator &it) noexcept;
             Iterator& operator=(Iterator &&it) noexcept;
             void operator++();
+            void operator++([[maybe_unused]] int);
 
             // input/output
             bool operator==(const Iterator &other) const noexcept;
             bool operator!=(const Iterator &other) const noexcept;
-            double& operator*() const;
+            double operator*() const;
 
             // forward
             Iterator() noexcept;
 
             // bidirectional
             void operator--();
+            void operator--([[maybe_unused]] int);
 
             // random
             bool operator<=(const Iterator &other) const noexcept;
@@ -65,8 +67,12 @@ namespace Numpp{
             void operator+=(const size_t offset);
             void operator-=(const diff_t offset);
             void operator-=(const size_t offset);
-            double& operator[](const diff_t offset) const;
-        private:
+            double operator[](const diff_t offset) const;
+
+            // more
+            size_t index() const noexcept;
+            void set(size_t position);
+        protected:
             size_t size() const;
             Vector *data;
             size_t position;
@@ -74,32 +80,33 @@ namespace Numpp{
 
         // Arithmetic
         virtual ~Vector();
-        virtual Vector* operator+(const Vector* other) const;
-        virtual void operator+=(const Vector* other);
-        virtual Vector* operator-(const Vector* other) const;
-        virtual void operator-=(const Vector* other);
-        virtual double operator*(const Vector* other) const;
+        virtual Vector* operator+(const Vector* const other) const;
+        virtual void operator+=(const Vector* const other);
+        virtual Vector* operator-(const Vector* const other) const;
+        virtual void operator-=(const Vector* const other);
+        virtual double operator*(const Vector* const other) const;
         virtual Vector* operator*(const double scale) const;
         virtual void operator*=(const double scale);
 
         // Comparison
-        virtual bool operator==(const Vector* other) const noexcept;
-        virtual bool operator!=(const Vector* other) const noexcept;
-        virtual bool operator<=(const Vector* other) const noexcept;
-        virtual bool operator>=(const Vector* other) const noexcept;
-        virtual bool operator<(const Vector* other) const noexcept;
-        virtual bool operator>(const Vector* other) const noexcept;
+        virtual bool operator==(const Vector* const other) const noexcept;
+        virtual bool operator!=(const Vector* const other) const noexcept;
+        virtual bool operator<=(const Vector* const other) const noexcept;
+        virtual bool operator>=(const Vector* const other) const noexcept;
+        virtual bool operator<(const Vector* const other) const noexcept;
+        virtual bool operator>(const Vector* const other) const noexcept;
 
         // iterating
-        virtual Iterator begin() const noexcept;
-        virtual Iterator end() const noexcept;
-        virtual Iterator storageBegin() const noexcept=0;
-        virtual Iterator storageEnd() const noexcept=0;
+        virtual Iterator begin() noexcept;
+        virtual Iterator end() noexcept;
+        virtual Iterator storageBegin() noexcept=0;
+        virtual Iterator storageEnd() noexcept=0;
         virtual void storageAdvance(Iterator &it) const=0;
 
         // Access
-        virtual double& operator[](const size_t point) const noexcept=0;
-        virtual double& at(const size_t point) const;
+        virtual double operator[](const size_t point) const noexcept=0;
+        virtual double at(const size_t point) const;
+        virtual void set(const size_t point, const double val);
         virtual void swap(const size_t x1, const size_t x2);
         
         // Serialization
@@ -121,14 +128,14 @@ namespace Numpp{
         VectorStorageLinear();
         VectorStorageLinear(const size_t size);
         VectorStorageLinear(const size_t size, const double fill);
-        VectorStorageLinear(const Vector *other);
+        VectorStorageLinear(const Vector * const other);
         VectorStorageLinear(const VectorStorageLinear &other);
         VectorStorageLinear(VectorStorageLinear &&other);
         ~VectorStorageLinear();
-        Iterator storageBegin() const noexcept;
-        Iterator storageEnd() const noexcept;
+        Iterator storageBegin() noexcept;
+        Iterator storageEnd() noexcept;
         void storageAdvance(Iterator &it) const;
-        double& operator[](const size_t point) const noexcept;
+        double operator[](const size_t point) const noexcept;
         std::string print() const noexcept;
         size_t size() const noexcept;
         StorageType storageType() const noexcept;
@@ -144,32 +151,35 @@ namespace Numpp{
     public:
         VectorStorageSparse();
         VectorStorageSparse(const size_t idx, const double value);
-        VectorStorageSparse(const Vector *other);
+        VectorStorageSparse(const Vector * const other);
+        VectorStorageSparse(const VectorStorageSparse &other);
+        VectorStorageSparse(VectorStorageSparse &&other) noexcept;
         ~VectorStorageSparse();
-        Vector* operator+(const Vector* other) const;
-        void operator+=(const Vector* other);
-        Vector* operator-(const Vector* other) const;
-        void operator-=(const Vector* other);
-        double operator*(const Vector* other) const;
+        Vector* operator+(const Vector* const other) const;
+        void operator+=(const Vector* const other);
+        Vector* operator-(const Vector* const other) const;
+        void operator-=(const Vector* const other);
+        double operator*(const Vector* const other) const;
         Vector* operator*(const double scale) const;
         void operator*=(const double scale);
-        bool operator==(const Vector* other) const noexcept;
-        bool operator!=(const Vector* other) const noexcept;
-        bool operator<=(const Vector* other) const noexcept;
-        bool operator>=(const Vector* other) const noexcept;
-        bool operator<(const Vector* other) const noexcept;
-        bool operator>(const Vector* other) const noexcept;
-        Iterator storageBegin() const noexcept;
-        Iterator storageEnd() const noexcept;
+        bool operator==(const Vector* const other) const noexcept;
+        bool operator!=(const Vector* const other) const noexcept;
+        bool operator<=(const Vector* const other) const noexcept;
+        bool operator>=(const Vector* const other) const noexcept;
+        bool operator<(const Vector* const other) const noexcept;
+        bool operator>(const Vector* const other) const noexcept;
+        Iterator storageBegin() noexcept;
+        Iterator storageEnd() noexcept;
         void storageAdvance(Iterator &it) const;
-        double& operator[](const size_t point) const noexcept;
+        double operator[](const size_t point) const noexcept;
+        void set(const size_t point, const double val);
         std::string print() const noexcept;
         size_t size() const noexcept;
         StorageType storageType() const noexcept;
         Vector* allocSameType(size_t size) const;
         Vector* allocCopy() const;
     private:
-        std::map<size_t, double> *data_m;
+        std::map<size_t, double> data_m;
         size_t size_m;
     };
 }

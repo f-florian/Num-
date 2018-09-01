@@ -1,4 +1,4 @@
-x/***************************************************************************
+/***************************************************************************
   * Copyright (C) 2018 Francesco Florian
   * This file is part of Num++.
   *
@@ -16,136 +16,156 @@ x/***************************************************************************
   * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
   ***************************************************************************/
 
-#include "vector.h"
-#include "utility/except.h"
 #include <initializer_list>
+#include <cstring>
+#include <string>
+#include <stdexcept>
+#include <new>
+#include "vector.h"
+#include "except.h"
 
 namespace Numpp{
-    Vector::Vector(const StorageType type=StorageType::dense)
+    Vector* Vector::operator+(const Vector *other) const
     {
-        switch (type) {
-        case Storagetype::dense:
-            storage = new VectorStorageLinear();
-            break;
-        case Storagetype::sparse:
-            storage = new VectorStorageLinear();
-            break;
-        default:
-            throw(EnumError("Storage type not recognized"), EnumUtils::enumToNumeric(type));
-        }
-    }
-    Vector::Vector(const size_t size, const double value, const StorageType type=StorageType::dense)
-    {
-        switch (type) {
-        case Storagetype::dense:
-            storage = new VectorStorageLinear(size,value);
-            break;
-        case Storagetype::sparse:
-            storage = new VectorStorageLinear(size,value);
-            break;
-        default:
-            throw(EnumError("Storage type not recognized"), EnumUtils::enumToNumeric(type));
-        }
-    }
-    Vector::Vector(const std::initializer_list<double> values)
-    {
-        storage=new VectorStorageLinear(values.size());
-    }
-    Vector::Vector(const std::initializer_list<std::pair<size_t,double>> values)
-    {
-        storage=new VectorStorageSparse();
-        for(auto &x:values)
-            (*storage)[x.first,x.second];
-    }
-    Vector::Vector(const Vector &other)
-    {
-        switch(other.storage->storageType()) {
-        case StorageType::dense:
-            storage=new VectorStorageLinear(*static_cast<VectorStorageLinear*>(other.storage));
-            break;
-        case StorageType::sparse:
-            storage=new VectorStorageSparse(*static_cast<VectorStorageSparse*>(other.storage));
-            break;
-        default:
-            throw(EnumError("Storage type of argument \"other\" not recognized"), EnumUtils::enumToNumeric(type));
-        }
-    }
-    Vector::Vector(Vector &&other)
-    {
-        storage=other.storage;
-        other.storage=nullptr;
-    }
-    Vector::~Vector()
-    {
-        delete storage;
-    }
-    
-    Vector& Vector::operator=(Vector &&other) noexcept
-    {
-        Vector tmp(other);
-        return &tmp;
-    }
-	
-    // Arithmetic
-    Vector Vector::operator+(const Vector &other) const
-    {
-        VectorStorage* tmpst;
-        if(size()!=other.size())
+        if(size()!=other->size())
             throw(std::range_error("Attempt of summing vectors of different sizes"));
-        if((storage->storageType==StorageType::dense) || (other.storage->storageType==StorageType::dense)) {
-            tmpst=new VectorStorageLinear(size());
-            for(size_t idx = 0; idx < size(); ++idx)
-                (*tmpst)[idx,(*storage[idx] + (*other.storage)[idx])];
-        } else {
-            tmpst=new VectorStorageSparse()
-        }
+        Vector* tmpst=allocCopy();
+        (*tmpst)+=other;
+        return tmpst;
     }
-    void Vector::operator+=(const Vector &other);
-    Vector Vector::operator-(const Vector &other) const;
-    void Vector::operator=(const Vector &other);
-    double Vector::operator*(const Vector &other) const;
-    Vector Vector::operator*(const double scale) const;
-    void Vector::operator*=(const double scale);
+    void Vector::operator+=(const Vector *other)
+    {
+        if(size()!=other->size())
+            throw(std::range_error("Attempt of summing vectors of different sizes"));
+        for(auto x = other->storageBegin(); x != other->storageEnd(); x.storageAdvance())
+            (*this)[x-other->begin()]+=(*x);
+    }
+    Vector* Vector::operator-(const Vector *other) const
+    {
+        if(size()!=other->size())
+            throw(std::range_error("Attempt of summing vectors of different sizes"));
+        Vector* tmpst=allocCopy();
+        (*tmpst)-=other;
+        return tmpst;
+    }
+    void Vector::operator-=(const Vector *other)
+    {
+        if(size()!=other->size())
+            throw(std::range_error("Attempt of summing vectors of different sizes"));
+        for(auto x = other->storageBegin(); x != other->storageEnd(); x.storageAdvance())
+            (*this)[x-other->begin()]-=(*x);
+    }
+    double Vector::operator*(const Vector *other) const
+    {
+        double sum=0;
+        for(auto x = begin(); x != end(); ++x)
+            sum+=(*x)*(*other)[x-begin()];
+    }
+    Vector* Vector::operator*(const double scale) const
+    {
+        Vector* tmpst=allocCopy();
+        (*tmpst)*=scale;
+        return tmpst;
+    }
+    void Vector::operator*=(const double scale)
+    {
+        for(auto x = storageBegin(); x != storageEnd(); storageAdvance(x))
+            (*x)*=scale;
+    }
 
     // Comparison
-    bool Vector::operator==(const Vector &other) const noexcept
+    bool Vector::operator==(const Vector *other) const noexcept
     {
-        //use iterators?
+        if(size() != other->size())
+            return false;
+        for(auto x = begin(); x != end(); ++x)
+            if((*x)!=(*other)[x-begin()])
+                return false;
+        return true;
     }
-    bool Vector::operator!=(const Vector &other) const noexcept;
-    bool Vector::operator<=(const Vector &other) const noexcept;
-    bool Vector::operator>=(const Vector &other) const noexcept;
-    bool Vector::operator<(const Vector &other) const noexcept;
-    bool Vector::operator>(const Vector &other) const noexcept;
 
-    // Other
-    std::string Vector::print() const noexcept;
-    double& Vector::operator[](const size_t point) const noexcept
+    bool Vector::operator!=(const Vector *other) const noexcept
     {
-        return (*storage)[point];
+        if(size() != other->size())
+            return true;
+        for(auto x = begin(); x != end(); ++x)
+            if((*x)!=(*other)[x-begin()])
+                return true;
+        return false;
     }
-    double& Vector::at(const size_t point) const
+
+    bool Vector::operator<=(const Vector *other) const noexcept
     {
-        return storage->at(point);
+        if(size() != other->size())
+            return false;
+        for(auto x = begin(); x != end(); ++x)
+            if((*x)>(*other)[x-begin()])
+                return false;
+        return true;
+    }
+
+    bool Vector::operator>=(const Vector *other) const noexcept
+    {
+        if(size() != other->size())
+            return false;
+        for(auto x = begin(); x != end(); ++x)
+            if((*x)<(*other)[x-begin()])
+                return false;
+        return true;
+    }
+
+    bool Vector::operator<(const Vector *other) const noexcept
+    {
+        if(size() != other->size())
+            return false;
+        for(auto x = begin(); x != end(); ++x)
+            if((*x)>=(*other)[x-begin()])
+                return false;
+        return true;
+    }
+
+    bool Vector::operator>(const Vector *other) const noexcept
+    {
+        if(size() != other->size())
+            return false;
+        for(auto x = begin(); x != end(); ++x)
+            if((*x)<=(*other)[x-begin()])
+                return false;
+        return true;
+    }
+    std::string Vector::print() const noexcept
+    {
+        std::string out=std::to_string(EnumUtils::enumToNumeric(storageType()))+std::to_string(size());
+        for(auto  &x : *this)
+            out+=std::to_string(*x);
     }
     void Vector::swap(const size_t x1, const size_t x2)
     {
-        auto tmp = (*storage)[x1];
-        (*storage)[x1,(*storage)[x2]];
-        (*storage)[x2,tmp];
+        auto tmp = (*this)[x1];
+        this->set(x1,(*this)[x2]);
+        this->set(x2,tmp);
     }
-    void Vector::swap(Vector &&other) noexcept
+    Vector::Iterator Vector::begin() noexcept
     {
-        swap(storage,other.storage);
+        return new Vector::Iterator(this, 0);
     }
-    void Vector::swap(Vector &other) noexcept
+    Vector::Iterator Vector::end() noexcept
     {
-        swap(storage,other.storage);
+        return new Vector::Iterator(this, size());
+    }
+    double Vector::at(const size_t point) const
+    {
+        if(point >= size())
+            throw(std::range_error("Numpp::Vector::at(): Trying to access elements past the Vector"));
+        return (*this)[point];
     }
 }
-
 namespace std {
-    void swap(Numpp::Vector &a, Numpp::Vector& b)
+    void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b)
+    {
+        a.swap(b);
+    }
+    void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b)
     {
         a.swap(b);
     }
