@@ -35,3 +35,6 @@
 \#*\#
 auto
 auto/*
+
+# clang completion
+compile_commands.json

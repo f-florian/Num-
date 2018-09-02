@@ -5,6 +5,7 @@ set(definitions cmake_MAJOR=${PROJECT_VERSION_MAJOR} cmake_MINOR=${PROJECT_VERSI
 set(coptions -pipe -O2 -Werror)
 set(utilities utility vector differential)
 
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
   list(APPEND coptions -Weverything -fno-common --std=c++17 -Wno-c++98-compat -Wno-zero-as-null-pointer-constant -Wno-vla-extension -Wno-vla -Wno-covered-switch-default -Wno-padded -Wno-float-equal)
