@@ -19,6 +19,6 @@
 #include "vector_iterator_functions.h"
 
 namespace Numpp {
-    template class Vector::t_Iterator<double>;
-    template class Vector::t_Iterator<const double>;
+    extern template class Vector::t_Iterator<double>;
+    extern template class Vector::t_Iterator<const double>;
 }
