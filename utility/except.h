@@ -19,15 +19,20 @@
 #include <type_traits>
 #include <stdexcept>
 
-namespace numpp{
-    
+/**
+ * Namespace container for Num++.
+ */
+namespace Numpp{
+    /**
+     * Throw this for errors in enum management.
+     */
     class EnumError : public std::runtime_error
     {
     public:
-        EnumError(const std::string& what_arg, int item) noexcept;
-        EnumError(const char *what_arg, int item) noexcept;
-        const char* what() const noexcept;
+	EnumError(const std::string& what_arg, int item) noexcept;		//!< std::string constructor
+	EnumError(const char *what_arg, int item) noexcept;			//!< char* constructor
+	const char* what() const noexcept;					//!< what()
     protected:
-        int item_m;
-    }
+	int item_m;								//!< Item identifier for constructing string
+    };
 }

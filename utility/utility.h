@@ -50,9 +50,10 @@ namespace Numpp {
      */
     enum class StorageType
     {
-        dense = 0,
-        sparse,
-        max = sparse
+        Dense = 0,
+        Sparse,
+        Custom,                                                                                                            //!< User defined type
+        max = Custom
     };
 }
 

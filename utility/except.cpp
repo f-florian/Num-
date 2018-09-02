@@ -17,18 +17,30 @@
  ***************************************************************************/
 
 #include "except.h"
+#include <string>
 
-namespace numpp{
+namespace Numpp{
+    /**
+     * @param what_arg description string
+     * @param item enum item which triggered the error 
+     */
     EnumError::EnumError(const std::string& what_arg, int item) noexcept : std::runtime_error(what_arg)
     {
         item_m=item;
     }
+    /**
+     * @param what_arg description string
+     * @param item enum item which triggered the error 
+     */
     EnumError::EnumError(const char *what_arg, int item) noexcept : std::runtime_error(what_arg)
     {
         item_m=item;
     }
+    /**
+     * @return error string
+     */
     const char* EnumError::what() const noexcept
     {
-        return (static_cast<std::runtime_error>(this)->what() + std::string(". Item number ") + std::to_string(item_m)).data();
+        return (static_cast<const std::runtime_error*>(this)->what() + std::string(". Item number ") + std::to_string(item_m)).data();
     }
 }
