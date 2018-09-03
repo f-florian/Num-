@@ -16,5 +16,9 @@
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
-#include "vector_iterator_functions.h"
-#include "vector_iterator_extern.h"
+#include "vector.h"
+
+namespace Numpp {
+    extern template class Vector::t_Iterator<double>;
+    extern template class Vector::t_Iterator<const double>;
+}
