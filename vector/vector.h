@@ -105,7 +105,12 @@ namespace Numpp{
         virtual Iterator end() noexcept;
         virtual Iterator storageBegin() noexcept=0;
         virtual Iterator storageEnd() noexcept=0;
+        virtual ConstIterator cbegin() const noexcept;
+        virtual ConstIterator cend() const noexcept;
+        virtual ConstIterator storagecBegin() const noexcept=0;
+        virtual ConstIterator storagecEnd() const noexcept=0;
         virtual void storageAdvance(Iterator &it) const=0;
+        virtual void storageAdvance(ConstIterator &it) const=0;
 
         // Access
         virtual double operator[](const size_t point) const noexcept=0;
