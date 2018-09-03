@@ -15,6 +15,8 @@
  * You should have received a copy of the GNU General Public License
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
+#ifndef VECTORSTORAGE_H
+#define VECTORSTORAGE_H
 
 #include <initializer_list>
 #include <map>
@@ -89,3 +91,5 @@ namespace std {
     void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b);
     void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b);
 }
+
+#endif /* VECTORSTORAGE_H */

@@ -16,6 +16,9 @@
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+#ifndef VECTOR_H
+#define VECTOR_H
+
 #include <iterator>
 #include <type_traits>
 #include "utility.h"
@@ -134,3 +137,5 @@ namespace Numpp{
         virtual Vector* allocCopy() const=0;
     };
 }
+
+#endif /* VECTOR_H */
