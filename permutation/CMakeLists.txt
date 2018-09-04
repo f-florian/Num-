@@ -1,7 +1,7 @@
-set(sources differential.cpp mesh.cpp)
-set(linklibs gsl)
+set(sources "permutation.cpp")
+set(linklibs " ")
 set(properties " ")
-set(targets "vector")
+set(targets " ")
 
 # make each list a single argument
 foreach(varn IN LISTS "sources;linklibs;properties;targets")

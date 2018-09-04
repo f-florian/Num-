@@ -7,9 +7,9 @@ function(argtolist arg_v list_v)
 endfunction(argtolist)
 
 
-function(defBI sources_l type linklibs_l properties_l install)
+function(defBI sources_l type linklibs_l linktargets_l properties_l install)
   # make arguments lists again
-  foreach(varn IN LISTS "sources;linklibs;properties")
+  foreach(varn IN LISTS "sources;linklibs;targets;properties")
     argtolist(${${varn}_l} ${${varn}})
   endforeach(varn)
 
@@ -47,6 +47,13 @@ function(defBI sources_l type linklibs_l properties_l install)
     endif()
     find_library(libloc${loopvar} ${loopvar} PATHS "${CMAKE_BINARY_DIR}/${linklibs_d}")
     target_link_libraries(${progname} ${libloc${loopvar}})
+  endforeach(loopvar)
+  foreach(loopvar IN LISTS liktargets)
+    string(REPLACE "_" "/" linklibs_d ${loopvar})
+    if(${loopvar} STREQUAL " ")
+      return()
+    endif()
+    target_link_libraries(${progname} ${loopvar})
   endforeach(loopvar)
 
   if(${install} MATCHES "NO.*" OR ${install} STREQUAL "OFF")
