@@ -23,6 +23,7 @@
 #include <new>
 #include "vector.h"
 #include "except.h"
+#include "vector_iterator_extern.h"
 
 namespace Numpp{
     Vector* Vector::operator+(const Vector *other) const
@@ -37,8 +38,8 @@ namespace Numpp{
     {
         if(size()!=other->size())
             throw(std::range_error("Attempt of summing vectors of different sizes"));
-        for(auto x = other->storageBegin(); x != other->storageEnd(); x.storageAdvance())
-            (*this)[x-other->begin()]+=(*x);
+        for(auto x = other->storagecBegin(); x != other->storagecEnd(); other->storageAdvance(x))
+            set(x-other->cbegin(), (*this)[x-other->cbegin()]+(*x));
     }
     Vector* Vector::operator-(const Vector *other) const
     {
@@ -52,14 +53,15 @@ namespace Numpp{
     {
         if(size()!=other->size())
             throw(std::range_error("Attempt of summing vectors of different sizes"));
-        for(auto x = other->storageBegin(); x != other->storageEnd(); x.storageAdvance())
-            (*this)[x-other->begin()]-=(*x);
+        for(auto x = other->storagecBegin(); x != other->storagecEnd(); other->storageAdvance(x))
+            set(x-other->cbegin(), (*this)[x-other->cbegin()]-(*x));
     }
     double Vector::operator*(const Vector *other) const
     {
         double sum=0;
-        for(auto x = begin(); x != end(); ++x)
-            sum+=(*x)*(*other)[x-begin()];
+        for(auto x = cbegin(); x != cend(); ++x)
+            sum+=(*x)*(*other)[x-cbegin()];
+        return sum;
     }
     Vector* Vector::operator*(const double scale) const
     {
@@ -70,7 +72,7 @@ namespace Numpp{
     void Vector::operator*=(const double scale)
     {
         for(auto x = storageBegin(); x != storageEnd(); storageAdvance(x))
-            (*x)*=scale;
+            set(x-begin(), scale*(*this)[x-begin()]);
     }
 
     // Comparison
@@ -78,8 +80,8 @@ namespace Numpp{
     {
         if(size() != other->size())
             return false;
-        for(auto x = begin(); x != end(); ++x)
-            if((*x)!=(*other)[x-begin()])
+        for(auto x = cbegin(); x != cend(); ++x)
+            if((*x)!=(*other)[x-cbegin()])
                 return false;
         return true;
     }
@@ -88,8 +90,8 @@ namespace Numpp{
     {
         if(size() != other->size())
             return true;
-        for(auto x = begin(); x != end(); ++x)
-            if((*x)!=(*other)[x-begin()])
+        for(auto x = cbegin(); x != cend(); ++x)
+            if((*x)!=(*other)[x-cbegin()])
                 return true;
         return false;
     }
@@ -98,8 +100,8 @@ namespace Numpp{
     {
         if(size() != other->size())
             return false;
-        for(auto x = begin(); x != end(); ++x)
-            if((*x)>(*other)[x-begin()])
+        for(auto x = cbegin(); x != cend(); ++x)
+            if((*x)>(*other)[x-cbegin()])
                 return false;
         return true;
     }
@@ -108,8 +110,8 @@ namespace Numpp{
     {
         if(size() != other->size())
             return false;
-        for(auto x = begin(); x != end(); ++x)
-            if((*x)<(*other)[x-begin()])
+        for(auto x = cbegin(); x != cend(); ++x)
+            if((*x)<(*other)[x-cbegin()])
                 return false;
         return true;
     }
@@ -118,8 +120,8 @@ namespace Numpp{
     {
         if(size() != other->size())
             return false;
-        for(auto x = begin(); x != end(); ++x)
-            if((*x)>=(*other)[x-begin()])
+        for(auto x = cbegin(); x != cend(); ++x)
+            if((*x)>=(*other)[x-cbegin()])
                 return false;
         return true;
     }
@@ -128,16 +130,19 @@ namespace Numpp{
     {
         if(size() != other->size())
             return false;
-        for(auto x = begin(); x != end(); ++x)
-            if((*x)<=(*other)[x-begin()])
+        for(auto x = cbegin(); x != cend(); ++x)
+            if((*x)<=(*other)[x-cbegin()])
                 return false;
         return true;
     }
     std::string Vector::print() const noexcept
     {
-        std::string out=std::to_string(EnumUtils::enumToNumeric(storageType()))+std::to_string(size());
-        for(auto  &x : *this)
-            out+=std::to_string(*x);
+        std::string out=std::to_string(EnumUtils::enumToNumeric(storageType())) + " " + std::to_string(size());
+        for(auto x = cbegin(); x != cend(); ++x)
+            out+=" " + std::to_string(*x);
+
+        out+="end";
+        return out;
     }
     void Vector::swap(const size_t x1, const size_t x2)
     {
@@ -147,26 +152,18 @@ namespace Numpp{
     }
     Vector::Iterator Vector::begin() noexcept
     {
-        return new Vector::Iterator(this, 0);
+        Vector::Iterator tmp(this, 0);
+        return tmp;
     }
     Vector::Iterator Vector::end() noexcept
     {
-        return new Vector::Iterator(this, size());
+        Vector::Iterator tmp(this, size());
+        return tmp;
     }
     double Vector::at(const size_t point) const
     {
         if(point >= size())
             throw(std::range_error("Numpp::Vector::at(): Trying to access elements past the Vector"));
         return (*this)[point];
-    }
-}
-namespace std {
-    void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b)
-    {
-        a.swap(b);
-    }
-    void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b)
-    {
-        a.swap(b);
     }
 }

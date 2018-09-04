@@ -35,15 +35,24 @@ namespace Numpp{
         VectorStorageLinear& operator=(const VectorStorageLinear &other);
         VectorStorageLinear& operator=(VectorStorageLinear &&other);
         ~VectorStorageLinear();
+        Iterator begin() noexcept;
+        Iterator end() noexcept;
         Iterator storageBegin() noexcept;
         Iterator storageEnd() noexcept;
+        ConstIterator cbegin() const noexcept;
+        ConstIterator cend() const noexcept;
+        ConstIterator storagecBegin() const noexcept;
+        ConstIterator storagecEnd() const noexcept;
         void storageAdvance(Iterator &it) const;
+        void storageAdvance(ConstIterator &it) const;
         double operator[](const size_t point) const noexcept;
         std::string print() const noexcept;
         size_t size() const noexcept;
         StorageType storageType() const noexcept;
         Vector* allocSameType(size_t size) const;
         Vector* allocCopy() const;
+        void swap(const size_t x1, const size_t x2);
+        void swap(VectorStorageLinear &other) noexcept;
     private:
         double* data_m;
         size_t size_m;
@@ -71,9 +80,16 @@ namespace Numpp{
         bool operator>=(const Vector* const other) const noexcept;
         bool operator<(const Vector* const other) const noexcept;
         bool operator>(const Vector* const other) const noexcept;
-        Iterator storageBegin() noexcept;
-        Iterator storageEnd() noexcept;
-        void storageAdvance(Iterator &it) const;
+        virtual Iterator begin() noexcept;
+        virtual Iterator end() noexcept;
+        virtual Iterator storageBegin() noexcept;
+        virtual Iterator storageEnd() noexcept;
+        virtual ConstIterator cbegin() const noexcept;
+        virtual ConstIterator cend() const noexcept;
+        virtual ConstIterator storagecBegin() const noexcept;
+        virtual ConstIterator storagecEnd() const noexcept;
+        virtual void storageAdvance(Iterator &it) const;
+        virtual void storageAdvance(ConstIterator &it) const;
         double operator[](const size_t point) const noexcept;
         void set(const size_t point, const double val);
         std::string print() const noexcept;
@@ -81,6 +97,8 @@ namespace Numpp{
         StorageType storageType() const noexcept;
         Vector* allocSameType(size_t size) const;
         Vector* allocCopy() const;
+        void swap(const size_t x1, const size_t x2);
+        void swap(VectorStorageSparse &other) noexcept;
     private:
         std::map<size_t, double> data_m;
         size_t size_m;

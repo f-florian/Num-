@@ -20,9 +20,10 @@
 #include <string>
 #include <stdexcept>
 #include <new>
-#include "vector.h"
+#include "vectorstorage.h"
 #include "except.h"
-                 
+#include "vector_iterator_extern.h"
+
 namespace Numpp {
     VectorStorageLinear::VectorStorageLinear()
     {
@@ -53,7 +54,7 @@ namespace Numpp {
         if (data_m==NULL)
             throw(std::bad_alloc());
         size_m=other->size();
-        if(other->storageType()==StorageType::dense)
+        if(other->storageType()==StorageType::Dense)
             memcpy(data_m,static_cast<const VectorStorageLinear*>(other)->data_m,size_m*sizeof(double));
         else
             for(size_t i = 0; i != size_m; ++i)
@@ -89,7 +90,7 @@ namespace Numpp {
     }
     StorageType VectorStorageLinear::storageType() const noexcept
     {
-        return StorageType::dense;
+        return StorageType::Dense;
     }
     Vector::Iterator VectorStorageLinear::storageBegin() noexcept
     {
@@ -125,12 +126,12 @@ namespace Numpp {
     }
     VectorStorageSparse::VectorStorageSparse(const Vector * const other)
     {
-        if(other->storageType()==StorageType::sparse) {
+        if(other->storageType()==StorageType::Sparse) {
             data_m=static_cast<const VectorStorageSparse*>(other)->data_m;
             size_m=static_cast<const VectorStorageSparse*>(other)->size_m;
         } else {
-            for(auto it = other->storageBegin(); it != other->storageEnd(); other->storageAdvance(it))
-                data_m[it.position]=(*it);
+            for(auto it = other->storagecBegin(); it != other->storagecEnd(); other->storageAdvance(it))
+                data_m[it.index()]=(*it);
         }
     }
     VectorStorageSparse::VectorStorageSparse(const VectorStorageSparse &other)
@@ -173,7 +174,7 @@ namespace Numpp {
     }
     StorageType VectorStorageSparse::storageType() const noexcept
     {
-        return StorageType::sparse;
+        return StorageType::Sparse;
     }
     
     Vector::Iterator VectorStorageSparse::storageBegin() noexcept
@@ -211,5 +212,15 @@ namespace Numpp {
     {
         VectorStorageSparse *tmp=new VectorStorageSparse(*this);
         return tmp; 
+    }
+}
+namespace std {
+    void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b)
+    {
+        a.swap(b);
+    }
+    void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b)
+    {
+        a.swap(b);
     }
 }
