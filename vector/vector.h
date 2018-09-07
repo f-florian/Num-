@@ -81,6 +81,17 @@ namespace Numpp{
             VType data;
             size_t position;
         };
+
+        class doubleUnary {
+        public:
+            virtual double operator()(double)=0;
+            virtual ~doubleUnary();
+        };
+        class doubleBinary {
+        public:
+            virtual double operator()(double, double)=0;
+            virtual ~doubleBinary();
+        };
         
         typedef t_Iterator<double> Iterator;
         typedef t_Iterator<const double> ConstIterator;
@@ -114,12 +125,19 @@ namespace Numpp{
         virtual ConstIterator storagecEnd() const noexcept=0;
         virtual void storageAdvance(Iterator &it) const=0;
         virtual void storageAdvance(ConstIterator &it) const=0;
+        virtual void transform(double (*fn)(double));
+        virtual void transform(doubleUnary* fn);
+        virtual void transform(double (*fn)(double,double), const Vector * const other);
+        virtual void transform(doubleBinary* fn, const Vector * const other);
+        virtual Vector* ctransform(double (*fn)(double,double), const Vector * const other) const;
+        virtual Vector* ctransform(doubleBinary* fn, const Vector * const other) const;
 
         // Access
         virtual double operator[](const size_t point) const noexcept=0;
         virtual double operator[](const Iterator::diff_t point) const noexcept;
         virtual double at(const size_t point) const;
-        virtual double at(const Iterator::diff_t point) const;
+        virtual ConstIterator cAt(const size_t point) const;
+        virtual Iterator at(const size_t point);
         virtual void swap(const size_t x1, const size_t x2);
         virtual void set(const size_t point, const double val);
         virtual void set(const Iterator::diff_t point, const double val);
@@ -135,6 +153,8 @@ namespace Numpp{
         // Copying
         virtual Vector* allocSameType(size_t size) const=0;
         virtual Vector* allocCopy() const=0;
+    protected:
+        virtual double& getref(size_t point);
     };
 }
 

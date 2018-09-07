@@ -35,6 +35,9 @@ namespace Numpp{
         VectorStorageLinear& operator=(const VectorStorageLinear &other);
         VectorStorageLinear& operator=(VectorStorageLinear &&other);
         ~VectorStorageLinear();
+        void assign(const size_t size, double * const data);
+        const double* data() const;
+        double* stealData();
         Iterator begin() noexcept;
         Iterator end() noexcept;
         Iterator storageBegin() noexcept;

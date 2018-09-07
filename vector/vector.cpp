@@ -160,10 +160,55 @@ namespace Numpp{
         Vector::Iterator tmp(this, size());
         return tmp;
     }
-    double Vector::at(const size_t point) const
+    Vector::Iterator Vector::at(const size_t point)
     {
         if(point >= size())
             throw(std::range_error("Numpp::Vector::at(): Trying to access elements past the Vector"));
-        return (*this)[point];
+        Vector::Iterator tmp(this,point);
+        return tmp;
     }
+    Vector::ConstIterator Vector::cAt(const size_t point) const
+    {
+        if(point >= size())
+            throw(std::range_error("Numpp::Vector::at(): Trying to access elements past the Vector"));
+        Vector::ConstIterator tmp(this,point);
+        return tmp;
+    }
+    
+    void Vector::transform(double (*fn)(double))
+    {
+        for(auto x = begin(); x != end(); ++x)
+            this->set(x.index(),(*fn)(*x));
+    }
+    void Vector::transform(doubleUnary* fn)
+    {
+        for(auto x = begin(); x != end(); ++x)
+            this->set(x.index(),(*fn)(*x));
+    }
+    
+    void Vector::transform(double (*fn)(double,double), const Vector * const other)
+    {
+        for(auto x = begin(); x != end(); ++x)
+            this->set(x.index(),(*fn)(*x, other->at(x.index())));
+    }
+    void Vector::transform(doubleBinary* fn, const Vector * const other)
+    {
+        for(auto x = begin(); x != end(); ++x)
+            this->set(x.index(),(*fn)(*x, other->at(x.index())));
+    }
+    Vector* Vector::ctransform(double (*fn)(double,double), const Vector * const other) const
+    {
+        Vector * tmp=allocSameType(size());
+        for(auto x = cbegin(); x != cend(); ++x)
+            tmp->set(x.index(),(*fn)(*x, other->at(x.index())));
+        return tmp;
+    }
+    Vector* Vector::ctransform(doubleBinary* fn, const Vector * const other) const
+    {
+        Vector * tmp=allocSameType(size());
+        for(auto x = cbegin(); x != cend(); ++x)
+            tmp->set(x.index(),(*fn)(*x, other->at(x.index())));
+        return tmp;
+    }
+
 }
