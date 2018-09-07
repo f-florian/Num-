@@ -21,6 +21,7 @@
 
 #include <iterator>
 #include <type_traits>
+#include <functional>
 #include "utility.h"
 
 namespace Numpp{
@@ -82,17 +83,8 @@ namespace Numpp{
             size_t position;
         };
 
-        class doubleUnary {
-        public:
-            virtual double operator()(double)=0;
-            virtual ~doubleUnary();
-        };
-        class doubleBinary {
-        public:
-            virtual double operator()(double, double)=0;
-            virtual ~doubleBinary();
-        };
-        
+        typedef std::function<double(double)> doubleUnary;
+        typedef std::function<double(double,double)> doubleBinary;
         typedef t_Iterator<double> Iterator;
         typedef t_Iterator<const double> ConstIterator;
 
