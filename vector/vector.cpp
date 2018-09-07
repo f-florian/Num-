@@ -180,10 +180,10 @@ namespace Numpp{
         for(auto x = begin(); x != end(); ++x)
             this->set(x.index(),(*fn)(*x));
     }
-    void Vector::transform(doubleUnary* fn)
+    void Vector::transform(doubleUnary fn)
     {
         for(auto x = begin(); x != end(); ++x)
-            this->set(x.index(),(*fn)(*x));
+            this->set(x.index(),fn(*x));
     }
     
     void Vector::transform(double (*fn)(double,double), const Vector * const other)
@@ -191,10 +191,10 @@ namespace Numpp{
         for(auto x = begin(); x != end(); ++x)
             this->set(x.index(),(*fn)(*x, other->at(x.index())));
     }
-    void Vector::transform(doubleBinary* fn, const Vector * const other)
+    void Vector::transform(doubleBinary fn, const Vector * const other)
     {
         for(auto x = begin(); x != end(); ++x)
-            this->set(x.index(),(*fn)(*x, other->at(x.index())));
+            this->set(x.index(),fn(*x, other->at(x.index())));
     }
     Vector* Vector::ctransform(double (*fn)(double,double), const Vector * const other) const
     {
@@ -203,11 +203,11 @@ namespace Numpp{
             tmp->set(x.index(),(*fn)(*x, other->at(x.index())));
         return tmp;
     }
-    Vector* Vector::ctransform(doubleBinary* fn, const Vector * const other) const
+    Vector* Vector::ctransform(doubleBinary fn, const Vector * const other) const
     {
         Vector * tmp=allocSameType(size());
         for(auto x = cbegin(); x != cend(); ++x)
-            tmp->set(x.index(),(*fn)(*x, other->at(x.index())));
+            tmp->set(x.index(),fn(*x, other->at(x.index())));
         return tmp;
     }
 

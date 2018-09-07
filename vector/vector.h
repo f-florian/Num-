@@ -118,11 +118,11 @@ namespace Numpp{
         virtual void storageAdvance(Iterator &it) const=0;
         virtual void storageAdvance(ConstIterator &it) const=0;
         virtual void transform(double (*fn)(double));
-        virtual void transform(doubleUnary* fn);
+        virtual void transform(doubleUnary fn);
         virtual void transform(double (*fn)(double,double), const Vector * const other);
-        virtual void transform(doubleBinary* fn, const Vector * const other);
+        virtual void transform(doubleBinary fn, const Vector * const other);
         virtual Vector* ctransform(double (*fn)(double,double), const Vector * const other) const;
-        virtual Vector* ctransform(doubleBinary* fn, const Vector * const other) const;
+        virtual Vector* ctransform(doubleBinary fn, const Vector * const other) const;
 
         // Access
         virtual double operator[](const size_t point) const noexcept=0;
