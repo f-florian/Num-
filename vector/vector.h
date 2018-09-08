@@ -133,6 +133,7 @@ namespace Numpp{
         virtual void swap(const size_t x1, const size_t x2);
         virtual void set(const size_t point, const double val);
         virtual void set(const Iterator::diff_t point, const double val);
+        virtual void resize(size_t size);
         
         // Serialization
         virtual std::string print() const noexcept;
