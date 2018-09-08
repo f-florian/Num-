@@ -25,9 +25,17 @@
 #include "utility.h"
 
 namespace Numpp{
+    /**
+     * Virtual base class for vector objects.
+     */
     class Vector
     {
     public:
+        /**
+         * template iterator to a Vector object. 
+         *
+         * Random access iterator, uses the virtual functions from Vector
+         */
         template <typename T>
         class t_Iterator
             : public std::iterator<std::random_access_iterator_tag, T, std::pair<bool,size_t>>
