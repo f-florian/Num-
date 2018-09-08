@@ -1,6 +1,7 @@
 var searchData=
 [
   ['enumutils',['EnumUtils',['../namespaceNumpp_1_1EnumUtils.html',1,'Numpp']]],
+  ['numpp_3a_20c_2b_2b_20library_20for_20scientific_20computation',['Numpp: C++ library for scientific computation',['../index.html',1,'']]],
   ['node',['node',['../classNumpp_1_1Mesh.html#a05a64dff7448021f0811f3c144a1f285',1,'Numpp::Mesh']]],
   ['nodes',['nodes',['../classNumpp_1_1Differential.html#a4e3cc33d2f4be7c79475652cc87998b8',1,'Numpp::Differential::nodes()'],['../classNumpp_1_1Mesh.html#a2cac2131ed3c0ac7739043a4a5c3d538',1,'Numpp::Mesh::nodes()']]],
   ['nodes_5fm',['nodes_m',['../classNumpp_1_1Mesh.html#a8fa05307a96b871ae3295a061134c710',1,'Numpp::Mesh']]],
