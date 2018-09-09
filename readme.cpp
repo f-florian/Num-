@@ -1,4 +1,4 @@
-/** \mainpage Numpp: C++ library for scientific computation
+/** \mainpage %Numpp: C++ library for scientific computation
  *
  * \section intro_s Introduction
  * Warning: this library is still under heavy development and my be unusable
@@ -13,7 +13,7 @@
  * + The Gnu Scientific Library.
  *
  * \subsection make_install_s Compiling
- * You can build Numpp with cmake: choose a directry to put the build files in.
+ * You can build %Numpp with cmake: choose a directry to put the build files in.
  * Then:
  *
  *      cmake <path to source directory>
