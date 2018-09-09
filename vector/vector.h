@@ -41,9 +41,16 @@ namespace Numpp{
             : public std::iterator<std::random_access_iterator_tag, T, std::pair<bool,size_t>>
         {
         public:
+            /**
+             * Iterator difference.
+             */
             typedef typename std::iterator_traits<t_Iterator>::difference_type diff_t;
+            /**
+             * Vector type used as reference.
+             */
             typedef typename std::conditional<std::is_const<T>::value, const Vector*, Vector*>::type VType;
 
+            
             t_Iterator(VType container, size_t position) noexcept;
 
             // generic iterator

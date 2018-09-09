@@ -21,39 +21,44 @@
 
 #include "mesh.h"
 
-/**
- * Store information on weights for interpolatory differential opertions (i.e. integral and derivative) on a fixed number of points
- *
- * Stores a mesh of [0,1] and weights wich can be used to compute ∫_0^1 f(x) d x and f'(y) for y a point of the mesh.
- */
-class Differential
+namespace Numpp
 {
-public:
-  Differential(unsigned short npoints, Mesh::Type type);									//!< initialize data for a given order
-  Differential(const Differential &other);                                                                                            //!< Copy constructor
-  Differential(Differential &&other) noexcept;                                                                                        //!< Move constructor
-  Differential& operator=(const Differential &other);                                                                                 //!< Copy operator
-  Differential& operator=(Differential &&other) noexcept;                                                                             //!< Move operator
-  ~Differential();                                                                                                          //!< Destructor
+    /**
+     * Information on weights for interpolatory opertions on the Lagrange basis on a fixed set of points
+     *
+     * Stores a mesh of [0,1] and weights wich can be used to compute ∫_0^1 f(x) d x and f'(y) for y a point of the mesh,.and g(x) for g a polyneomial of the basis and x ∈ [0,1]
+     * The weights are stored for the barycentric representation, which reduces the error w.r.t. standard Lagrange representitatio
+     */
+    class Differential
+    {
+    public:
+        Differential(const unsigned short npoints, const Mesh::Type type);							//!< initialize data for a given order
+        Differential(const Differential &other);                                                                                            //!< Copy constructor
+        Differential(Differential &&other) noexcept;                                                                                        //!< Move constructor
+        Differential& operator=(const Differential &other);                                                                                 //!< Copy operator
+        Differential& operator=(Differential &&other) noexcept;                                                                             //!< Move operator
+        ~Differential();                                                                                                          //!< Destructor
 
-  bool operator==(const Differential &other) const noecept;                                                                 //!< Equality comparison
-  bool operator!=(const Differential &other) const noecept;                                                                 //!< Inequality comparison
+        bool operator==(const Differential &other) const noexcept;                                                                 //!< Equality comparison
+        bool operator!=(const Differential &other) const noexcept;                                                                 //!< Inequality comparison
 
-  double nodes(unsigned short index, double start=0, double end=1);                                                   //!< get index-th node in the mesh for the interval [start, end]
-  double quadratureWeights(unsigned short index, double start=0, double end=1);                                       //!< get index-th quadrature weight, properly scaled for nodes in [start, end] 
-  double differentiationWeights(unsigned short index, unsigned short point, double start=0, double end=1);            //!< get index-th weight for approximating derivative in point-th point, properly scaled for nodes in [start, end]
-  double evalPolynomial(size_t idx, double point, double start=0, double end=1);                                      //!< evaluato at point the idx-th lagrange polynomial for given nodes in [start,end]
-  double* StealNodes();
-  double* StealQuadratureWeights();
-  double* StealDifferentiationWeights();
-  const double* getNodes();
-  const double* getQuadratureWeights();
-  const double* getDifferentiationWeights();
-private:
-  double *nodesx;
-  double *qw;
-  double *dw;
-  unsigned short npoints;
-};
+        double nodes(unsigned short index, double start=0, double end=1);                                                   //!< get index-th node in the mesh for the interval [start, end]
+        double quadratureWeights(unsigned short index, double start=0, double end=1);                                       //!< get index-th quadrature weight, properly scaled for nodes in [start, end] 
+        double differentiationWeights(unsigned short index, unsigned short point, double start=0, double end=1);            //!< get index-th weight for approximating derivative in point-th point, properly scaled for nodes in [start, end]
+        double evalPolynomial(unsigned short idx, double point, double start=0, double end=1);                                      //!< evaluate at point the idx-th lagrange polynomial for given nodes in [start,end]
+        double* StealNodes();                                                                                                   //!< steal nodes for future use
+        double* StealQuadratureWeights();                                                                                       //!< steal quadrature weights for future use
+        double* StealDifferentiationWeights();                                                                                  //!< steal differentiations weights for future use
+        const double* getNodes();                                                                                               //!< get a pointer to the vector of nodes
+        const double* getQuadratureWeights();                                                                                   //!< get a pointer to the vector of quadrature weights
+        const double* getDifferentiationWeights();                                                                              //!< get a pointer to the vector of differentiations weights
+    private:
+        double *nodesx;                                                                                                         //!< Nodes
+        double *qw;                                                                                                             //!< Quadrature weights
+        double *dw;                                                                                                             //!< Differentiation weights
+        double *w;                                                                                                              //!< Barycentric weights
+        unsigned short npoints;                                                                                                 //!< Nodes number
+    };
+}
 
 #endif // DIFFERENTIAL_H
