@@ -81,7 +81,7 @@ $(function() {
 <p>Virtual base class for vector objects.  
  <a href="classNumpp_1_1Vector.html#details">More...</a></p>
 
-<p><code>#include &lt;<a class="el" href="vector_8h_source.html">vector.h</a>&gt;</code></p>
+<p><code>#include &lt;vector.h&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Numpp::Vector:</div>
 <div class="dyncontent">
@@ -102,113 +102,163 @@ Classes</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
 <tr class="memitem:ae3af9e6e9d1b0390b984e511fb9699f8"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classNumpp_1_1Vector_1_1t__Iterator.html">t_Iterator</a>&lt; const double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a></td></tr>
+<tr class="memdesc:ae3af9e6e9d1b0390b984e511fb9699f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">const iterator to <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a>  <a href="#ae3af9e6e9d1b0390b984e511fb9699f8">More...</a><br /></td></tr>
 <tr class="separator:ae3af9e6e9d1b0390b984e511fb9699f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9c120c5f17ffb2080c1b256ef7b71268"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; double(double, double)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a9c120c5f17ffb2080c1b256ef7b71268">doubleBinary</a></td></tr>
+<tr class="memdesc:a9c120c5f17ffb2080c1b256ef7b71268"><td class="mdescLeft">&#160;</td><td class="mdescRight">Binnary function returning double.  <a href="#a9c120c5f17ffb2080c1b256ef7b71268">More...</a><br /></td></tr>
 <tr class="separator:a9c120c5f17ffb2080c1b256ef7b71268"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abd5e2ca0968a1d9260a994db8a6217aa"><td class="memItemLeft" align="right" valign="top">typedef std::function&lt; double(double)&gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#abd5e2ca0968a1d9260a994db8a6217aa">doubleUnary</a></td></tr>
+<tr class="memdesc:abd5e2ca0968a1d9260a994db8a6217aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unary function returning double.  <a href="#abd5e2ca0968a1d9260a994db8a6217aa">More...</a><br /></td></tr>
 <tr class="separator:abd5e2ca0968a1d9260a994db8a6217aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a65c4da93a6575f8369ed70f187bad18c"><td class="memItemLeft" align="right" valign="top">typedef <a class="el" href="classNumpp_1_1Vector_1_1t__Iterator.html">t_Iterator</a>&lt; double &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a></td></tr>
+<tr class="memdesc:a65c4da93a6575f8369ed70f187bad18c"><td class="mdescLeft">&#160;</td><td class="mdescRight">iterator to <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a>  <a href="#a65c4da93a6575f8369ed70f187bad18c">More...</a><br /></td></tr>
 <tr class="separator:a65c4da93a6575f8369ed70f187bad18c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a8b71dfb9cabb0051b542ffcfa9a387a3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a8b71dfb9cabb0051b542ffcfa9a387a3">~Vector</a> ()</td></tr>
+<tr class="memdesc:a8b71dfb9cabb0051b542ffcfa9a387a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor.  <a href="#a8b71dfb9cabb0051b542ffcfa9a387a3">More...</a><br /></td></tr>
 <tr class="separator:a8b71dfb9cabb0051b542ffcfa9a387a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae37090298b54c5caacea9271560d25f"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#aae37090298b54c5caacea9271560d25f">allocCopy</a> () const =0</td></tr>
+<tr class="memdesc:aae37090298b54c5caacea9271560d25f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a copy.  <a href="#aae37090298b54c5caacea9271560d25f">More...</a><br /></td></tr>
 <tr class="separator:aae37090298b54c5caacea9271560d25f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b1677bdeb68bd3b56aa1b18ba038bd5"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a7b1677bdeb68bd3b56aa1b18ba038bd5">allocSameType</a> (size_t <a class="el" href="classNumpp_1_1Vector.html#ad42295831d489063d2f2d38c018cbdfd">size</a>) const =0</td></tr>
+<tr class="memdesc:a7b1677bdeb68bd3b56aa1b18ba038bd5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Allocate a <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a> of ginven size ansame type as the caller.  <a href="#a7b1677bdeb68bd3b56aa1b18ba038bd5">More...</a><br /></td></tr>
 <tr class="separator:a7b1677bdeb68bd3b56aa1b18ba038bd5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab18f379389b3ccefb30520f37f8fb7a1"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ab18f379389b3ccefb30520f37f8fb7a1">at</a> (const size_t point) const</td></tr>
+<tr class="memdesc:ab18f379389b3ccefb30520f37f8fb7a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access element.  <a href="#ab18f379389b3ccefb30520f37f8fb7a1">More...</a><br /></td></tr>
 <tr class="separator:ab18f379389b3ccefb30520f37f8fb7a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67b41bbc984b89e38a59aa6e583250d3"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a67b41bbc984b89e38a59aa6e583250d3">at</a> (const size_t point)</td></tr>
+<tr class="memdesc:a67b41bbc984b89e38a59aa6e583250d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access element through Iterator.  <a href="#a67b41bbc984b89e38a59aa6e583250d3">More...</a><br /></td></tr>
 <tr class="separator:a67b41bbc984b89e38a59aa6e583250d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abde2b908ea5edd0ec20abdf9fca86225"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#abde2b908ea5edd0ec20abdf9fca86225">begin</a> () noexcept</td></tr>
+<tr class="memdesc:abde2b908ea5edd0ec20abdf9fca86225"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator to begin.  <a href="#abde2b908ea5edd0ec20abdf9fca86225">More...</a><br /></td></tr>
 <tr class="separator:abde2b908ea5edd0ec20abdf9fca86225"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aae68eb9c606f31195b7df7cd7ae18f64"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#aae68eb9c606f31195b7df7cd7ae18f64">cAt</a> (const size_t point) const</td></tr>
+<tr class="memdesc:aae68eb9c606f31195b7df7cd7ae18f64"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access element through ConstIterator.  <a href="#aae68eb9c606f31195b7df7cd7ae18f64">More...</a><br /></td></tr>
 <tr class="separator:aae68eb9c606f31195b7df7cd7ae18f64"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab7c617c827b20d9ca9e65cf023ebcc6b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ab7c617c827b20d9ca9e65cf023ebcc6b">cbegin</a> () const noexcept</td></tr>
+<tr class="memdesc:ab7c617c827b20d9ca9e65cf023ebcc6b"><td class="mdescLeft">&#160;</td><td class="mdescRight">ConstIterator to begin.  <a href="#ab7c617c827b20d9ca9e65cf023ebcc6b">More...</a><br /></td></tr>
 <tr class="separator:ab7c617c827b20d9ca9e65cf023ebcc6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad54d677734dfedd5fb1270ed7082c71c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ad54d677734dfedd5fb1270ed7082c71c">cend</a> () const noexcept</td></tr>
+<tr class="memdesc:ad54d677734dfedd5fb1270ed7082c71c"><td class="mdescLeft">&#160;</td><td class="mdescRight">ConstIterator to begnd.  <a href="#ad54d677734dfedd5fb1270ed7082c71c">More...</a><br /></td></tr>
 <tr class="separator:ad54d677734dfedd5fb1270ed7082c71c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1376b9e71b54084d4105e752ee6b4a3e"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a1376b9e71b54084d4105e752ee6b4a3e">ctransform</a> (double(*fn)(double, double), const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const</td></tr>
+<tr class="memdesc:a1376b9e71b54084d4105e752ee6b4a3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply binary function to all elements.  <a href="#a1376b9e71b54084d4105e752ee6b4a3e">More...</a><br /></td></tr>
 <tr class="separator:a1376b9e71b54084d4105e752ee6b4a3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7e4990ade8aa4608b00fb26f9081dc85"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a7e4990ade8aa4608b00fb26f9081dc85">ctransform</a> (<a class="el" href="classNumpp_1_1Vector.html#a9c120c5f17ffb2080c1b256ef7b71268">doubleBinary</a> fn, const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const</td></tr>
+<tr class="memdesc:a7e4990ade8aa4608b00fb26f9081dc85"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply binary function to all elements.  <a href="#a7e4990ade8aa4608b00fb26f9081dc85">More...</a><br /></td></tr>
 <tr class="separator:a7e4990ade8aa4608b00fb26f9081dc85"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abbfb68ea70692fc39b7876d01c7a7723"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#abbfb68ea70692fc39b7876d01c7a7723">end</a> () noexcept</td></tr>
+<tr class="memdesc:abbfb68ea70692fc39b7876d01c7a7723"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator to end.  <a href="#abbfb68ea70692fc39b7876d01c7a7723">More...</a><br /></td></tr>
 <tr class="separator:abbfb68ea70692fc39b7876d01c7a7723"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752c68765e1954fef60e0f615a7b499d"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a752c68765e1954fef60e0f615a7b499d">operator!=</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const noexcept</td></tr>
+<tr class="memdesc:a752c68765e1954fef60e0f615a7b499d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison (inequalty)  <a href="#a752c68765e1954fef60e0f615a7b499d">More...</a><br /></td></tr>
 <tr class="separator:a752c68765e1954fef60e0f615a7b499d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae49abd0ec0167992de5b687302fcd277"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ae49abd0ec0167992de5b687302fcd277">operator*</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const</td></tr>
+<tr class="memdesc:ae49abd0ec0167992de5b687302fcd277"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dot product.  <a href="#ae49abd0ec0167992de5b687302fcd277">More...</a><br /></td></tr>
 <tr class="separator:ae49abd0ec0167992de5b687302fcd277"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6d411282feb9d07cccf9ef1777aa01fc"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a6d411282feb9d07cccf9ef1777aa01fc">operator*</a> (const double scale) const</td></tr>
+<tr class="memdesc:a6d411282feb9d07cccf9ef1777aa01fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale all elements.  <a href="#a6d411282feb9d07cccf9ef1777aa01fc">More...</a><br /></td></tr>
 <tr class="separator:a6d411282feb9d07cccf9ef1777aa01fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac2e876570537c9a9001534d9eb8da502"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ac2e876570537c9a9001534d9eb8da502">operator*=</a> (const double scale)</td></tr>
+<tr class="memdesc:ac2e876570537c9a9001534d9eb8da502"><td class="mdescLeft">&#160;</td><td class="mdescRight">Scale all elements.  <a href="#ac2e876570537c9a9001534d9eb8da502">More...</a><br /></td></tr>
 <tr class="separator:ac2e876570537c9a9001534d9eb8da502"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2549046890c5e7429c6ea26679b64e9c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a2549046890c5e7429c6ea26679b64e9c">operator+</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const</td></tr>
+<tr class="memdesc:a2549046890c5e7429c6ea26679b64e9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">sum  <a href="#a2549046890c5e7429c6ea26679b64e9c">More...</a><br /></td></tr>
 <tr class="separator:a2549046890c5e7429c6ea26679b64e9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3588f24d4045934a13fe3ccc3c59e1cc"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a3588f24d4045934a13fe3ccc3c59e1cc">operator+=</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other)</td></tr>
+<tr class="memdesc:a3588f24d4045934a13fe3ccc3c59e1cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">sum  <a href="#a3588f24d4045934a13fe3ccc3c59e1cc">More...</a><br /></td></tr>
 <tr class="separator:a3588f24d4045934a13fe3ccc3c59e1cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c66f6b226386503046014f65978661b"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a0c66f6b226386503046014f65978661b">operator-</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const</td></tr>
+<tr class="memdesc:a0c66f6b226386503046014f65978661b"><td class="mdescLeft">&#160;</td><td class="mdescRight">difference  <a href="#a0c66f6b226386503046014f65978661b">More...</a><br /></td></tr>
 <tr class="separator:a0c66f6b226386503046014f65978661b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a257f0ea398c27465581d70d0de60de38"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a257f0ea398c27465581d70d0de60de38">operator-=</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other)</td></tr>
+<tr class="memdesc:a257f0ea398c27465581d70d0de60de38"><td class="mdescLeft">&#160;</td><td class="mdescRight">difference  <a href="#a257f0ea398c27465581d70d0de60de38">More...</a><br /></td></tr>
 <tr class="separator:a257f0ea398c27465581d70d0de60de38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc04db2950db495824a7c32e977ff3d4"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#abc04db2950db495824a7c32e977ff3d4">operator&lt;</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const noexcept</td></tr>
+<tr class="memdesc:abc04db2950db495824a7c32e977ff3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison (less or equal)  <a href="#abc04db2950db495824a7c32e977ff3d4">More...</a><br /></td></tr>
 <tr class="separator:abc04db2950db495824a7c32e977ff3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7233f2d81b51f995eab4005f44b597b"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#af7233f2d81b51f995eab4005f44b597b">operator&lt;=</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const noexcept</td></tr>
+<tr class="memdesc:af7233f2d81b51f995eab4005f44b597b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison (less or equal)  <a href="#af7233f2d81b51f995eab4005f44b597b">More...</a><br /></td></tr>
 <tr class="separator:af7233f2d81b51f995eab4005f44b597b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3e2a111e4a8bb02eff5144e77ce37c62"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a3e2a111e4a8bb02eff5144e77ce37c62">operator==</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const noexcept</td></tr>
+<tr class="memdesc:a3e2a111e4a8bb02eff5144e77ce37c62"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison (equality)  <a href="#a3e2a111e4a8bb02eff5144e77ce37c62">More...</a><br /></td></tr>
 <tr class="separator:a3e2a111e4a8bb02eff5144e77ce37c62"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a931ea390a1be6a48019cf0fbbc9439c5"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a931ea390a1be6a48019cf0fbbc9439c5">operator&gt;</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const noexcept</td></tr>
+<tr class="memdesc:a931ea390a1be6a48019cf0fbbc9439c5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison (greater or equal)  <a href="#a931ea390a1be6a48019cf0fbbc9439c5">More...</a><br /></td></tr>
 <tr class="separator:a931ea390a1be6a48019cf0fbbc9439c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9dd310a39c2c8f89166f825b4eaeec06"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a9dd310a39c2c8f89166f825b4eaeec06">operator&gt;=</a> (const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other) const noexcept</td></tr>
+<tr class="memdesc:a9dd310a39c2c8f89166f825b4eaeec06"><td class="mdescLeft">&#160;</td><td class="mdescRight">Comparison (greater or equal)  <a href="#a9dd310a39c2c8f89166f825b4eaeec06">More...</a><br /></td></tr>
 <tr class="separator:a9dd310a39c2c8f89166f825b4eaeec06"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a62834932422c19acc16ddcd674909984"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a62834932422c19acc16ddcd674909984">operator[]</a> (const size_t point) const noexcept=0</td></tr>
+<tr class="memdesc:a62834932422c19acc16ddcd674909984"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access element.  <a href="#a62834932422c19acc16ddcd674909984">More...</a><br /></td></tr>
 <tr class="separator:a62834932422c19acc16ddcd674909984"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9f148e1fa1e06013d69cc628d6b27cf"><td class="memItemLeft" align="right" valign="top">virtual double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#af9f148e1fa1e06013d69cc628d6b27cf">operator[]</a> (const <a class="el" href="classNumpp_1_1Vector_1_1t__Iterator.html#aeb754a3cb59b123c5d141191e8c6a6f0">Iterator::diff_t</a> point) const noexcept</td></tr>
+<tr class="memdesc:af9f148e1fa1e06013d69cc628d6b27cf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Access element.  <a href="#af9f148e1fa1e06013d69cc628d6b27cf">More...</a><br /></td></tr>
 <tr class="separator:af9f148e1fa1e06013d69cc628d6b27cf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc7357448f5cfd7b55b8f96b7b5d0203"><td class="memItemLeft" align="right" valign="top">virtual std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#acc7357448f5cfd7b55b8f96b7b5d0203">print</a> () const noexcept</td></tr>
+<tr class="memdesc:acc7357448f5cfd7b55b8f96b7b5d0203"><td class="mdescLeft">&#160;</td><td class="mdescRight">Write to string.  <a href="#acc7357448f5cfd7b55b8f96b7b5d0203">More...</a><br /></td></tr>
 <tr class="separator:acc7357448f5cfd7b55b8f96b7b5d0203"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab5b209d2a369daaee89cad3855824bce"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ab5b209d2a369daaee89cad3855824bce">resize</a> (size_t <a class="el" href="classNumpp_1_1Vector.html#ad42295831d489063d2f2d38c018cbdfd">size</a>)</td></tr>
+<tr class="memdesc:ab5b209d2a369daaee89cad3855824bce"><td class="mdescLeft">&#160;</td><td class="mdescRight">resize  <a href="#ab5b209d2a369daaee89cad3855824bce">More...</a><br /></td></tr>
 <tr class="separator:ab5b209d2a369daaee89cad3855824bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aee4070eaba8d1d3268580ae6b9466505"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#aee4070eaba8d1d3268580ae6b9466505">set</a> (const size_t point, const double val)</td></tr>
+<tr class="memdesc:aee4070eaba8d1d3268580ae6b9466505"><td class="mdescLeft">&#160;</td><td class="mdescRight">set value element at position  <a href="#aee4070eaba8d1d3268580ae6b9466505">More...</a><br /></td></tr>
 <tr class="separator:aee4070eaba8d1d3268580ae6b9466505"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a67ac6ef6fae5690f31f1f7be92591608"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a67ac6ef6fae5690f31f1f7be92591608">set</a> (const <a class="el" href="classNumpp_1_1Vector_1_1t__Iterator.html#aeb754a3cb59b123c5d141191e8c6a6f0">Iterator::diff_t</a> point, const double val)</td></tr>
+<tr class="memdesc:a67ac6ef6fae5690f31f1f7be92591608"><td class="mdescLeft">&#160;</td><td class="mdescRight">set value element at abs(position)  <a href="#a67ac6ef6fae5690f31f1f7be92591608">More...</a><br /></td></tr>
 <tr class="separator:a67ac6ef6fae5690f31f1f7be92591608"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad42295831d489063d2f2d38c018cbdfd"><td class="memItemLeft" align="right" valign="top">virtual size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ad42295831d489063d2f2d38c018cbdfd">size</a> () const noexcept=0</td></tr>
+<tr class="memdesc:ad42295831d489063d2f2d38c018cbdfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get size.  <a href="#ad42295831d489063d2f2d38c018cbdfd">More...</a><br /></td></tr>
 <tr class="separator:ad42295831d489063d2f2d38c018cbdfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a4d565ac196d39ae4953a75c50e5338"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a1a4d565ac196d39ae4953a75c50e5338">storageAdvance</a> (<a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a> &amp;it) const =0</td></tr>
+<tr class="memdesc:a1a4d565ac196d39ae4953a75c50e5338"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance Iterator to next stored item.  <a href="#a1a4d565ac196d39ae4953a75c50e5338">More...</a><br /></td></tr>
 <tr class="separator:a1a4d565ac196d39ae4953a75c50e5338"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3b96b4108e8d42812b924729580b8758"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a3b96b4108e8d42812b924729580b8758">storageAdvance</a> (<a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a> &amp;it) const =0</td></tr>
+<tr class="memdesc:a3b96b4108e8d42812b924729580b8758"><td class="mdescLeft">&#160;</td><td class="mdescRight">Advance ConstIterator to next stored item.  <a href="#a3b96b4108e8d42812b924729580b8758">More...</a><br /></td></tr>
 <tr class="separator:a3b96b4108e8d42812b924729580b8758"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ade28ca0262ccc2981c4c034b4047b4c2"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ade28ca0262ccc2981c4c034b4047b4c2">storageBegin</a> () noexcept=0</td></tr>
+<tr class="memdesc:ade28ca0262ccc2981c4c034b4047b4c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator to first stored element.  <a href="#ade28ca0262ccc2981c4c034b4047b4c2">More...</a><br /></td></tr>
 <tr class="separator:ade28ca0262ccc2981c4c034b4047b4c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a12d0bd2e752817d7f330dee0791bedb8"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a12d0bd2e752817d7f330dee0791bedb8">storagecBegin</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a12d0bd2e752817d7f330dee0791bedb8"><td class="mdescLeft">&#160;</td><td class="mdescRight">ConstIterator to first stored element.  <a href="#a12d0bd2e752817d7f330dee0791bedb8">More...</a><br /></td></tr>
 <tr class="separator:a12d0bd2e752817d7f330dee0791bedb8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1c80e0802cd99cad66118909c7b72ed1"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#ae3af9e6e9d1b0390b984e511fb9699f8">ConstIterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a1c80e0802cd99cad66118909c7b72ed1">storagecEnd</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a1c80e0802cd99cad66118909c7b72ed1"><td class="mdescLeft">&#160;</td><td class="mdescRight">ConstIterator to past-the-last stored element.  <a href="#a1c80e0802cd99cad66118909c7b72ed1">More...</a><br /></td></tr>
 <tr class="separator:a1c80e0802cd99cad66118909c7b72ed1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:addedfb515d632591f8c91a121ae7e285"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="classNumpp_1_1Vector.html#a65c4da93a6575f8369ed70f187bad18c">Iterator</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#addedfb515d632591f8c91a121ae7e285">storageEnd</a> () noexcept=0</td></tr>
+<tr class="memdesc:addedfb515d632591f8c91a121ae7e285"><td class="mdescLeft">&#160;</td><td class="mdescRight">Iterator to past-the-last stored element.  <a href="#addedfb515d632591f8c91a121ae7e285">More...</a><br /></td></tr>
 <tr class="separator:addedfb515d632591f8c91a121ae7e285"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4687e4424dc7403bcfe68d3fdaf0133c"><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="namespaceNumpp.html#ab6230eb73969a22254d7cdce38cdf8ce">StorageType</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a4687e4424dc7403bcfe68d3fdaf0133c">storageType</a> () const noexcept=0</td></tr>
+<tr class="memdesc:a4687e4424dc7403bcfe68d3fdaf0133c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get storage Type.  <a href="#a4687e4424dc7403bcfe68d3fdaf0133c">More...</a><br /></td></tr>
 <tr class="separator:a4687e4424dc7403bcfe68d3fdaf0133c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a93bdc9564dfd69d289503b38b7799b14"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a93bdc9564dfd69d289503b38b7799b14">swap</a> (const size_t x1, const size_t x2)</td></tr>
+<tr class="memdesc:a93bdc9564dfd69d289503b38b7799b14"><td class="mdescLeft">&#160;</td><td class="mdescRight">swap elements  <a href="#a93bdc9564dfd69d289503b38b7799b14">More...</a><br /></td></tr>
 <tr class="separator:a93bdc9564dfd69d289503b38b7799b14"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fb8886192e79115dc603a4a2678e2d0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a3fb8886192e79115dc603a4a2678e2d0">transform</a> (double(*fn)(double))</td></tr>
+<tr class="memdesc:a3fb8886192e79115dc603a4a2678e2d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply unary function to all elemenst.  <a href="#a3fb8886192e79115dc603a4a2678e2d0">More...</a><br /></td></tr>
 <tr class="separator:a3fb8886192e79115dc603a4a2678e2d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb4d7a3f8c56b864c97f9b8f288f8654"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#adb4d7a3f8c56b864c97f9b8f288f8654">transform</a> (<a class="el" href="classNumpp_1_1Vector.html#abd5e2ca0968a1d9260a994db8a6217aa">doubleUnary</a> fn)</td></tr>
+<tr class="memdesc:adb4d7a3f8c56b864c97f9b8f288f8654"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply unary function to all elemenst.  <a href="#adb4d7a3f8c56b864c97f9b8f288f8654">More...</a><br /></td></tr>
 <tr class="separator:adb4d7a3f8c56b864c97f9b8f288f8654"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae84bea201f9a40c5dae943ec633134d5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ae84bea201f9a40c5dae943ec633134d5">transform</a> (double(*fn)(double, double), const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other)</td></tr>
+<tr class="memdesc:ae84bea201f9a40c5dae943ec633134d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply binary function to all elements.  <a href="#ae84bea201f9a40c5dae943ec633134d5">More...</a><br /></td></tr>
 <tr class="separator:ae84bea201f9a40c5dae943ec633134d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7429a2cdb98c5b66b0c72ef077c2275a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#a7429a2cdb98c5b66b0c72ef077c2275a">transform</a> (<a class="el" href="classNumpp_1_1Vector.html#a9c120c5f17ffb2080c1b256ef7b71268">doubleBinary</a> fn, const <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *const other)</td></tr>
+<tr class="memdesc:a7429a2cdb98c5b66b0c72ef077c2275a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Apply binary function to all elements.  <a href="#a7429a2cdb98c5b66b0c72ef077c2275a">More...</a><br /></td></tr>
 <tr class="separator:a7429a2cdb98c5b66b0c72ef077c2275a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
 <tr class="memitem:acaf720fe7f241c04786ba77de2383d33"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="classNumpp_1_1Vector.html">Vector</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#acaf720fe7f241c04786ba77de2383d33">scan</a> (const std::string &amp;in)</td></tr>
+<tr class="memdesc:acaf720fe7f241c04786ba77de2383d33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct from string.  <a href="#acaf720fe7f241c04786ba77de2383d33">More...</a><br /></td></tr>
 <tr class="separator:acaf720fe7f241c04786ba77de2383d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
 <tr class="memitem:ad57b9c8d13e72c5d29c5305e53120150"><td class="memItemLeft" align="right" valign="top">virtual double &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classNumpp_1_1Vector.html#ad57b9c8d13e72c5d29c5305e53120150">getref</a> (size_t point)</td></tr>
+<tr class="memdesc:ad57b9c8d13e72c5d29c5305e53120150"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get a reference to the element at point.  <a href="#ad57b9c8d13e72c5d29c5305e53120150">More...</a><br /></td></tr>
 <tr class="separator:ad57b9c8d13e72c5d29c5305e53120150"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
@@ -226,6 +276,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>const iterator to <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a> </p>
+
 </div>
 </div>
 <a id="a9c120c5f17ffb2080c1b256ef7b71268"></a>
@@ -239,6 +291,8 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Binnary function returning double. </p>
 
 </div>
 </div>
@@ -254,6 +308,8 @@ Protected Member Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Unary function returning double. </p>
+
 </div>
 </div>
 <a id="a65c4da93a6575f8369ed70f187bad18c"></a>
@@ -267,6 +323,8 @@ Protected Member Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>iterator to <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a> </p>
 
 </div>
 </div>
@@ -294,6 +352,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Destructor. </p>
+
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
@@ -319,6 +379,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Allocate a copy. </p>
 
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a093c48d00dd649390261fe55761bb042">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a36b73336599135d23d19e37ed2ebe354">Numpp::VectorStorageLinear</a>.</p>
 
@@ -348,6 +410,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Allocate a <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a> of ginven size ansame type as the caller. </p>
+
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a5fbed517c45266d076ab307d173f8b4c">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a835100693b1b978b6edd2d103dff5614">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -376,6 +440,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Access element. </p>
+
 </div>
 </div>
 <a id="a67b41bbc984b89e38a59aa6e583250d3"></a>
@@ -402,6 +468,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Access element through Iterator. </p>
+
 </div>
 </div>
 <a id="abde2b908ea5edd0ec20abdf9fca86225"></a>
@@ -426,6 +494,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Iterator to begin. </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#af0a31e28b47b947f1cab54b32ec81a05">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a8d86a6cdb65bef4dbac6dc36ade090b8">Numpp::VectorStorageLinear</a>.</p>
 
@@ -455,6 +525,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Access element through ConstIterator. </p>
+
 </div>
 </div>
 <a id="ab7c617c827b20d9ca9e65cf023ebcc6b"></a>
@@ -479,6 +551,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ConstIterator to begin. </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a1651cabc82c5775efe2a7d01e4a5c824">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#ae4d7b01668a58fe3ea51dac62969c64c">Numpp::VectorStorageLinear</a>.</p>
 
@@ -506,6 +580,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ConstIterator to begnd. </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#af1ad1bcc57ce2cd9918e3078bb5e3042">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#ac44a70d874c28321847794e057cd2034">Numpp::VectorStorageLinear</a>.</p>
 
@@ -545,6 +621,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply binary function to all elements. </p>
+
 </div>
 </div>
 <a id="a7e4990ade8aa4608b00fb26f9081dc85"></a>
@@ -581,6 +659,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply binary function to all elements. </p>
+
 </div>
 </div>
 <a id="abbfb68ea70692fc39b7876d01c7a7723"></a>
@@ -605,6 +685,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Iterator to end. </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a9a31125fc5b16a4b338f31ce73dbb391">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#af010798c722a2811d4790f013579e737">Numpp::VectorStorageLinear</a>.</p>
 
@@ -634,6 +716,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Get a reference to the element at point. </p>
+
 </div>
 </div>
 <a id="a752c68765e1954fef60e0f615a7b499d"></a>
@@ -659,6 +743,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Comparison (inequalty) </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a52135cf55d99901453ae4dcf48c1847d">Numpp::VectorStorageSparse</a>.</p>
 
@@ -688,6 +774,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Dot product. </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#afbb4494d7835acf6cd48f2ceef5f3a96">Numpp::VectorStorageSparse</a>.</p>
 
 </div>
@@ -715,6 +803,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Scale all elements. </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a6b3b68bb808ce1d4722937c95b27dd8c">Numpp::VectorStorageSparse</a>.</p>
 
@@ -744,6 +834,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Scale all elements. </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a866742905c8206f7957c8563de66ac1a">Numpp::VectorStorageSparse</a>.</p>
 
 </div>
@@ -771,6 +863,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>sum </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#adc79023392dc4785f8b21bed68084e76">Numpp::VectorStorageSparse</a>.</p>
 
@@ -800,6 +894,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>sum </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a0ab8eab48a10d9019883c6e7098c3608">Numpp::VectorStorageSparse</a>.</p>
 
 </div>
@@ -827,6 +923,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>difference </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a0c2b59360d0e05c422387e11d5be0fed">Numpp::VectorStorageSparse</a>.</p>
 
@@ -856,6 +954,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>difference </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a72117ff76a15983f2517a75c64c113e8">Numpp::VectorStorageSparse</a>.</p>
 
 </div>
@@ -883,6 +983,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Comparison (less or equal) </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a5402c8139c70f8484b2319a5642de4c3">Numpp::VectorStorageSparse</a>.</p>
 
@@ -912,6 +1014,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Comparison (less or equal) </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a4187558ef4ef2417b8f70a28d9ca1623">Numpp::VectorStorageSparse</a>.</p>
 
 </div>
@@ -939,6 +1043,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Comparison (equality) </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a68253d8392be445a895cc3674b9cde08">Numpp::VectorStorageSparse</a>.</p>
 
@@ -968,6 +1074,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Comparison (greater or equal) </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a6487942ffd7dcd5b9e71eda11f3ded0e">Numpp::VectorStorageSparse</a>.</p>
 
 </div>
@@ -995,6 +1103,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Comparison (greater or equal) </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a9ec3528053d4e0eddb2947ce33cb58eb">Numpp::VectorStorageSparse</a>.</p>
 
@@ -1024,6 +1134,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Access element. </p>
+
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a5497e9824d59b28fd79d9e0375df37c4">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a36f61532c815f65ce284bcf533ed842e">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -1052,6 +1164,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Access element. </p>
+
 </div>
 </div>
 <a id="acc7357448f5cfd7b55b8f96b7b5d0203"></a>
@@ -1076,6 +1190,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Write to string. </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#aaa8e1cd9400615b28e6d79f8e8265287">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#ac39e06e49b24184d147b4b085deaf85b">Numpp::VectorStorageLinear</a>.</p>
 
@@ -1105,6 +1221,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>resize </p>
+
 </div>
 </div>
 <a id="acaf720fe7f241c04786ba77de2383d33"></a>
@@ -1130,6 +1248,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Construct from string. </p>
 
 </div>
 </div>
@@ -1166,6 +1286,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>set value element at position </p>
 
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#aececb28510212dc91d028b09f844fac3">Numpp::VectorStorageSparse</a>.</p>
 
@@ -1205,6 +1327,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>set value element at abs(position) </p>
+
 </div>
 </div>
 <a id="ad42295831d489063d2f2d38c018cbdfd"></a>
@@ -1229,6 +1353,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get size. </p>
 
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a3af5a32fd61c4387cfb2d376bdb69657">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a3d533f4d144722fd29c58439da5d1563">Numpp::VectorStorageLinear</a>.</p>
 
@@ -1258,6 +1384,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Advance Iterator to next stored item. </p>
+
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#ab27c38e65bf78cdf6f07b93ab1bf7968">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#abee75fbbb2e68f249a9882c5a0d868ee">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -1286,6 +1414,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Advance ConstIterator to next stored item. </p>
+
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#aabab34fbc47531c3222481ca925e5616">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a601758de79f912e99e717dff554c1ad3">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -1312,6 +1442,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Iterator to first stored element. </p>
 
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a922dc0b327413e0119802c39b9f1652a">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a586cfc868b3146d46c18517806ed5d28">Numpp::VectorStorageLinear</a>.</p>
 
@@ -1340,6 +1472,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>ConstIterator to first stored element. </p>
+
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a9ffd24b32822504d2aee9c12d5f918d6">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#aca3402b1f740a6f442e35d27088671b9">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -1366,6 +1500,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>ConstIterator to past-the-last stored element. </p>
 
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#ad3010eda36e08f43179a680ae07be474">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a608c1714e3171784c7c50bfdddce3bf6">Numpp::VectorStorageLinear</a>.</p>
 
@@ -1394,6 +1530,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Iterator to past-the-last stored element. </p>
+
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#aea41670b9cf3b366512b8db5a59c5483">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#a54d8cc975973b18043d99925548da2ad">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -1420,6 +1558,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Get storage Type. </p>
 
 <p>Implemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a1a864ce0344b8944f2eb2e7f3f7706dd">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#ae71c690cb6296aa4b1daa9c8c9fecdb1">Numpp::VectorStorageLinear</a>.</p>
 
@@ -1459,6 +1599,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>swap elements </p>
+
 <p>Reimplemented in <a class="el" href="classNumpp_1_1VectorStorageSparse.html#a40a0406203de451e9c62707d64f97782">Numpp::VectorStorageSparse</a>, and <a class="el" href="classNumpp_1_1VectorStorageLinear.html#adaba44de7d343dce0d145c7c3db4b550">Numpp::VectorStorageLinear</a>.</p>
 
 </div>
@@ -1487,6 +1629,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply unary function to all elemenst. </p>
+
 </div>
 </div>
 <a id="adb4d7a3f8c56b864c97f9b8f288f8654"></a>
@@ -1512,6 +1656,8 @@ Protected Member Functions</h2></td></tr>
   </tr>
 </table>
 </div><div class="memdoc">
+
+<p>Apply unary function to all elemenst. </p>
 
 </div>
 </div>
@@ -1549,6 +1695,8 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply binary function to all elements. </p>
+
 </div>
 </div>
 <a id="a7429a2cdb98c5b66b0c72ef077c2275a"></a>
@@ -1585,10 +1733,12 @@ Protected Member Functions</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
+<p>Apply binary function to all elements. </p>
+
 </div>
 </div>
 <hr/>The documentation for this class was generated from the following files:<ul>
-<li>vector/<a class="el" href="vector_8h_source.html">vector.h</a></li>
+<li>vector/<a class="el" href="vector_8h.html">vector.h</a></li>
 <li>vector/<a class="el" href="vector_8cpp.html">vector.cpp</a></li>
 </ul>
 </div><!-- contents -->
