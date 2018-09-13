@@ -269,7 +269,7 @@ template&lt;typename T &gt; </div>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>position</em>&#160;</td>
+          <td class="paramname"><em>position_p</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -285,6 +285,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Constructor from container and index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td>referenced <a class="el" href="classNumpp_1_1Vector.html" title="Virtual base class for vector objects. ">Vector</a> </td></tr>
+    <tr><td class="paramname">position_p</td><td>referenced position in the container </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -315,6 +322,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>iterator to copy </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -345,6 +358,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Move constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>iterator to move. This constructor is not faster than copy </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -374,6 +393,8 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Default constructor. </p>
+<p>The iterator is not associated to any container.</p>
+<p>Operating on it results in an exception being throw when using non-noexcept functions. Current noexcept functions are comparison and index access. </p>
 
 </div>
 </div>
@@ -434,6 +455,14 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Comparison (inequality) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Iterator to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if iterators point to the element of the same container, true otherwise</dd></dl>
+<p>Note that pointing to distinct containers which are equal will still make the iterators different </p>
 
 </div>
 </div>
@@ -455,6 +484,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>deference </p>
+<dl class="section return"><dt>Returns</dt><dd>value of the cell pointed by the iterator </dd></dl>
 
 </div>
 </div>
@@ -477,6 +507,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to advance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>adanced iterator </dd></dl>
 
 </div>
 </div>
@@ -499,6 +536,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to advance </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>adanced iterator </dd></dl>
 
 </div>
 </div>
@@ -534,14 +578,20 @@ template&lt;typename T &gt; </div>
         <tr>
           <td class="memname">void <a class="el" href="classNumpp_1_1Vector_1_1t__Iterator.html">Numpp::Vector::t_Iterator</a>&lt; T &gt;::operator++ </td>
           <td>(</td>
-          <td class="paramtype">[[maybe_unused] ]&#160;</td>
-          <td class="paramname"><em>int</em></td><td>)</td>
+          <td class="paramtype">[[maybe_unused] ] int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>postincrement </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>Unused parameter used to dddistinguish between pre- and post- increment </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -564,6 +614,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to advance </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -586,6 +642,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to advance </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -608,6 +670,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to move back </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>iterator moved back </dd></dl>
 
 </div>
 </div>
@@ -630,6 +699,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to move back </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>iterator moved back </dd></dl>
 
 </div>
 </div>
@@ -652,6 +728,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>get difference </p>
+<p>Compute difference of iterators; throws if they point to different containers. </p>
 
 </div>
 </div>
@@ -695,6 +772,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>postdecrement </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">unused</td><td>parameter used to dddistinguish between pre- and post- decrement </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -717,6 +800,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to advancemove back </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -739,6 +828,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>advance </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>number of positions to advancemove back </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -769,6 +864,15 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Comparison (less) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Iterator to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if iterators point to different containers, or if this points to an element which is equal to or follows that pointed by other</dd></dl>
+<p>Note that pointing to distinct containers which are equal will still make the iterators different.</p>
+<p>Note that this is not equivalent to (! (*this) &gt;= other)). </p>
 
 </div>
 </div>
@@ -799,6 +903,15 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Comparison (less or equal) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Iterator to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if iterators point to different containers, or if this points to an element which follows (strictly) that pointed by other</dd></dl>
+<p>Note that pointing to distinct containers which are equal will still make the iterators different.</p>
+<p>Note that this is not equivalent to (! (*this) &gt; other)). </p>
 
 </div>
 </div>
@@ -829,6 +942,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Copy assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>iterator to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Copied iterator </dd></dl>
 
 </div>
 </div>
@@ -859,6 +979,13 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Move assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">it</td><td>iterator to move </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Moved iterator This function is not faster than copy </dd></dl>
 
 </div>
 </div>
@@ -889,6 +1016,14 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Comparison (equality) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Iterator to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if iterators point to the element of the same container, false otherwise</dd></dl>
+<p>Note that pointing to distinct containers which are equal will still mak the iterators different </p>
 
 </div>
 </div>
@@ -919,6 +1054,15 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Comparison (greater) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Iterator to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if iterators point to different containers, or if this points to an element which is equal to or precedes that pointed by other</dd></dl>
+<p>Note that pointing to distinct containers which are equal will still make the iterators different.</p>
+<p>Note that this is not equivalent to (! (*this) &lt;= other)). </p>
 
 </div>
 </div>
@@ -949,6 +1093,15 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>Comparison (greater or equal) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Iterator to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if iterators point to different containers, or if this points to an element which precedes (strictly) that pointed by other</dd></dl>
+<p>Note that pointing to distinct containers which are equal will still make the iterators different.</p>
+<p>Note that this is not equivalent to (! (*this) &lt; other)). </p>
 
 </div>
 </div>
@@ -971,6 +1124,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>access element </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>Position to access, gives as difference from the current one </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -993,6 +1152,12 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>set index </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Position to move to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -1022,6 +1187,7 @@ template&lt;typename T &gt; </div>
 </div><div class="memdoc">
 
 <p>get container size </p>
+<dl class="section return"><dt>Returns</dt><dd>size of the underlying container </dd></dl>
 
 </div>
 </div>

@@ -19,6 +19,13 @@
 #ifndef VECTOR_ITERATOR_EXTERN_H
 #define VECTOR_ITERATOR_EXTERN_H
 
+/**
+ * \file Declare existing template instation of Vector::t_Iterator<T>.
+ *
+ * Including this file allows usage of precompiled instantiontions, i.e. for T double or const double
+ */
+
+
 #include "vector.h"
 
 namespace Numpp {

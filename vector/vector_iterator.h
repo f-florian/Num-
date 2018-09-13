@@ -16,5 +16,11 @@
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
 
+/**
+ * \file Allows usage of Vector::t_Iterator<T>.
+ *
+ * Including this files makes the compiler instance the needed functions only fer types not already declared in the library
+ */
+
 #include "vector_iterator_functions.h"
 #include "vector_iterator_extern.h"
