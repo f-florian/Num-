@@ -25,11 +25,17 @@
 #include "vector_iterator_extern.h"
 
 namespace Numpp {
+    /**
+     * Constructed Vector has size 0, and ha data is a null pointer
+     *
     VectorStorageLinear::VectorStorageLinear()
     {
         data_m=nullptr;
         size_m=0;
     }
+    /**
+     * \param size Vector size
+     */
     VectorStorageLinear::VectorStorageLinear(const size_t size)
     {
         size_m=size;
@@ -37,6 +43,10 @@ namespace Numpp {
         if (data_m==NULL)
             throw(std::bad_alloc());
     }
+    /**
+     * \param size Vector size
+     * \param fill value to fill with
+     */
     VectorStorageLinear::VectorStorageLinear(const size_t size, const double fill)
     {
         size_m=size;
@@ -47,7 +57,11 @@ namespace Numpp {
             data_m[i]=fill;
         // memset(data_m, other.data_m, size_m * sizeof(double));
     }
-
+    /**
+     * \param other Vector to copy
+     * 
+     * Use a memcpy if other is of same type, otherwise fallback to copying every element
+     */
     VectorStorageLinear::VectorStorageLinear(const Vector* const other)
     {
         data_m=static_cast<double *>(malloc(other->size()*sizeof(double)));
@@ -60,7 +74,11 @@ namespace Numpp {
             for(size_t i = 0; i != size_m; ++i)
                 data_m[i]=(*other)[i];
     }
-    
+    /**
+     * \param other Vector to copy
+     * 
+     * Copying uses memcpy
+     */
     VectorStorageLinear::VectorStorageLinear(const VectorStorageLinear &other)
     {
         data_m=static_cast<double *>(malloc(other.size_m*sizeof(double)));
@@ -69,49 +87,94 @@ namespace Numpp {
         memcpy(data_m,other.data_m,size_m*sizeof(double));
         size_m=other.size_m;
     }
+    /**
+     * \param Vector to move
+     */
     VectorStorageLinear::VectorStorageLinear(VectorStorageLinear &&other)
     {
         size_m=other.size_m;
         data_m=other.data_m;
         other.data_m=NULL;
     }
+    /**
+     * Deallocate data
+     */
     VectorStorageLinear::~VectorStorageLinear()
     {
         free(data_m);
     }
 
+    /**
+     * \param position position to access
+     * \return value at position
+     *
+     * Complexity is constant
+     * This function does not check bounds, just like std::vector
+     */
     double VectorStorageLinear::operator[](const size_t position) const noexcept
     {
         return data_m[position];
     }
+
+    /**
+     * \return Vector number of elements
+     */
     size_t VectorStorageLinear::size() const noexcept
     {
         return size_m;
     }
+    /**
+     * \return storage type
+     */
     StorageType VectorStorageLinear::storageType() const noexcept
     {
         return StorageType::Dense;
     }
+    
+    /**
+     * \return Iterator to first storage position
+     *
+     * Since this class uses dense storage this is the same as begin()
+     */
     Vector::Iterator VectorStorageLinear::storageBegin() noexcept
     {
         Vector::Iterator tmp(static_cast<Vector*>(this),0);
         return tmp;
     }
+    /**
+     * \return Iterator to past-the-last sorage position
+     *
+     * Since this class uses dense storage this is the same as end()
+     */
     Vector::Iterator VectorStorageLinear::storageEnd() noexcept
     {
         Vector::Iterator tmp(static_cast<Vector*>(this),size_m);
         return tmp;
     }
+    /**
+     * \param Iterator to advance
+     *
+     * Since this class uses dense storage this advances Iterator regularly
+     */
     void VectorStorageLinear::storageAdvance(Vector::Iterator &it) const
     {
         ++it;
     }
 
+    /**
+     * \param size size of the new Vector to alloc
+     * \return the nuwly allocated Vector
+     *
+     * The new Vector has all lements equal to 0
+     */
     Vector* VectorStorageLinear::allocSameType(size_t size) const
     {
         Vector *tmp=new VectorStorageLinear(size);
         return tmp;
     }
+    /**
+     * \return a (deep) copy of this
+     */
     Vector* VectorStorageLinear::allocCopy() const
     {
         Vector *tmp=new VectorStorageLinear(*this);
