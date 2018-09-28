@@ -20,7 +20,15 @@
 #define CONST_H
 
 namespace Numpp {
-    constexpr double pi=0x3.243F6A8885A308D31319p0;
+    /**
+     * Global constants
+     */
+    namespace Constants {
+        /**
+         * π
+         */
+        constexpr double pi=0x3.243F6A8885A308D31319p0;
+    }
 }
 
 #endif // CONST_H
