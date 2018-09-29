@@ -26,43 +26,42 @@ namespace Numpp{
     class Permutation
     {
     public:
-        // Constructors
-        Permutation(size_t maximum);
-        Permutation(size_t maximum, size_t e1, size_t e2);
-        Permutation(std::initializer_list<size_t> list);
-        Permutation(size_t maximum, std::initializer_list<size_t> list);
-        Permutation(const Permutation & other);
-        Permutation(Permutation && other) noexcept;
-        ~Permutation() noexcept;
-	
-        // Assignment
-        Permutation& operator=(const Permutation &other)=delete;
-        Permutation& operator=(Permutation &&other) noexcept;
-	
-        // Arithmetic
-        Permutation operator* (const Permutation &other) const;
-        void operator*= (const Permutation &other);
-        Permutation inverse() const;
-        void invert() noexcept;
-        Permutation operator/ (const Permutation &other) const;
-        void operator/= (const Permutation &other) noexcept;
+        Permutation(size_t maximum);                                                                //!< Construct identity
+        Permutation(size_t maximum, size_t e1, size_t e2);                                          //!< Construct transposition
+        Permutation(std::initializer_list<size_t> list);                                            //!< Construct from initializer_list
+        Permutation(size_t maximum, std::initializer_list<size_t> list);                            //!< Construct from initializer_list
+        Permutation(const Permutation & other);                                                     //!< Copy constructor
+        Permutation(Permutation && other) noexcept;                                                 //!< Move constructor
+        ~Permutation() noexcept;                                                                    //!< Destructor
 
-        // Comparison
-        bool operator==(const Permutation &other) const noexcept;
-        bool operator<=(const Permutation &other) const noexcept;
-        bool operator>=(const Permutation &other) const noexcept;
-        bool operator!=(const Permutation &other) const noexcept;
-        bool operator<(const Permutation &other) const noexcept;
-        bool operator>(const Permutation &other) const noexcept;
+        Permutation& operator=(const Permutation &other)=delete;                                    //!< Copy assignment
+        Permutation& operator=(Permutation &&other) noexcept;                                       //!< Move assignment
 
-        // Other
-        std::string print() const noexcept;
-        size_t operator[](const size_t point) const;
-        void swap(const size_t x1, const size_t x2);
-        void swapExisting(const size_t x1, const size_t x2) noexcept
-            void swap(Permutation &&other) noexcept;
+        Permutation operator* (const Permutation &other) const;                                     //!< Composition
+        void operator*= (const Permutation &other);                                                 //!< Composition and assignment
+        Permutation inverse() const;                                                                //!< Compute inverse
+        void invert() noexcept;                                                                     //!< Invert current permutation
+        Permutation operator/ (const Permutation &other) const;                                     //!< Compose with inverse
+        void operator/= (const Permutation &other) noexcept;                                        //!< Compose with inverse and assignment
+
+        bool operator==(const Permutation &other) const noexcept;                                   //!< Comparison (equality)
+        bool operator<=(const Permutation &other) const noexcept;                                   //!< Comparison (less or equal)
+        bool operator>=(const Permutation &other) const noexcept;                                   //!< Comparison (greater or equal)
+        bool operator!=(const Permutation &other) const noexcept;                                   //!< Comparison (inequality)
+        bool operator<(const Permutation &other) const noexcept;                                    //!< Comparison (less}
+        bool operator>(const Permutation &other) const noexcept;                                    //!< Comparison (greater)
+
+        std::string print() const noexcept;                                                         //!< Print in a standardized and human readable form
+        size_t operator[](const size_t point) const;                                                //!< Access element at position
+        void swap(const size_t x1, const size_t x2);                                                //!< Swap elements
+        void swapExisting(const size_t x1, const size_t x2) noexcept;                               //!< Swap elements
+        void swap(Permutation &other) noexcept;                                                     //!< Swap with other permutation
     private:
-        size_t maximum;
-        vector<size_t> permutation;
+        size_t maximum;                                                                             //!< Set dimension
+        vector<size_t> permutation;                                                                 //!< Permutiton storage
     };
+}
+
+namespace std {
+    void swap(Permutation &a, Permutation &b) noexcept;                                             //!< Swap with other permutation
 }
