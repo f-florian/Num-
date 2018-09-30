@@ -20,7 +20,8 @@
 #define VECTOR_ITERATOR_EXTERN_H
 
 /**
- * \file Declare existing template instation of Vector::t_Iterator<T>.
+ * \file
+ * Declare existing template instation of Vector::t_Iterator<T>.
  *
  * Including this file allows usage of precompiled instantiontions, i.e. for T double or const double
  */

@@ -17,7 +17,8 @@
  ***************************************************************************/
 
 /**
- * \file Allows usage of Vector::t_Iterator<T>.
+ * \file 
+ * Allows usage of Vector::t_Iterator<T>.
  *
  * Including this files makes the compiler instance the needed functions only fer types not already declared in the library
  */

@@ -23,7 +23,8 @@
 #include "vector.h"
 
 /**
- * \file Template functions for Vector::t_Iterator<T>.
+ * \file 
+ * Template functions for Vector::t_Iterator<T>.
  *
  * Not needed if T is double or const double (use vector_iterator_extern.h instead)
  */
