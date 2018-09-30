@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['derivative_2eh',['derivative.h',['../derivative_8h.html',1,'']]],
-  ['differential_2ecpp',['differential.cpp',['../differential_8cpp.html',1,'']]],
-  ['differential_2eh',['differential.h',['../differential_8h.html',1,'']]]
+  ['except_2ecpp',['except.cpp',['../except_8cpp.html',1,'']]],
+  ['except_2eh',['except.h',['../except_8h.html',1,'']]]
 ];

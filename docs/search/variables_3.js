@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['item_5fm',['item_m',['../classNumpp_1_1EnumError.html#af6e4ab1ae20ab2be7f2559b59e5bb071',1,'Numpp::EnumError']]]
+  ['maximum',['maximum',['../classNumpp_1_1Permutation.html#a7821a1e9d8b81bd8e8a465e30eeaa08c',1,'Numpp::Permutation']]]
 ];

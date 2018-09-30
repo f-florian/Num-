@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['permutation',['permutation',['../classMultiPermutation.html#a7bd8625a209e4f58027ab646b867c8a0',1,'MultiPermutation::permutation()'],['../classPermutation.html#a7bf48e0fd8b6515f54ae601853749fd3',1,'Permutation::permutation()']]],
-  ['pi',['pi',['../namespaceNumpp.html#a2017016353212eee740bafaa5eb63c06',1,'Numpp']]],
-  ['points',['points',['../classDerivative.html#a21bdd2efa5bdd826a0ad1692b6a7d898',1,'Derivative']]],
-  ['position',['position',['../classNumpp_1_1Vector_1_1t__Iterator.html#a59ea9d2a8dbab56f30b85fffb377f52d',1,'Numpp::Vector::t_Iterator']]]
+  ['size_5fm',['size_m',['../classNumpp_1_1VectorStorageLinear.html#a9f2389d4bb838879fb4a3d97c4935d4d',1,'Numpp::VectorStorageLinear::size_m()'],['../classNumpp_1_1VectorStorageSparse.html#a09dc79964e7c422036f46b0f7536116b',1,'Numpp::VectorStorageSparse::size_m()']]],
+  ['start_5fm',['start_m',['../classNumpp_1_1Mesh.html#a0ff3c953bb4f7bebb252d08599c28247',1,'Numpp::Mesh']]]
 ];

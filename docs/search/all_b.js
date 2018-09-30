@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['permutation',['Permutation',['../classPermutation.html',1,'Permutation'],['../classPermutation.html#a0f1cbea260215e9f78f532f4b9e97cb9',1,'Permutation::Permutation(size_t maximum)'],['../classPermutation.html#a72fbfa27a0cac86094d41817536bf0e6',1,'Permutation::Permutation(size_t maximum, size_t e1, size_t e2)'],['../classPermutation.html#a7143167d6d7cc6b545e2af22f0fa8169',1,'Permutation::Permutation(std::initializer_list&lt; size_t &gt; list)'],['../classPermutation.html#a1f26f5f31b273b5a0a8b8fa0b4bb6106',1,'Permutation::Permutation(size_t maximum, std::initializer_list&lt; size_t &gt; list)'],['../classPermutation.html#acab1d5e2a10ee0ade05153e7f050c485',1,'Permutation::Permutation(const Permutation &amp;other)'],['../classPermutation.html#a7574dcdd61f9097ba8f3c1a412d1d5a8',1,'Permutation::Permutation(Permutation &amp;&amp;other) noexcept'],['../classMultiPermutation.html#a7bd8625a209e4f58027ab646b867c8a0',1,'MultiPermutation::permutation()'],['../classPermutation.html#a7bf48e0fd8b6515f54ae601853749fd3',1,'Permutation::permutation()']]],
-  ['permutation_2ecpp',['permutation.cpp',['../permutation_8cpp.html',1,'']]],
-  ['permutation_2eh',['permutation.h',['../permutation_8h.html',1,'']]],
-  ['pi',['pi',['../namespaceNumpp.html#a2017016353212eee740bafaa5eb63c06',1,'Numpp']]],
-  ['points',['points',['../classDerivative.html#a21bdd2efa5bdd826a0ad1692b6a7d898',1,'Derivative']]],
-  ['position',['position',['../classNumpp_1_1Vector_1_1t__Iterator.html#a59ea9d2a8dbab56f30b85fffb377f52d',1,'Numpp::Vector::t_Iterator']]],
-  ['print',['print',['../classMultiPermutation.html#a2fb0bea8a85518a831e879cb4a38f967',1,'MultiPermutation::print()'],['../classPermutation.html#affd35f9d39b3acc0b8d15374bfb25ece',1,'Permutation::print()'],['../classNumpp_1_1Vector.html#acc7357448f5cfd7b55b8f96b7b5d0203',1,'Numpp::Vector::print()'],['../classNumpp_1_1VectorStorageLinear.html#ac39e06e49b24184d147b4b085deaf85b',1,'Numpp::VectorStorageLinear::print()'],['../classNumpp_1_1VectorStorageSparse.html#aaa8e1cd9400615b28e6d79f8e8265287',1,'Numpp::VectorStorageSparse::print()']]]
+  ['quadratureweights',['quadratureWeights',['../classNumpp_1_1Differential.html#ada871f03c33db1e133185951ba03dbf0',1,'Numpp::Differential']]],
+  ['qw',['qw',['../classNumpp_1_1Differential.html#aefbf70432eb9826a82240c1eef9e31f9',1,'Numpp::Differential']]]
 ];

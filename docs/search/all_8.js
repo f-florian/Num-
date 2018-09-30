@@ -1,11 +1,13 @@
 var searchData=
 [
-  ['max',['max',['../classNumpp_1_1Mesh.html#ac39fcfbdf39f38ace9e3a625dfa8556ba2ffe4e77325d9a7152f7086ea7aa5114',1,'Numpp::Mesh::max()'],['../namespaceNumpp.html#ab6230eb73969a22254d7cdce38cdf8cea2ffe4e77325d9a7152f7086ea7aa5114',1,'Numpp::max()']]],
-  ['maximum',['maximum',['../classPermutation.html#a7b09b886c8646f0525c7090939f082d5',1,'Permutation']]],
-  ['mesh',['Mesh',['../classNumpp_1_1Mesh.html',1,'Numpp::Mesh'],['../classNumpp_1_1Mesh.html#a89c294e11e2214aea869c36a91b32205',1,'Numpp::Mesh::Mesh(const size_t npoints, const Type type, const double start=0, const double end=1)'],['../classNumpp_1_1Mesh.html#af5dadc366bebf9bdd841ef636567f438',1,'Numpp::Mesh::Mesh(const size_t npoints, const double *data, const double start=0, const double end=1)'],['../classNumpp_1_1Mesh.html#ad10fdf4734c83bea2f39d2359e078f7e',1,'Numpp::Mesh::Mesh(const size_t npoints, double *data, const double start=0, const double end=1)'],['../classNumpp_1_1Mesh.html#a0c00a6cfaece018b05ca46bc9b4de56e',1,'Numpp::Mesh::Mesh(const Mesh &amp;other)'],['../classNumpp_1_1Mesh.html#a52364e09c5287bbe325e69f3ebd19591',1,'Numpp::Mesh::Mesh(Mesh &amp;&amp;other) noexcept']]],
-  ['mesh_2ecpp',['mesh.cpp',['../mesh_8cpp.html',1,'']]],
-  ['mesh_2eh',['mesh.h',['../mesh_8h.html',1,'']]],
-  ['multipermutation',['MultiPermutation',['../classMultiPermutation.html',1,'MultiPermutation'],['../classMultiPermutation.html#a8ac5380788b843ba7192862170f5738e',1,'MultiPermutation::MultiPermutation(const size_t size)'],['../classMultiPermutation.html#a439c4fac4e9326950b7209075ee852e4',1,'MultiPermutation::MultiPermutation(std::initializer_list&lt; size_t &gt; list)'],['../classMultiPermutation.html#ab41c7f971568bbd982945fa37e596fe3',1,'MultiPermutation::MultiPermutation(const size_t start, const size_t end, const long step=1)'],['../classMultiPermutation.html#a7e359d261a0ed55c00d443d1754fd56a',1,'MultiPermutation::MultiPermutation(const size_t start, const size_t size)'],['../classMultiPermutation.html#a137aa27187be7b7387d14733519e63a9',1,'MultiPermutation::MultiPermutation(const MultiPermutation &amp;other)'],['../classMultiPermutation.html#a449219142fad2a9b7b785378f164c019',1,'MultiPermutation::MultiPermutation(MultiPermutation &amp;&amp;other) noexcept']]],
-  ['multipermutation_2ecpp',['multipermutation.cpp',['../multipermutation_8cpp.html',1,'']]],
-  ['multipermutation_2eh',['multipermutation.h',['../multipermutation_8h.html',1,'']]]
+  ['constants',['Constants',['../namespaceNumpp_1_1Constants.html',1,'Numpp']]],
+  ['enumutils',['EnumUtils',['../namespaceNumpp_1_1EnumUtils.html',1,'Numpp']]],
+  ['node',['node',['../classNumpp_1_1Mesh.html#a05a64dff7448021f0811f3c144a1f285',1,'Numpp::Mesh']]],
+  ['nodes',['nodes',['../classNumpp_1_1Differential.html#a4e3cc33d2f4be7c79475652cc87998b8',1,'Numpp::Differential::nodes()'],['../classNumpp_1_1Mesh.html#a2cac2131ed3c0ac7739043a4a5c3d538',1,'Numpp::Mesh::nodes()']]],
+  ['nodes_5fm',['nodes_m',['../classNumpp_1_1Mesh.html#a8fa05307a96b871ae3295a061134c710',1,'Numpp::Mesh']]],
+  ['nodesx',['nodesx',['../classNumpp_1_1Differential.html#aef3e0755f857bd4f0422cf3b07584951',1,'Numpp::Differential']]],
+  ['nodetype',['nodeType',['../classNumpp_1_1Mesh.html#a50bd2f10af5853fb45ca6239d36eaafb',1,'Numpp::Mesh']]],
+  ['none',['None',['../classNumpp_1_1Mesh.html#ac39fcfbdf39f38ace9e3a625dfa8556ba6adf97f83acf6453d4a6a4b1070f3754',1,'Numpp::Mesh']]],
+  ['npoints',['npoints',['../classNumpp_1_1Differential.html#a89dd04759f698b88ddc2ec73435e2a59',1,'Numpp::Differential']]],
+  ['numpp',['Numpp',['../namespaceNumpp.html',1,'']]]
 ];

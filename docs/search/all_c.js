@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['quadratureweights',['quadratureWeights',['../classBiDifferential.html#a83048aa85f8a815b57baf6c04010852a',1,'BiDifferential::quadratureWeights()'],['../classNumpp_1_1Differential.html#ada871f03c33db1e133185951ba03dbf0',1,'Numpp::Differential::quadratureWeights()']]],
-  ['qw',['qw',['../classNumpp_1_1Differential.html#aefbf70432eb9826a82240c1eef9e31f9',1,'Numpp::Differential']]]
+  ['readme',['Readme',['../md_Readme.html',1,'']]],
+  ['readme_2ecpp',['readme.cpp',['../readme_8cpp.html',1,'']]],
+  ['readme_2emd',['Readme.md',['../Readme_8md.html',1,'']]],
+  ['resize',['resize',['../classNumpp_1_1Vector.html#ab5b209d2a369daaee89cad3855824bce',1,'Numpp::Vector']]]
 ];

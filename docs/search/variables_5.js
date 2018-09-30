@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['maximum',['maximum',['../classPermutation.html#a7b09b886c8646f0525c7090939f082d5',1,'Permutation']]]
+  ['permutation',['permutation',['../classNumpp_1_1Permutation.html#aa7230656c69896d59d57a134652ff1ab',1,'Numpp::Permutation']]],
+  ['pi',['pi',['../namespaceNumpp_1_1Constants.html#ac46c5e7a0b3f107bb1569875a0d39699',1,'Numpp::Constants']]],
+  ['position',['position',['../classNumpp_1_1Vector_1_1t__Iterator.html#a59ea9d2a8dbab56f30b85fffb377f52d',1,'Numpp::Vector::t_Iterator']]]
 ];
