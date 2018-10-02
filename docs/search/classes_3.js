@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['permutation',['Permutation',['../classNumpp_1_1Permutation.html',1,'Numpp']]]
+  ['mesh',['Mesh',['../classNumpp_1_1Mesh.html',1,'Numpp']]]
 ];
