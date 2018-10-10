@@ -9,12 +9,12 @@ set(definitions cmake_MAJOR=${PROJECT_VERSION_MAJOR} cmake_MINOR=${PROJECT_VERSI
 set(coptions -pipe -O2 -Werror)
 # set subdirectories to add
 # set(utilities subdirectory_1  ... subdirectory_n)
-set(utilities utility vector differential)
+set(utilities utility vector differential permutation)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 # set complete compile flags depending on the compiler
 if(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")
-  list(APPEND coptions -Weverything -fno-common --std=c++17 -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-zero-as-null-pointer-constant -Wno-vla-extension -Wno-vla -Wno-covered-switch-default -Wno-padded -Wno-float-equal)
+  list(APPEND coptions -Weverything -fno-common --std=c++17 -Wno-c++98-compat -Wno-c++98-compat-pedantic -Wno-zero-as-null-pointer-constant -Wno-vla-extension -Wno-vla -Wno-covered-switch-default -Wno-padded -Wno-float-equal -fcomment-block-commands=file)
 elseif(${CMAKE_CXX_COMPILER_ID} STREQUAL "GNU")
   list(APPEND coptions -Wall -W -Wconversion -Wshadow -Wpointer-arith -Wcast-qual -Wcast-align -Wwrite-strings -fno-common --std=gnu++17)
 else(${CMAKE_CXX_COMPILER_ID} STREQUAL "Clang")

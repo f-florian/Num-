@@ -1,4 +1,4 @@
-set(sources "permutation.cpp")
+set(sources "indexset.cpp")
 set(linklibs " ")
 set(properties " ")
 set(targets " ")

@@ -18,6 +18,7 @@
 
 #include <string>
 #include <initializer_list>
+#include <vector>
 
 namespace Numpp {
     /**
@@ -52,11 +53,11 @@ namespace Numpp {
         size_t at(const size_t point) const;                                                        //!< Accessindex at given position
         void swap(IndexSet &other) noexcept;                                                        //!< Swap with other element
     private:
-        vector<size_t> permutation;                                                                 //!< Internal representation
+        std::vector<size_t> permutation;                                                                 //!< Internal representation
     };
 }
 
 
 namespace std {
-    void swap(IndexSet &a, IndexSet &b) noexcept;                                                   //!< Swap function for std
+    void swap(Numpp::IndexSet &a, Numpp::IndexSet &b) noexcept;                                                   //!< Swap function for std
 }
