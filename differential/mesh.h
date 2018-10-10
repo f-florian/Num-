@@ -19,7 +19,6 @@
 #define MESH_H
 
 #include "vectorstorage.h"
-#include <iterator>
 
 namespace Numpp
 {
@@ -34,43 +33,42 @@ namespace Numpp
 	 */
 	enum class Type
 	    {
-	     Gauss,                                                                                                          //!< Gauss nodes
-	     Chebyshev,                                                                                                      //!< Chebyshev nodes
-             Custom,                                                                                                            //!< User defined type
-	     None,                                                                                                              //!< No type
+	     Gauss,                                                                                 //!< Gauss nodes
+	     Chebyshev,                                                                             //!< Chebyshev nodes
+             Custom,                                                                                //!< User defined type
+	     None,                                                                                  //!< No type
 	     max=None
 	    };
 
-	Mesh(const size_t npoints, const Type type, const double start=0, const double end=1);                                            //!< Construct a mesh of npoints nodes of type type, located in [start,end]
-	Mesh(const size_t npoints, const double *data, const double start=0, const double end=1);                                         //!< Construct a mesh of npoints nodes given in input as data ,located in [start,end]
-	Mesh(const size_t npoints, double *data, const double start=0, const double end=1);                                             //!< Construct a mesh of npoints nodes given in input as data ,located in [start,end]
-	Mesh(const Mesh &other);                                                                                            //!< Copy constructor
+	Mesh(const size_t npoints, const Type type, const double start=0, const double end=1);      //!< Construct a mesh of npoints nodes of type type, located in [start,end]
+	Mesh(const size_t npoints, const double *data, const double start=0, const double end=1);   //!< Construct a mesh of npoints nodes given in input as data ,located in [start,end]
+	Mesh(const size_t npoints, double *data, const double start=0, const double end=1);         //!< Construct a mesh of npoints nodes given in input as data ,located in [start,end]
+	Mesh(const Mesh &other);                                                                    //!< Copy constructor
 
-	~Mesh();                                                                                                            //!< Destructor
-	Mesh(Mesh &&other) noexcept;                                                                                            //!< Move constructor
+	~Mesh();                                                                                    //!< Destructor
+	Mesh(Mesh &&other) noexcept;                                                                //!< Move constructor
 
-	Mesh& operator=(const Mesh &other);
-	Mesh& operator=(Mesh &&other) noexcept;
+	Mesh& operator=(const Mesh &other);                                                         //!< Copy assignment
+	Mesh& operator=(Mesh &&other) noexcept;                                                     //!< Move assignment
     
-	bool operator==(const Mesh &other) const;                                                                                 //!< Compare objects (equality)
-	bool operator!=(const Mesh &other) const;                                                                                 //!< Compare objects (inequality)
+	bool operator==(const Mesh &other) const;                                                   //!< Compare objects (equality)
+	bool operator!=(const Mesh &other) const;                                                   //!< Compare objects (inequality)
 
-	size_t size() const noexcept;                                                                                                      //!< Get size
-	double node(const size_t index) const;
-	double* data() const noexcept;
-	double operator[](const size_t position) const noexcept;
-	const double* nodes() const;
-	double* stealNodes();
+	size_t size() const noexcept;                                                               //!< Get size
+	double node(const size_t index) const;                                                      //!< Get node position by index
+	const double* nodes() const;                                                                //!< Get a read only C-style vector of nodes
+	double* stealNodes();                                                                       //!< Steal nodes from class
 
-	void scaleTranslate(const double offset, const double scale) noexcept;
-	void addNode(const double point, const size_t position);
-	void addNode(const double point);
-	void swap(Mesh &other);
-	Type nodeType() const noexcept;
+	void scaleTranslate(const double offset, const double scale) noexcept;                      //!< Transform all nodes using the given affinity
+	void addNode(const double point, const size_t position);                                    //!< Add a node to the mesh
+	void addNode(const double point);                                                           //!< Add a node to the end of the mesh
+	void swap(Mesh &other);                                                                     //!< Swap with other Object
+	Type nodeType() const noexcept;                                                             //!< Return node type
     private:
-	double start_m, end_m;
-	Type type_m;
-	VectorStorageLinear nodes_m;
+	double start_m;                                                                             //!< First extreme of the interval where intervals are defined
+        doubre end_m;                                                                               //!< Second extreme of the interval where intervals are defined
+	Type type_m;                                                                                //!< Nodes type
+	VectorStorageLinear nodes_m;                                                                //!< Memory representation of the nodes
     };
 }
 #endif // MESH_H
