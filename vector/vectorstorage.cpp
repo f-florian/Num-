@@ -27,7 +27,7 @@
 namespace Numpp {
     /**
      * Constructed Vector has size 0, and ha data is a null pointer
-     *
+     */
     VectorStorageLinear::VectorStorageLinear()
     {
         data_m=nullptr;
@@ -88,7 +88,7 @@ namespace Numpp {
         size_m=other.size_m;
     }
     /**
-     * \param Vector to move
+     * \param other Vector to move
      */
     VectorStorageLinear::VectorStorageLinear(VectorStorageLinear &&other)
     {
@@ -152,7 +152,7 @@ namespace Numpp {
         return tmp;
     }
     /**
-     * \param Iterator to advance
+     * \param it Iterator to advance
      *
      * Since this class uses dense storage this advances Iterator regularly
      */

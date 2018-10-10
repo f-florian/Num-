@@ -172,10 +172,10 @@ namespace Numpp {
         position--;
     }
     /**
-     * \param unused parameter used to dddistinguish between pre- and post- decrement
+     * \param dummy Unused parameter used to dddistinguish between pre- and post- decrement
      */
     template<typename T>
-    void Vector::t_Iterator<T>::operator--([[maybe_unused]] int)
+    void Vector::t_Iterator<T>::operator--([[maybe_unused]] int dummy)
     {
         if(position==0)
             throw(std::range_error("Trying to move iterator to a negative position"));
