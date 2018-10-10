@@ -50,7 +50,7 @@ namespace Numpp {
         std::string print() const noexcept;                                                         //!< Print in a standardized anh human readable form 
         size_t operator[](const size_t point) const noexcept;                                       //!< Accessindex at given position
         size_t at(const size_t point) const;                                                        //!< Accessindex at given position
-        void swap(IndexSet &&other) noexcept;                                                       //!< Swap with other element
+        void swap(IndexSet &other) noexcept;                                                        //!< Swap with other element
     private:
         vector<size_t> permutation;                                                                 //!< Internal representation
     };
