@@ -56,3 +56,7 @@ namespace Numpp {
     };
 }
 
+
+namespace std {
+    void swap(IndexSet &a, IndexSet &b) noexcept;                                                   //!< Swap function for std
+}
