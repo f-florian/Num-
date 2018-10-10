@@ -49,7 +49,7 @@ namespace Numpp
 	case Mesh::Type::Chebyshev: {
 	    nodesx=new double[npoints];
 	    for (int i = 0; i < npoints; ++i)
-		nodesx[i]=(cos(pi*i/(npoints-1))+1)/2;
+		nodesx[i]=(cos(Constants::pi*i/(npoints-1))+1)/2;
 	    qw=static_cast<double*>(calloc(2*npoints-2,sizeof(double)));
 	    if (qw==NULL)
 		throw runtime_error("calloc failed");

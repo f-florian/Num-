@@ -38,7 +38,7 @@ namespace Numpp
         case Type::Chebyshev: {
             nodes_m.resize(npoints);
             for (size_t i = 0; i < npoints; ++i)
-                nodes_m.set(i,(cos(pi*i/(npoints-1))+1)/2);
+                nodes_m.set(i,(cos(Constants::pi*i/(npoints-1))+1)/2);
             break;
         }
         case Type::Custom:

@@ -66,7 +66,7 @@ namespace Numpp
 	Type nodeType() const noexcept;                                                             //!< Return node type
     private:
 	double start_m;                                                                             //!< First extreme of the interval where intervals are defined
-        doubre end_m;                                                                               //!< Second extreme of the interval where intervals are defined
+        double end_m;                                                                               //!< Second extreme of the interval where intervals are defined
 	Type type_m;                                                                                //!< Nodes type
 	VectorStorageLinear nodes_m;                                                                //!< Memory representation of the nodes
     };
