@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['data',['data',['../classNumpp_1_1Vector_1_1t__Iterator.html#a3a189362180a59761e843d1f2ae4216a',1,'Numpp::Vector::t_Iterator::data()'],['../classNumpp_1_1Mesh.html#a20710276e57656967ee90266556eefe6',1,'Numpp::Mesh::data()'],['../classNumpp_1_1VectorStorageLinear.html#af9f1917d37711ccb822797b6a7895d6e',1,'Numpp::VectorStorageLinear::data()']]],
+  ['data',['data',['../classNumpp_1_1Vector_1_1t__Iterator.html#a3a189362180a59761e843d1f2ae4216a',1,'Numpp::Vector::t_Iterator::data()'],['../classNumpp_1_1VectorStorageLinear.html#af9f1917d37711ccb822797b6a7895d6e',1,'Numpp::VectorStorageLinear::data()']]],
   ['data_5fm',['data_m',['../classNumpp_1_1VectorStorageLinear.html#a39ae9b7ac49e9394378843d1b058a6f2',1,'Numpp::VectorStorageLinear::data_m()'],['../classNumpp_1_1VectorStorageSparse.html#a482187ae14f6742fe3aef472fd96a68a',1,'Numpp::VectorStorageSparse::data_m()']]],
   ['dense',['Dense',['../namespaceNumpp.html#ab6230eb73969a22254d7cdce38cdf8cea9a71a13863c84ba34fc41595fc2ee0c6',1,'Numpp']]],
   ['diff_5ft',['diff_t',['../classNumpp_1_1Vector_1_1t__Iterator.html#aeb754a3cb59b123c5d141191e8c6a6f0',1,'Numpp::Vector::t_Iterator']]],
