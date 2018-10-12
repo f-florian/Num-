@@ -248,6 +248,15 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a mesh of npoints nodes of type type, located in [start,end]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">npoints</td><td>Number of points of the mesh </td></tr>
+    <tr><td class="paramname">type</td><td>Nodes type </td></tr>
+    <tr><td class="paramname">start</td><td>First extreme of the interval where nodes are defined </td></tr>
+    <tr><td class="paramname">end</td><td>Second extreme of the interval where nodes are defined </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -290,6 +299,15 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a mesh of npoints nodes given in input as data ,located in [start,end]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">npoints</td><td>Number of points of the mesh </td></tr>
+    <tr><td class="paramname">data</td><td>C style vector holding nodes positions </td></tr>
+    <tr><td class="paramname">start</td><td>First extreme of the interval where nodes are defined </td></tr>
+    <tr><td class="paramname">end</td><td>Second extreme of the interval where nodes are defined </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -332,6 +350,15 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Construct a mesh of npoints nodes given in input as data ,located in [start,end]. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">npoints</td><td>Number of points of the mesh </td></tr>
+    <tr><td class="paramname">data</td><td>C style vector holding nodes positions </td></tr>
+    <tr><td class="paramname">start</td><td>First extreme of the interval where nodes are defined </td></tr>
+    <tr><td class="paramname">end</td><td>Second extreme of the interval where nodes are defined </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -352,6 +379,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Copy constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Objectt to copy </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -399,6 +432,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Move constructor. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Objectt to move </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -450,6 +489,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Add a node to the end of the mesh. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">point</td><td>Node coordinates </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -470,6 +515,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get node position by index. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">index</td><td>Node index </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Node indexed by index </dd></dl>
 
 </div>
 </div>
@@ -489,6 +541,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get a read only C-style vector of nodes. </p>
+<dl class="section return"><dt>Returns</dt><dd>Constant c style vector of nodes </dd></dl>
 
 </div>
 </div>
@@ -536,6 +589,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compare objects (inequality) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Second object to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>false if intervals extremes and all nodes are the same, in the same order, true otherwise </dd></dl>
 
 </div>
 </div>
@@ -556,6 +616,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Copy assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Objectt to copy </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Copied object </dd></dl>
 
 </div>
 </div>
@@ -584,6 +651,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Move assignment. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Objectt to move </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Moved object </dd></dl>
 
 </div>
 </div>
@@ -604,6 +678,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Compare objects (equality) </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Second object to compare </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if intervals extremes and all nodes are the same, in the same order, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -642,6 +723,13 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Transform all nodes using the given affinity. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">offset</td><td>Translation value </td></tr>
+    <tr><td class="paramname">scale</td><td>Scaling parameter </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -669,6 +757,7 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Get size. </p>
+<dl class="section return"><dt>Returns</dt><dd>number of nodes in the mesh </dd></dl>
 
 </div>
 </div>
@@ -708,6 +797,12 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Swap with other Object. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">other</td><td>Object to swap </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
