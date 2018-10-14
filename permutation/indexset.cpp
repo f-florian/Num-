@@ -206,10 +206,3 @@ namespace Numpp {
         permutation.swap(other.permutation);
     }
 }
-
-namespace std {
-    void swap(Numpp::IndexSet &a, Numpp::IndexSet &b) noexcept
-    {
-        a.swap(b);
-    }
-}

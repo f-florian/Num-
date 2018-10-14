@@ -63,5 +63,5 @@ namespace Numpp{
 }
 
 namespace std {
-    void swap(Permutation &a, Permutation &b) noexcept;                                             //!< Swap with other permutation
+    inline void swap(Permutation &a, Permutation &b) noexcept {a.swap(b);}                          //!< Swap with other permutation
 }
