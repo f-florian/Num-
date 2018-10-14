@@ -73,7 +73,7 @@ namespace Numpp
 }
 
 namespace std {
-    inline void swap(Mesh &a, Mesh &b) noexcept {a.swap(b);}                                        //!< Swap function for std:: algorithms
+    inline void swap(Numpp::Mesh &a, Numpp::Mesh &b) noexcept {a.swap(b);}                                        //!< Swap function for std:: algorithms
 }
 
 #endif // MESH_H
