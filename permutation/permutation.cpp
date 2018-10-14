@@ -194,7 +194,7 @@ namespace Numpp {
         permutation[x1]=permutation[x2];
         permutation[x2]=tmp;
     }             
-    void Permutation::swap(Permutation &&other) noexcept
+    void Permutation::swap(Permutation &other) noexcept
     {
         size_t *tmpp=permutation;
         size_t tmp=maximum;

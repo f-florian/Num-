@@ -277,13 +277,3 @@ namespace Numpp {
         return tmp; 
     }
 }
-namespace std {
-    void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b)
-    {
-        a.swap(b);
-    }
-    void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b)
-    {
-        a.swap(b);
-    }
-}

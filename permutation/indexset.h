@@ -15,7 +15,6 @@
  * You should have received a copy of the GNU General Public License
  * along with Num++.  If not, see <http://www.gnu.org/licenses/>.
  ***************************************************************************/
-
 #include <string>
 #include <initializer_list>
 #include <vector>
@@ -53,11 +52,11 @@ namespace Numpp {
         size_t at(const size_t point) const;                                                        //!< Accessindex at given position
         void swap(IndexSet &other) noexcept;                                                        //!< Swap with other element
     private:
-        std::vector<size_t> permutation;                                                                 //!< Internal representation
+        std::vector<size_t> permutation;                                                            //!< Internal representation
     };
 }
 
 
 namespace std {
-    void swap(Numpp::IndexSet &a, Numpp::IndexSet &b) noexcept;                                                   //!< Swap function for std
+    inline void swap(Numpp::IndexSet &a, Numpp::IndexSet &b) noexcept {a.swap(b);}                  //!< Swap function for std
 }

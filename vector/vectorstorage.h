@@ -119,8 +119,8 @@ namespace Numpp{
 }
 
 namespace std {
-    void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b);                        //!< Swap Vectors of the same type; non-member version
-    void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b);                        //!< Swap Vectors of the same type; non-member version
+    inline void swap(Numpp::VectorStorageSparse &a, Numpp::VectorStorageSparse &b) {a.swap(b);}     //!< Swap Vectors of the same type; non-member version
+    inline void swap(Numpp::VectorStorageLinear &a, Numpp::VectorStorageLinear &b) {a.swap(b);}     //!< Swap Vectors of the same type; non-member version
 }
 
 #endif /* VECTORSTORAGE_H */

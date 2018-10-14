@@ -71,4 +71,9 @@ namespace Numpp
 	VectorStorageLinear nodes_m;                                                                //!< Memory representation of the nodes
     };
 }
+
+namespace std {
+    inline void swap(Mesh &a, Mesh &b) noexcept {a.swap(b);}                                        //!< Swap function for std:: algorithms
+}
+
 #endif // MESH_H
