@@ -31,15 +31,15 @@ namespace Numpp{
     class VectorStorageLinear : public Vector
     {
     public:
-        virtual VectorStorageLinear();                                                              //!< Empty constructor
-        virtual VectorStorageLinear(const size_t size);                                             //!< Constuct Vector of given size and fill with 0
-        virtual VectorStorageLinear(const size_t size, const double fill);                          //!< Constuct Vector of given size and fill with given value
-        virtual VectorStorageLinear(const Vector * const other);                                    //!< Copy vector
-        virtual VectorStorageLinear(const VectorStorageLinear &other);                              //!< Copy Vector of same type
-        virtual VectorStorageLinear(VectorStorageLinear &&other);                                   //!< Move Vector of same type
+        VectorStorageLinear();                                                                      //!< Empty constructor
+        VectorStorageLinear(const size_t size);                                                     //!< Constuct Vector of given size and fill with 0
+        VectorStorageLinear(const size_t size, const double fill);                                  //!< Constuct Vector of given size and fill with given value
+        VectorStorageLinear(const Vector * const other);                                            //!< Copy vector
+        VectorStorageLinear(const VectorStorageLinear &other);                                      //!< Copy Vector of same type
+        VectorStorageLinear(VectorStorageLinear &&other);                                           //!< Move Vector of same type
         virtual VectorStorageLinear& operator=(const VectorStorageLinear &other);                   //!< Copy Vector and assign
         virtual VectorStorageLinear& operator=(VectorStorageLinear &&other);                        //!< Move Vector and assign
-        virtual ~VectorStorageLinear();                                                             //!< Destructor
+        ~VectorStorageLinear();                                                                     //!< Destructor
         virtual void assign(const size_t size, double * const data);                                //!< Assign content from a standard c array
         virtual const double* data() const;                                                         //!< Return data in form of a standard c array
         virtual double* stealData();                                                                //!< Return data in form of a standard c array, sstealing it from the object
@@ -74,12 +74,12 @@ namespace Numpp{
     class VectorStorageSparse : public Vector
     {
     public:
-        virtual VectorStorageSparse();                                                              //!< Empty constructor
-        virtual VectorStorageSparse(const size_t idx, const double value);                          //!< Construct Vector with given value at position and 0 otherwise
-        virtual VectorStorageSparse(const Vector * const other);                                    //!< Copy vector
-        virtual VectorStorageSparse(const VectorStorageSparse &other);                              //!< Copy Vector of same type
-        virtual VectorStorageSparse(VectorStorageSparse &&other) noexcept;                          //!< Move Vector of same type
-        virtual ~VectorStorageSparse();                                                             //!< Destructor
+        VectorStorageSparse();                                                                      //!< Empty constructor
+        VectorStorageSparse(const size_t idx, const double value);                                  //!< Construct Vector with given value at position and 0 otherwise
+        VectorStorageSparse(const Vector * const other);                                            //!< Copy vector
+        VectorStorageSparse(const VectorStorageSparse &other);                                      //!< Copy Vector of same type
+        VectorStorageSparse(VectorStorageSparse &&other) noexcept;                                  //!< Move Vector of same type
+        ~VectorStorageSparse();                                                                     //!< Destructor
         virtual Vector* operator+(const Vector* const other) const;                                 //!< Sum Vector
         virtual void operator+=(const Vector* const other);                                         //!< Sum Vector and assign to this
         virtual Vector* operator-(const Vector* const other) const;                                 //!< Subtract Vector
@@ -93,16 +93,16 @@ namespace Numpp{
         virtual bool operator>=(const Vector* const other) const noexcept;                          //!< Comparison (greater or equal)
         virtual bool operator<(const Vector* const other) const noexcept;                           //!< Comparison (less)
         virtual bool operator>(const Vector* const other) const noexcept;                           //!< Comparison (greater)
-        virtual virtual Iterator begin() noexcept;                                                  //!< Return Iterator to begin
-        virtual virtual Iterator end() noexcept;                                                    //!< Return Iterator to end
-        virtual virtual Iterator storageBegin() noexcept;                                           //!< Return Iterator to storage begin
-        virtual virtual Iterator storageEnd() noexcept;                                             //!< Return Iterator to storage end
-        virtual virtual ConstIterator cbegin() const noexcept;                                      //!< Return ConstIterator to begin
-        virtual virtual ConstIterator cend() const noexcept;                                        //!< Return ConstIterator to end
-        virtual virtual ConstIterator storagecBegin() const noexcept;                               //!< Return ConstIterator to storage begin
-        virtual virtual ConstIterator storagecEnd() const noexcept;                                 //!< Return ConstIterator to storage end
-        virtual virtual void storageAdvance(Iterator &it) const;                                    //!< Advance in storage
-        virtual virtual void storageAdvance(ConstIterator &it) const;                               //!< Advance in storage
+        virtual Iterator begin() noexcept;                                                          //!< Return Iterator to begin
+        virtual Iterator end() noexcept;                                                            //!< Return Iterator to end
+        virtual Iterator storageBegin() noexcept;                                                   //!< Return Iterator to storage begin
+        virtual Iterator storageEnd() noexcept;                                                     //!< Return Iterator to storage end
+        virtual ConstIterator cbegin() const noexcept;                                              //!< Return ConstIterator to begin
+        virtual ConstIterator cend() const noexcept;                                                //!< Return ConstIterator to end
+        virtual ConstIterator storagecBegin() const noexcept;                                       //!< Return ConstIterator to storage begin
+        virtual ConstIterator storagecEnd() const noexcept;                                         //!< Return ConstIterator to storage end
+        virtual void storageAdvance(Iterator &it) const;                                            //!< Advance in storage
+        virtual void storageAdvance(ConstIterator &it) const;                                       //!< Advance in storage
         virtual double operator[](const size_t point) const noexcept;                               //!< Access element
         virtual void set(const size_t point, const double val);                                     //!< Set value at position
         virtual std::string print() const noexcept;                                                 //!< Write Vector to string in a standardized manner
