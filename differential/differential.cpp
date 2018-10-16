@@ -18,6 +18,7 @@
 
 #include <cmath>
 #include <stdexcept>
+#include <cstring>
 #include <gsl/gsl_integration.h>
 #include <gsl/gsl_fft_real.h>
 #include "differential.h"
@@ -28,26 +29,30 @@ using namespace std;
 namespace Numpp
 {
     /**
-     * @param npoints_p number of points in the mesh 
+     * \param npoints Number of points in the mesh 
+     * \param type Nodes type
      */
-    Differential::Differential(const unsigned short npoints_p, const Mesh::Type type)
-	:npoints(npoints_p)
+    Differential::Differential(const unsigned short npoints, const Mesh::Type type)
+        : Mesh()
     {
+        start_m=0;
+        end_m=1;
+        type_m=type;
 	// allocate differentiation weights
 	dw=new double[npoints*npoints];
-	// populate nodes and quadrature weights based on chosen type 
+	// populate nodes and quadrature weights based on chosen type
 	switch (type) {
 	case Mesh::Type::Gauss: {
 	    gsl_integration_fixed_workspace *iws=gsl_integration_fixed_alloc(gsl_integration_fixed_legendre, npoints, 0,1,0,0);
 	    // steal data from gsl struct
-	    nodesx=iws->x;
-	    iws->x=NULL;
+            nodes_m.assign(npoints, iws->x);
+ 	    iws->x=NULL;
 	    qw=iws->weights;
 	    iws->weights=NULL;
 	    gsl_integration_fixed_free(iws);
 	} break;
 	case Mesh::Type::Chebyshev: {
-	    nodesx=new double[npoints];
+	    double *nodesx=new double[npoints];
 	    for (int i = 0; i < npoints; ++i)
 		nodesx[i]=(cos(Constants::pi*i/(npoints-1))+1)/2;
 	    qw=static_cast<double*>(calloc(2*npoints-2,sizeof(double)));
@@ -69,6 +74,7 @@ namespace Numpp
 	    for (int i = 1; i < npoints-1; ++i)
 		qw[i]+=qw[2*npoints-2-i];
 	    qw=static_cast<double*>(realloc(qw,sizeof(double)*npoints));
+            nodes_m.assign(npoints, nodesx);
 	} break;
         case Mesh::Type::None:
             [[fallthrough]];
@@ -81,20 +87,20 @@ namespace Numpp
 	double difftmp[npoints*npoints];
 	// barycentric weights
 	w=new double[npoints];
-	for(int i=0;i<npoints;i++){
+	for(size_t i=0;i<npoints;i++){
 	    w[i]=1;
 	    dw[i*npoints+i]=0;
-	    for(int j=0;j<i;j++){
-		difftmp[i*npoints+j]=nodesx[i]-nodesx[j];
+	    for(size_t j=0;j<i;j++){
+		difftmp[i*npoints+j]=nodes_m[i]-nodes_m[j];
 		w[i]*=difftmp[i*npoints+j];
 		w[j]*=-difftmp[i*npoints+j];
 		//dw[i*npoints+i]+=1/difftmp[i*npoints+j];
 		//dw[j*npoints+j]-=1/difftmp[i*npoints+j];
 	    }
 	}
-	for(int i=0;i<npoints;i++) {
+	for(size_t i=0;i<npoints;i++) {
 	    dw[i*npoints+i]=0;
-	    for(int j=0;j<i;j++) {
+	    for(size_t j=0;j<i;j++) {
 		// li'(xj)=wi/wj/(xj-xi): barycentric formula
 		dw[i*npoints+j]=-w[j]/w[i]/difftmp[i*npoints+j];
 		dw[j*npoints+i]=w[i]/w[j]/difftmp[i*npoints+j];
@@ -104,49 +110,48 @@ namespace Numpp
 	}
 #ifdef ___DEBUG_PRINT
 	for(int i=0;i<npoints;i++)
-	    fprintf(stderr,"libdifferential (debug): weight[%d]=%e, nodes[%d]=%e, qw[%d]=%e\n", i, w[i], i,nodesx[i], i, qw[i]);
+	    fprintf(stderr,"libdifferential (debug): weight[%d]=%e, nodes[%d]=%e, qw[%d]=%e\n", i, w[i], i,nodes_m[i], i, qw[i]);
 	for(int i=0;i<npoints*npoints;i++)
 	    fprintf(stderr,"libdifferential (debug): dw[%d]=%lf\n",i, dw[i]);
 #endif
     }
-
-    Differential::Differential(const Differential &other) {
-	nodesx=new double[npoints];
+    Differential::Differential(const Differential &other)
+        : Mesh(other)
+    {
+        auto npoints=other.nodes_m.size();
 	w=new double[npoints];
 	qw=new double[npoints];
 	dw=new double[npoints*npoints];
-	npoints=other.npoints;
-	memcpy(nodesx, other.nodesx, npoints*sizeof(double));
-	memcpy(qw, other.qw, npoints*sizeof(double));
-	memcpy(w, other.w, npoints*sizeof(double));
-	memcpy(dw, other.dw, npoints*npoints*sizeof(double));
+	std::memcpy(qw, other.qw, npoints*sizeof(double));
+	std::memcpy(w, other.w, npoints*sizeof(double));
+	std::memcpy(dw, other.dw, npoints*npoints*sizeof(double));
+    }
+    Differential::Differential(Differential &&other) noexcept
+        :Mesh(std::move(other))
+    {
+	qw=other.qw;
+	dw=other.dw;
+	w=other.w;
+	other.qw=nullptr;
+	other.dw=nullptr;
+	other.w=nullptr;
     }
     
-    Differential::Differential(Differential &&other) noexcept {
-	npoints=other.npoints;
-	nodesx=other.nodesx;
-	qw=other.qw;
-	dw=other.dw;
-	w=other.w;
-	other.qw=nullptr;
-	other.dw=nullptr;
-	other.w=nullptr;
-    }
-    Differential& Differential::operator=(const Differential &other){
-	nodesx=new double[npoints];
+    Differential& Differential::operator=(const Differential &other)
+    {
+        nodes_m=other.nodes_m;
+        auto npoints=nodes_m.size();
 	w=new double[npoints];
 	qw=new double[npoints];
 	dw=new double[npoints*npoints];
-	npoints=other.npoints;
-	memcpy(nodesx, other.nodesx, npoints*sizeof(double));
-	memcpy(qw, other.qw, npoints*sizeof(double));
-	memcpy(w, other.w, npoints*sizeof(double));
-	memcpy(dw, other.dw, npoints*npoints*sizeof(double));
+	std::memcpy(qw, other.qw, npoints*sizeof(double));
+	std::memcpy(w, other.w, npoints*sizeof(double));
+	std::memcpy(dw, other.dw, npoints*npoints*sizeof(double));
         return *this;
     }
-    Differential& Differential::operator=(Differential &&other) noexcept{
-        npoints=other.npoints;
-	nodesx=other.nodesx;
+    Differential& Differential::operator=(Differential &&other) noexcept
+    {
+        nodes_m=std::move(other.nodes_m);
 	qw=other.qw;
 	dw=other.dw;
 	w=other.w;
@@ -156,31 +161,52 @@ namespace Numpp
         return *this;
     }
 
-    Differential::~Differential(){
+    Differential::~Differential()
+    {
 	delete qw;
 	delete dw;
-	delete nodesx;
+	delete w;
     }
 
-    bool Differential::operator==(const Differential &other) const noexcept{
-	return ((npoints==other.npoints) && (nodesx==other.nodesx) && (qw==other.qw) && (dw==other.dw));
+    bool Differential::operator==(const Differential &other) const noexcept
+    {
+        if(Mesh::operator!=(other))
+            return false;
+        for(size_t idx = 0; idx < nodes_m.size(); ++idx){
+            if((qw[idx] != other.qw[idx]) || (w[idx] != other.w[idx]))
+                return false;
+        }
+	for(size_t idx = 0; idx < nodes_m.size() * nodes_m.size(); ++idx){
+            if(dw[idx] != other.dw[idx])
+                return false;
+        }
+	return true;
     }
-    bool Differential::operator!=(const Differential &other) const noexcept{
-	return ((npoints!=other.npoints) || (nodesx!=other.nodesx) || (qw!=other.qw) || (dw!=other.dw));
+    bool Differential::operator!=(const Differential &other) const noexcept
+    {
+        if(Mesh::operator!=(other))
+            return true;
+        for(size_t idx = 0; idx < nodes_m.size(); ++idx){
+            if((qw[idx] != other.qw[idx]) || (w[idx] != other.w[idx]))
+                return true;
+        }
+	for(size_t idx = 0; idx < nodes_m.size() * nodes_m.size(); ++idx){
+            if(dw[idx] != other.dw[idx])
+                return true;
+        }
+	return false;
     }
 
     double Differential::nodes(unsigned short index, double start, double end)
     {
-	if(index>=npoints)
+	if(index >= size())
 	    throw(range_error("requested point not a valid mesh index"));
-	if (nodesx==nullptr)
-	    throw(runtime_error("error: nodes have been stolen"));
 	// scaling nodes trough affinity
-	return start+(end-start)*nodesx[index];
+	return start+(end-start)*nodes_m[index];
     }
     double Differential::quadratureWeights(unsigned short index, double start, double end)
     {
-	if(index>=npoints)
+	if(index >= size())
 	    throw(std::range_error("requested point not a valid mesh index"));
 	if (qw==nullptr)
 	    throw(runtime_error("error: quadrature weights were stolen"));
@@ -189,19 +215,19 @@ namespace Numpp
     }
     double Differential::differentiationWeights(unsigned short polynomial, unsigned short point, double start, double end)
     {
-	if((polynomial>=npoints)||(point>=npoints))
+	if((polynomial >= size())||(point >= size()))
 	    throw(std::range_error("invalid result point or invalid interpolation polynomiales"));
-	if (nodesx==nullptr)
+	if (dw == nullptr)
 	    throw(runtime_error("error: differentiation weights were stolen"));
 	// scaling:
-	return dw[polynomial*npoints+point]/(end-start);
+	return dw[polynomial * size() + point]/(end-start);
     }
     double Differential::evalPolynomial(unsigned short idx, double point, double start, double end)
     {
 	if (point==nodes(idx,start,end))
 	    return 1;
 	double s=0;
-	for (unsigned short i = 0; i < npoints; ++i){
+	for (unsigned short i = 0; i < size(); ++i){
 	    if (point==nodes(i,start,end))
 		return 0;
 	    s+=w[i]/(point-nodes(i,start,end));
@@ -211,9 +237,7 @@ namespace Numpp
 
     double* Differential::StealNodes()
     {
-	auto tmp=nodesx;
-	nodesx=nullptr;
-	return tmp;
+	return nodes_m.stealData();
     }
     double*  Differential::StealQuadratureWeights()
     {
@@ -229,7 +253,7 @@ namespace Numpp
     }
     const double* Differential::getNodes()
     {
-	return nodesx;
+	return nodes_m.data();
     }
     const double* Differential::getQuadratureWeights()
     {

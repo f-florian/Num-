@@ -64,16 +64,23 @@ namespace Numpp
 	void addNode(const double point);                                                           //!< Add a node to the end of the mesh
 	void swap(Mesh &other);                                                                     //!< Swap with other Object
 	Type nodeType() const noexcept;                                                             //!< Return node type
-    private:
+    protected:
 	double start_m;                                                                             //!< First extreme of the interval where intervals are defined
         double end_m;                                                                               //!< Second extreme of the interval where intervals are defined
 	Type type_m;                                                                                //!< Nodes type
 	VectorStorageLinear nodes_m;                                                                //!< Memory representation of the nodes
+        /**
+         * Default constuctor.
+         *
+         * Provided in the case a derived class must recompute some values used in the above constuctors
+         * Calling this one and performing the relevant initialization may be faster in those cases.
+         */
+        inline Mesh(){}
     };
 }
 
 namespace std {
-    inline void swap(Numpp::Mesh &a, Numpp::Mesh &b) noexcept {a.swap(b);}                                        //!< Swap function for std:: algorithms
+    inline void swap(Numpp::Mesh &a, Numpp::Mesh &b) noexcept {a.swap(b);}                          //!< Swap function for std:: algorithms
 }
 
 #endif // MESH_H

@@ -57,7 +57,6 @@ namespace Numpp
         double *qw;                                                                                 //!< Quadrature weights
         double *dw;                                                                                 //!< Differentiation weights
         double *w;                                                                                  //!< Barycentric weights
-        unsigned short npoints;                                                                     //!< Nodes number
     };
 }
 
