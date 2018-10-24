@@ -59,14 +59,14 @@ namespace Numpp{
         // iterating
         virtual Iterator begin() noexcept;                                                          //!< Iterator to begin
         virtual Iterator end() noexcept;                                                            //!< Iterator to end
-        virtual Iterator storageBegin() noexcept=0;                                                 //!< Iterator to first stored element
-        virtual Iterator storageEnd() noexcept=0;                                                   //!< Iterator to past-the-last stored element
+        virtual Iterator storageBegin() noexcept;                                                   //!< Iterator to first stored element
+        virtual Iterator storageEnd() noexcept;                                                     //!< Iterator to past-the-last stored element
         virtual ConstIterator cbegin() const noexcept;                                              //!< ConstIterator to begin
         virtual ConstIterator cend() const noexcept;                                                //!< ConstIterator to begnd
-        virtual ConstIterator storagecBegin() const noexcept=0;                                     //!< ConstIterator to first stored element
-        virtual ConstIterator storagecEnd() const noexcept=0;                                       //!< ConstIterator to past-the-last stored element
-        virtual void storageAdvance(Iterator &it) const=0;                                          //!< Advance Iterator to next stored item
-        virtual void storageAdvance(ConstIterator &it) const=0;                                     //!< Advance ConstIterator to next stored item
+        virtual ConstIterator storagecBegin() const noexcept;                                       //!< ConstIterator to first stored element
+        virtual ConstIterator storagecEnd() const noexcept;                                         //!< ConstIterator to past-the-last stored element
+        virtual void storageAdvance(Iterator &it) const;                                            //!< Advance Iterator to next stored item
+        virtual void storageAdvance(ConstIterator &it) const;                                       //!< Advance ConstIterator to next stored item
         virtual void transform(double (*fn)(double));                                               //!< Apply unary function to all elemenst
         virtual void transform(doubleUnary fn);                                                     //!< Apply unary function to all elemenst
         virtual void transform(double (*fn)(double,double), const Vector * const other);            //!< Apply binary function to all elements
@@ -75,7 +75,7 @@ namespace Numpp{
         virtual Vector* ctransform(doubleBinary fn, const Vector * const other) const;              //!< Apply binary function to all elements
 
         // Access
-        virtual double operator[](const size_t point) const noexcept=0;                             //!< Access element
+        virtual double operator[](const size_t point) const noexcept;                               //!< Access element
         virtual double operator[](const Iterator::diff_t point) const noexcept;                     //!< Access element
         virtual double at(const size_t point) const;                                                //!< Access element
         virtual ConstIterator cAt(const size_t point) const;                                        //!< Access element through ConstIterator
@@ -90,12 +90,12 @@ namespace Numpp{
         static Vector* scan(const std::string &in);                                                 //!< Construct from string
 
         // Inspect
-        virtual size_t size() const noexcept=0;                                                     //!< Get size
-        virtual StorageType storageType() const noexcept=0;                                         //!< Get storage Type
+        virtual size_t size() const noexcept;                                                       //!< Get size
+        virtual StorageType storageType() const noexcept;                                           //!< Get storage Type
 
         // Copying
-        virtual Vector* allocSameType(size_t size) const=0;                                         //!< Allocate a Vector of ginven size and same type as the caller
-        virtual Vector* allocCopy() const=0;                                                        //!< Allocate a copy
+        virtual Vector* allocSameType(size_t size) const;                                           //!< Allocate a Vector of ginven size and same type as the caller
+        virtual Vector* allocCopy() const;                                                          //!< Allocate a copy
     protected:
         virtual double& getref(size_t point);                                                       //!< Get a reference to the element at point
         IndexSet indexMapping_m;                                                                    //!< Index mapping
