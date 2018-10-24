@@ -18,79 +18,102 @@
 
 #include "vectorview.h"
 
-namespace VectorView::Numpp{
+namespace Numpp{
     /**
-     * \return 
+     * \param data Base Vector to track
+     *
+     * Constuct View of given vector
      */
-    VectorView(Vector VectorView::*data)
+    VectorView::VectorView(Vector *data)
     {
     }
     /**
-     * \param indices
-     * \return 
+     * \param data Base Vector to track
+     * \param indices Indices of the original Vector vhich should be present in this 
+     *
+     * Constuct View of (part of) given vector
+     * Since indices must be tracked they have to be copied
      */
-    VectorView(Vector VectorView::*data, IndexSet &indices)
+    VectorView::VectorView(Vector *data, IndexSet &indices)
     {
     }
     /**
-     * \param indices
-     * \return 
+     * \param data Base Vector to track
+     * \param indices Indices of the original Vector vhich should be present in this 
+     *
+     * Constuct View of (part of) given vector
      */
-    VectorView(Vector VectorView::*data, IndexSet &&indices)
+    VectorView::VectorView(Vector *data, IndexSet &&indices)
     {
     }
     /**
-     * \param false
-     * \return 
+     * \param data Base Vector to track
+     * \param own Take ownership of data if this flag is true 
+     *
+     * Constuct View of given vector and optionally take ownership of it
      */
-    VectorView(Vector VectorView::*data, bool own=false)
+    VectorView::VectorView(Vector *data, bool own=false)
     {
     }
     /**
-     * \param false
-     * \param indices
-     * \return 
+     * \param data Base Vector to track
+     * \param own Take ownership of data if this flag is true 
+     * \param indices Indices of the original Vector vhich should be present in this 
+     *
+     * Constuct View of (part of) given vector and optionally take ownership of it
+     * Since indices must be tracked they have to be copied
      */
-    VectorView(Vector VectorView::*data, IndexSet &indices, bool own=false)
+    VectorView::VectorView(Vector *data, IndexSet &indices, bool own=false)
     {
     }
     /**
-     * \param false
-     * \param indices
-     * \return 
+     * \param data Base Vector to track
+     * \param own Take ownership of data if this flag is true 
+     * \param indices Indices of the original Vector vhich should be present in this 
+     *
+     * Constuct View of (part of) given vector and optionally take ownership of it
      */
-    VectorView(Vector VectorView::*data, IndexSet &&indices, bool own=false)
+    VectorView::VectorView(Vector *data, IndexSet &&indices, bool own=false)
     {
     }
     /**
-     * \param other
+     * \param other Object to copy
      */
     VectorView::VectorView(VectorView &other)
     {
     }
     /**
-     * \param other
+     * \param other Object to move
      */
     VectorView::VectorView(VectorView &&other)
     {
     }
     /**
-     * \param false
-     * \param indices
-     * \param other
+     * \param other Vector to track
+     * \param own Take ownership of data if this flag is true
+     * \param indices Indices of the original Vector vhich should be present in this 
+     *
+     * Constuct View of (part of) given vector and optionally take ownership of data
+     * This constructor optimizes future access when the tracked vector is itself a view, by composing indiex references
+     * Since indices must be tracked they have to be copied
      */
     VectorView::VectorView(VectorView &other, IndexSet &indices, bool own=false)
     {
     }
     /**
-     * \param indices
-     * \param other
+     * \param other Vector to track
+     * \param own Take ownership of data if this flag is true
+     * \param indices Indices of the original Vector vhich should be present in this 
+     *
+     * Constuct View of (part of) given vector and optionally take ownership of data
+     * This constructor optimizes future access when the tracked vector is itself a view, by composing indiex references
+     * Since indices must be tracked they have to be copied
      */
     VectorView::VectorView(VectorView &&other, IndexSet &&indices)
     {
     }
     /**
-     * \return 
+     * Clear indices; clear data when owned  
      */
     VectorView::~VectorView()
     {
