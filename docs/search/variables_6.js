@@ -1,4 +1,6 @@
 var searchData=
 [
-  ['qw',['qw',['../classNumpp_1_1Differential.html#aefbf70432eb9826a82240c1eef9e31f9',1,'Numpp::Differential']]]
+  ['permutation',['permutation',['../classNumpp_1_1IndexSet.html#ac8c64cb505b63afe11ddbf1e7e58e272',1,'Numpp::IndexSet::permutation()'],['../classNumpp_1_1Permutation.html#aa7230656c69896d59d57a134652ff1ab',1,'Numpp::Permutation::permutation()']]],
+  ['pi',['pi',['../namespaceNumpp_1_1Constants.html#ac46c5e7a0b3f107bb1569875a0d39699',1,'Numpp::Constants']]],
+  ['position',['position',['../classNumpp_1_1Vector_1_1t__Iterator.html#a59ea9d2a8dbab56f30b85fffb377f52d',1,'Numpp::Vector::t_Iterator']]]
 ];

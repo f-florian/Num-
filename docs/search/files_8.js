@@ -7,5 +7,7 @@ var searchData=
   ['vector_5fiterator_5fextern_2eh',['vector_iterator_extern.h',['../vector__iterator__extern_8h.html',1,'']]],
   ['vector_5fiterator_5ffunctions_2eh',['vector_iterator_functions.h',['../vector__iterator__functions_8h.html',1,'']]],
   ['vectorstorage_2ecpp',['vectorstorage.cpp',['../vectorstorage_8cpp.html',1,'']]],
-  ['vectorstorage_2eh',['vectorstorage.h',['../vectorstorage_8h.html',1,'']]]
+  ['vectorstorage_2eh',['vectorstorage.h',['../vectorstorage_8h.html',1,'']]],
+  ['vectorview_2ecpp',['vectorview.cpp',['../vectorview_8cpp.html',1,'']]],
+  ['vectorview_2eh',['vectorview.h',['../vectorview_8h.html',1,'']]]
 ];

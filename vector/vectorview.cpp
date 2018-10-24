@@ -52,7 +52,7 @@ namespace Numpp{
      *
      * Constuct View of given vector and optionally take ownership of it
      */
-    VectorView::VectorView(Vector *data, bool own=false)
+    VectorView::VectorView(Vector *data, bool own)
     {
     }
     /**
@@ -63,7 +63,7 @@ namespace Numpp{
      * Constuct View of (part of) given vector and optionally take ownership of it
      * Since indices must be tracked they have to be copied
      */
-    VectorView::VectorView(Vector *data, IndexSet &indices, bool own=false)
+    VectorView::VectorView(Vector *data, IndexSet &indices, bool own)
     {
     }
     /**
@@ -73,7 +73,7 @@ namespace Numpp{
      *
      * Constuct View of (part of) given vector and optionally take ownership of it
      */
-    VectorView::VectorView(Vector *data, IndexSet &&indices, bool own=false)
+    VectorView::VectorView(Vector *data, IndexSet &&indices, bool own)
     {
     }
     /**
@@ -97,7 +97,7 @@ namespace Numpp{
      * This constructor optimizes future access when the tracked vector is itself a view, by composing indiex references
      * Since indices must be tracked they have to be copied
      */
-    VectorView::VectorView(VectorView &other, IndexSet &indices, bool own=false)
+    VectorView::VectorView(VectorView &other, IndexSet &indices, bool own)
     {
     }
     /**
@@ -119,296 +119,262 @@ namespace Numpp{
     {
     }
     /**
-     * \return 
+     * \param other Vector to sum
+     * \return sum of *this and *other
      */
     Vector* VectorView::operator+(const Vector* const other) const
     {
     }
     /**
+     * \param other Vector to sum to this
      */
     void VectorView::operator+=(const Vector* const other)
     {
     }
     /**
-     * \return 
+     * \param other Vector to subtract
+     * \return difference of *this and *other
      */
     Vector* VectorView::operator-(const Vector* const other) const
     {
     }
     /**
+     * \param other Vector to subtract
      */
     void VectorView::operator-=(const Vector* const other)
     {
     }
     /**
-     * \return 
+     * \param other Second operand for dot product
+     * \return Dot product of this and other
      */
     double VectorView::operator*(const Vector* const other) const
     {
     }
     /**
-     * \return 
+     * \param scale Scale factor
+     * \return Scaled Vector
      */
     Vector* VectorView::operator*(const double scale) const
     {
     }
     /**
+     * \param scale Scale factor
      */
     void VectorView::operator*=(const double scale)
     {
     }
 
     /**
-     * \param equality
-     * \return 
-    */
+     * \param other Second Vector to compare
+     * \return true if other is equal to this
+     */
     bool VectorView::operator==(const Vector* const other) const noexcept
     {
     }
     /**
-     * \param inequalty
-     * \return 
+     * \param other Second Vector to compare
+     * \return true if other is different from this
      */
     bool VectorView::operator!=(const Vector* const other) const noexcept
     {
     }
+    
     /**
-     * \param equal
-     * \return 
+     * \param other Second Vector to compare
+     * \return true if values in *this are less or equal than *other
      */
     bool VectorView::operator<=(const Vector* const other) const noexcept
     {
     }
     /**
-     * \param equal
-     * \return 
+     * \param other Second Vector to compare
+     * \return true if  values in *this are greater or equal than *other
      */
     bool VectorView::operator>=(const Vector* const other) const noexcept
     {
     }
     /**
-     * \param equal
-     * \return 
+     * \param other Second Vector to compare
+     * \return true if values in *this are strictly less than *other
      */
     bool VectorView::operator<(const Vector* const other) const noexcept
     {
     }
     /**
-     * \param equal
-     * \return 
+     * \param other Second Vector to compare
+     * \return true if values in *this are strictly greater than *other
      */
     bool VectorView::operator>(const Vector* const other) const noexcept
     {
     }
 
     /**
-     * \return 
+     * \return Iterator to begin
      */
     Iterator VectorView::begin() noexcept
     {
     }
     /**
-     * \return 
+     * \return Iterator to end
      */
     Iterator VectorView::end() noexcept
     {
     }
     /**
-     * \return 
+     * \return Iterator to first storage position
      */
     Iterator VectorView::storageBegin() noexcept
     {
     }
     /**
-     * \return 
+     * \return Iterator to past-to-last storage position 
      */
     Iterator VectorView::storageEnd() noexcept
     {
     }
     /**
-     * \return 
+     * \return Cost Iterator to begin
      */
     ConstIterator VectorView::cbegin() const noexcept
     {
     }
     /**
-     * \return 
+     * \return Cost Iterator to end
      */
     ConstIterator VectorView::cend() const noexcept
     {
     }
     /**
-     * \return 
+     * \return Iterator to first storage position
      */
     ConstIterator VectorView::storagecBegin() const noexcept
     {
     }
     /**
-     * \return 
+     * \return Iterator to past-to-last storage position 
      */
     ConstIterator VectorView::storagecEnd() const noexcept
     {
     }
     /**
-     * \param it
+     * \param it iterator to advance
+     * 
+     * Advance Iterator to a position corresponding to an actual storage (mosly useful for sparse storage)
      */
     void VectorView::storageAdvance(Iterator &it) const
     {
     }
     /**
-     * \param it
+     * \param it Const Iterator to advance
+     * 
+     * Advance Iterator to a position corresponding to an actual storage (mosly useful for sparse storage)
      */
     void VectorView::storageAdvance(ConstIterator &it) const
     {
     }
-    /**
-     * \param fn
-     */
-    void VectorView::transform(double (*fn)(double))
-    {
-    }
-    /**
-     * \param fn
-     */
-    void VectorView::transform(doubleUnary fn)
-    {
-    }
-    /**
-     * \param other
-     * \param fn
-     */
-    void VectorView::transform(double (*fn)(double,double), const Vector * const other)
-    {
-    }
-    /**
-     * \param other
-     * \param fn
-     */
-    void VectorView::transform(doubleBinary fn, const Vector * const other)
-    {
-    }
-    /**
-     * \param other
-     * \param fn
-     * \return 
-     */
-    Vector* VectorView::ctransform(double (*fn)(double,double), const Vector * const other) const
-    {
-    }
-    /**
-     * \param other
-     * \param fn
-     * \return 
-     */
-    Vector* VectorView::ctransform(doubleBinary fn, const Vector * const other) const
-    {
-    }
 
     /**
-     * \return 
+     * \param point Position to access
+     * \return accessed element
      */
     double VectorView::operator[](const size_t point) const noexcept
     {
     }
     /**
-     * \return 
+     * \param point Position to access
+     * \return accessed element
      */
     double VectorView::operator[](const Iterator::diff_t point) const noexcept
     {
     }
     /**
-     * \param point
-     * \return 
-     */
-    double VectorView::at(const size_t point) const
-    {
-    }
-    /**
-     * \param point
-     * \return 
+     * \param point Position to access
+     * \return Const Iterator to accessed element
      */
     ConstIterator VectorView::cAt(const size_t point) const
     {
     }
     /**
-     * \param point
-     * \return 
+     * \param point Position to access
+     * \return Iterator to accessed element
      */
     Iterator VectorView::at(const size_t point)
     {
     }
     /**
-     * \param x2
-     * \param x1
+     * \param x2 First element to swap
+     * \param x1 Second element to swap
      */
     void VectorView::swap(const size_t x1, const size_t x2)
     {
     }
     /**
-     * \param val
-     * \param point
+     * \param val New value
+     * \param point Position for new value
      */
     void VectorView::set(const size_t point, const double val)
     {
     }
     /**
-     * \param abs
-     * \param val
-     * \param point
+     * \param val New value
+     * \param point Position for new value
      */
     void VectorView::set(const Iterator::diff_t point, const double val)
     {
     }
     /**
-     * \param size
+     * \param size New size
+     *
+     * Complexity of resizing vectors is not currently amortized constant
      */
     void VectorView::resize(size_t size)
     {
     }
 
     /**
-     * \return 
+     * \return String describing the current Vector
      */
     std::string VectorView::print() const noexcept
     {
     }
     /**
-     * \param in
-     * \return 
+     * \param in string used to construct the Vector
+     * \return New vector loaded from string
      */
     Vector* VectorView::scan(const std::string &in)
     {
     }
 
     /**
-     * \return 
+     * \return Current size
      */
     size_t VectorView::size() const noexcept
     {
     }
     /**
-     * \return 
+     * \return Underlying data storage type
      */
     StorageType VectorView::storageType() const noexcept
     {
     }
 
     /**
-     * \param size
-     * \return 
+     * \param size New size
+     * \return New Vector of given size
      */
     Vector* VectorView::allocSameType(size_t size) const
     {
     }
     /**
-     * \return 
+     * \return Copy of this 
      */
     Vector* VectorView::allocCopy() const
     {
     }
     /**
-     * \param point
-     * \return 
+     * \param point position to reference
+     * \return Reference to element at point
      */
     double& VectorView::getref(size_t point)
     {

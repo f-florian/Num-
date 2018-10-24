@@ -6,5 +6,6 @@ var searchData=
   ['_7epermutation',['~Permutation',['../classNumpp_1_1Permutation.html#a11330b31bf6f593a21fbfc2f6c5d4790',1,'Numpp::Permutation']]],
   ['_7evector',['~Vector',['../classNumpp_1_1Vector.html#a8b71dfb9cabb0051b542ffcfa9a387a3',1,'Numpp::Vector']]],
   ['_7evectorstoragelinear',['~VectorStorageLinear',['../classNumpp_1_1VectorStorageLinear.html#ae15ab49056306d7f58b8471dfb929d77',1,'Numpp::VectorStorageLinear']]],
-  ['_7evectorstoragesparse',['~VectorStorageSparse',['../classNumpp_1_1VectorStorageSparse.html#a3fdc6e343ea84729ef9d76b3ff47bee8',1,'Numpp::VectorStorageSparse']]]
+  ['_7evectorstoragesparse',['~VectorStorageSparse',['../classNumpp_1_1VectorStorageSparse.html#a3fdc6e343ea84729ef9d76b3ff47bee8',1,'Numpp::VectorStorageSparse']]],
+  ['_7evectorview',['~VectorView',['../classNumpp_1_1VectorView.html#a49c6d7a2493bc4841a01ef2ce0819c7d',1,'Numpp::VectorView']]]
 ];
