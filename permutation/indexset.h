@@ -30,7 +30,7 @@ namespace Numpp {
     public:
         IndexSet(const size_t size);                                                                //!< Construct from size
         IndexSet(std::initializer_list<size_t> list);                                               //!< Construct from initializer_list
-        IndexSet(const size_t start, const size_t end, const size_t step=1);                        //!< Construct linear progression
+        IndexSet(const size_t start, const size_t end, const size_t step);                          //!< Construct linear progression
         IndexSet(const size_t start, const size_t size);                                            //!< Construct with constant index
         IndexSet(const IndexSet & other);                                                           //!< Copy constructor
         IndexSet(IndexSet && other) noexcept;                                                       //!< Move constructor
