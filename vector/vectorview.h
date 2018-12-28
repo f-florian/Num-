@@ -40,12 +40,9 @@ namespace Numpp{
         VectorView(VectorView &other, IndexSet &indices, bool own=false);                           //!< Copy constructor
         VectorView(VectorView &&other, IndexSet &&indices);                                         //!< Move constructor
         virtual ~VectorView();                                                                      //!< Destructor
-        virtual Vector* operator+(const Vector* const other) const;                                 //!< sum
         virtual void operator+=(const Vector* const other);                                         //!< sum
-        virtual Vector* operator-(const Vector* const other) const;                                 //!< difference
         virtual void operator-=(const Vector* const other);                                         //!< difference
         virtual double operator*(const Vector* const other) const;                                  //!< Dot product
-        virtual Vector* operator*(const double scale) const;                                        //!< Scale all elements
         virtual void operator*=(const double scale);                                                //!< Scale all elements
 
         // Comparison
@@ -57,8 +54,6 @@ namespace Numpp{
         virtual bool operator>(const Vector* const other) const noexcept;                           //!< Comparison (greater or equal)
 
         // iterating
-        virtual Iterator begin() noexcept;                                                          //!< Iterator to begin
-        virtual Iterator end() noexcept;                                                            //!< Iterator to end
         virtual Iterator storageBegin() noexcept;                                                   //!< Iterator to first stored element
         virtual Iterator storageEnd() noexcept;                                                     //!< Iterator to past-the-last stored element
         virtual ConstIterator cbegin() const noexcept;                                              //!< ConstIterator to begin
@@ -67,20 +62,10 @@ namespace Numpp{
         virtual ConstIterator storagecEnd() const noexcept;                                         //!< ConstIterator to past-the-last stored element
         virtual void storageAdvance(Iterator &it) const;                                            //!< Advance Iterator to next stored item
         virtual void storageAdvance(ConstIterator &it) const;                                       //!< Advance ConstIterator to next stored item
-        virtual void transform(double (*fn)(double));                                               //!< Apply unary function to all elemenst
-        virtual void transform(doubleUnary fn);                                                     //!< Apply unary function to all elemenst
-        virtual void transform(double (*fn)(double,double), const Vector * const other);            //!< Apply binary function to all elements
-        virtual void transform(doubleBinary fn, const Vector * const other);                        //!< Apply binary function to all elements
-        virtual Vector* ctransform(double (*fn)(double,double), const Vector * const other) const;  //!< Apply binary function to all elements
-        virtual Vector* ctransform(doubleBinary fn, const Vector * const other) const;              //!< Apply binary function to all elements
 
         // Access
         virtual double operator[](const size_t point) const noexcept;                               //!< Access element
         virtual double operator[](const Iterator::diff_t point) const noexcept;                     //!< Access element
-        virtual double at(const size_t point) const;                                                //!< Access element
-        virtual ConstIterator cAt(const size_t point) const;                                        //!< Access element through ConstIterator
-        virtual Iterator at(const size_t point);                                                    //!< Access element through Iterator
-        virtual void swap(const size_t x1, const size_t x2);                                        //!< swap elements
         virtual void set(const size_t point, const double val);                                     //!< set value element at position
         virtual void set(const Iterator::diff_t point, const double val);                           //!< set value element at abs(position)
         virtual void resize(size_t size);                                                           //!< resize
@@ -90,7 +75,7 @@ namespace Numpp{
         static Vector* scan(const std::string &in);                                                 //!< Construct from string
 
         // Inspect
-        virtual size_t size() const noexcept;                                                       //!< Get size
+        virtual size_t size() const noexcept {return data->size};                                   //!< Get size \return Size of data
         virtual StorageType storageType() const noexcept;                                           //!< Get storage Type
 
         // Copying
