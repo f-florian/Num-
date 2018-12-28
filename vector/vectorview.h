@@ -98,7 +98,7 @@ namespace Numpp{
         virtual Vector* allocCopy() const;                                                          //!< Allocate a copy
     protected:
         virtual double& getref(size_t point);                                                       //!< Get a reference to the element at point
-        IndexSet indexMapping_m;                                                                    //!< Index mapping
+        IndexSet mapping_m;                                                                    //!< Index mapping
         Vector *data_m;                                                                             //!< Original Vector
         bool owner;                                                                                 //!< Vector ownership flag
     };

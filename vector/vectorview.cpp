@@ -24,99 +24,102 @@ namespace Numpp{
      *
      * Constuct View of given vector
      */
-    VectorView::VectorView(Vector *data)
+    VectorView::VectorView(Vector *data_p)
+        :data_m(data_p), owner(true), mapping_m(0,data_p->size(),1)
     {
+        data_m=data_p;
     }
     /**
      * \param data Base Vector to track
-     * \param indices Indices of the original Vector vhich should be present in this 
+     * \param mapping_p Indices of the original Vector vhich should be present in this 
      *
      * Constuct View of (part of) given vector
      * Since indices must be tracked they have to be copied
      */
-    VectorView::VectorView(Vector *data, IndexSet &indices)
-    {
-    }
+    VectorView::VectorView(Vector *data_p, IndexSet &mapping_p)
+        :data_m(data_p), owner(true), mapping_m(mapping_p){}
     /**
      * \param data Base Vector to track
-     * \param indices Indices of the original Vector vhich should be present in this 
+     * \param mapping_p Indices of the original Vector vhich should be present in this 
      *
      * Constuct View of (part of) given vector
      */
-    VectorView::VectorView(Vector *data, IndexSet &&indices)
-    {
-    }
+    VectorView::VectorView(Vector *data_p, IndexSet &&mapping_p)
+        :data_m(data_p), owner(true), mapping_m(mapping_p){}
     /**
      * \param data Base Vector to track
      * \param own Take ownership of data if this flag is true 
      *
      * Constuct View of given vector and optionally take ownership of it
      */
-    VectorView::VectorView(Vector *data, bool own)
-    {
-    }
+    VectorView::VectorView(Vector *data_p, bool own)
+        :data_m(data_p), owner(own), mapping_m(0,data_p->size(),1){}
     /**
      * \param data Base Vector to track
      * \param own Take ownership of data if this flag is true 
-     * \param indices Indices of the original Vector vhich should be present in this 
+     * \param mapping_p Indices of the original Vector vhich should be present in this 
      *
      * Constuct View of (part of) given vector and optionally take ownership of it
      * Since indices must be tracked they have to be copied
      */
-    VectorView::VectorView(Vector *data, IndexSet &indices, bool own)
-    {
-    }
+    VectorView::VectorView(Vector *data_p, IndexSet &mapping_p, bool own)
+        :data_m(data_p), owner(own), mapping_m(mapping_p){}
     /**
      * \param data Base Vector to track
      * \param own Take ownership of data if this flag is true 
-     * \param indices Indices of the original Vector vhich should be present in this 
+     * \param mapping_p Indices of the original Vector vhich should be present in this 
      *
      * Constuct View of (part of) given vector and optionally take ownership of it
      */
-    VectorView::VectorView(Vector *data, IndexSet &&indices, bool own)
-    {
-    }
+    VectorView::VectorView(Vector *data_p, IndexSet &&mapping_p, bool own)
+        :data_m(data_p), owner(own), mapping_m(mapping_p){}
     /**
      * \param other Object to copy
      */
     VectorView::VectorView(VectorView &other)
-    {
-    }
+        :data_m(other.data_m), owner(false), mapping_m(other.mapping_m){}
     /**
      * \param other Object to move
      */
     VectorView::VectorView(VectorView &&other)
-    {
-    }
+        :data_m(other.data_m), owner(other.owner), mapping_m(std::move(other.mapping_m)){}
     /**
      * \param other Vector to track
      * \param own Take ownership of data if this flag is true
-     * \param indices Indices of the original Vector vhich should be present in this 
+     * \param mapping_p Indices of the original Vector vhich should be present in this 
      *
      * Constuct View of (part of) given vector and optionally take ownership of data
      * This constructor optimizes future access when the tracked vector is itself a view, by composing indiex references
      * Since indices must be tracked they have to be copied
      */
-    VectorView::VectorView(VectorView &other, IndexSet &indices, bool own)
+    VectorView::VectorView(VectorView &other, IndexSet &mapping_p, bool own)
+        :data_m(other.data_m), owner(false), mapping_m(mapping_p){}
     {
+        mapping_m*=other.mapping_m;
+        if(own)
+            swap(owner,other.owner);
     }
     /**
      * \param other Vector to track
      * \param own Take ownership of data if this flag is true
-     * \param indices Indices of the original Vector vhich should be present in this 
+     * \param mapping_p Indices of the original Vector vhich should be present in this 
      *
      * Constuct View of (part of) given vector and optionally take ownership of data
      * This constructor optimizes future access when the tracked vector is itself a view, by composing indiex references
      * Since indices must be tracked they have to be copied
      */
-    VectorView::VectorView(VectorView &&other, IndexSet &&indices)
+    VectorView::VectorView(VectorView &&other, IndexSet &&mapping_p)
+        :data_m(std::move(other.data_m)), owner(other.owner), mapping_m(mapping_p){}
     {
+        mapping_m*=other.mapping_m;
     }
     /**
-     * Clear indices; clear data when owned  
+     * Clear mapping_m; clear data when owned  
      */
     VectorView::~VectorView()
     {
+        if(owner)
+            data_m->~Vector();
     }
     /**
      * \param other Vector to sum
@@ -327,6 +330,7 @@ namespace Numpp{
      * \param size New size
      *
      * Complexity of resizing vectors is not currently amortized constant
+     * indexset must be resized
      */
     void VectorView::resize(size_t size)
     {
